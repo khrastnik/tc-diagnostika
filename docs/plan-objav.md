@@ -6,24 +6,56 @@ Ko je članek objavljen, se vrstica odkljuka (`[x]`) in doda datum ter slug.
 
 ## Vrstni red
 
-- [ ] 1. Zakaj se kvarijo — Zakaj se toplotna črpalka pogosto vklaplja in izklaplja (taktiranje) — pojmi: taktiranje, inverter
-- [ ] 2. Zakaj se kvarijo — Hrup toplotne črpalke: kdaj je normalen in kdaj ne — pojmi: štiripotni ventil, ventilator zunanje enote
-- [ ] 3. Kako deluje — Krivulja ogrevanja: kaj je in zakaj vpliva na račun za elektriko — pojmi: temperatura dovoda, bivalentna točka
-- [ ] 4. Aktualno — Omrežnina in tarife elektrike: kdaj je ogrevanje s toplotno črpalko najcenejše — pojmi: časovni blok, SG Ready
-- [ ] 5. Zakaj se kvarijo — Koda napake na zaslonu: kaj narediti, preden pokličete serviserja — pojmi: manometer, obtočna črpalka
-- [ ] 6. Vzdrževanje — Sneg, led in veter: zaščita zunanje enote pozimi — pojmi: kondenzat, grelni kabel
-- [ ] 7. Zakaj se kvarijo — Visoka poraba elektrike: najpogostejši vzroki — pojmi: sezonska učinkovitost, hranilnik toplote
-- [ ] 8. Kako deluje — Rezervni električni grelnik: kdaj se vklopi in koliko stane — pojmi: monoblok, split izvedba
-- [ ] 9. Aktualno — Predpisi o F-plinih: kaj pomenijo za lastnika toplotne črpalke — pojmi: F-plini, ekvivalent CO₂
-- [ ] 10. Kako deluje — Talno ogrevanje ali radiatorji s toplotno črpalko — pojmi: ekspanzijska posoda, nizkotemperaturno ogrevanje
-- [ ] 11. Vzdrževanje — Topla voda in legionela: zakaj je zaščita pomembna — pojmi: legionela, sanitarna toplotna črpalka
-- [ ] 12. Vzdrževanje — Kako izbrati dobrega serviserja — pojmi: spričevalo za F-pline, servisni zapisnik
-- [ ] 13. Vzdrževanje — Kdaj je najboljši čas za letni servis — pojmi: kurilna sezona, energijska nalepka
-- [ ] 14. Kako deluje — Kako dolgo zdrži toplotna črpalka — pojmi: življenjska doba, kompresor scroll
-- [ ] 15. Zakaj se kvarijo — Menjava stare toplotne črpalke: kdaj se splača — pojmi: R410A, R290
-- [ ] 16. Kako deluje — Ali toplotna črpalka lahko poleti hladi — pojmi: hlajenje s talnim ogrevanjem, rosišče
-- [ ] 17. Kako deluje — Toplotna črpalka in sončna elektrarna — pojmi: samooskrba, net metering
-- [ ] 18. Vzdrževanje — Pred kurilno sezono: zakaj je zdaj pravi čas za servis — pojmi: odzračevanje, lovilnik nesnage
+Zima (november–februar, 2 članka na teden: ponedeljek + četrtek)
+
+- [ ] 1. čet 19. 11. 2026 — Zakaj se kvarijo — Zakaj se toplotna črpalka pogosto vklaplja in izklaplja (taktiranje) — pojmi: taktiranje, inverter
+- [ ] 2. pon 23. 11. 2026 — Zakaj se kvarijo — Hrup toplotne črpalke: kdaj je normalen in kdaj ne — pojmi: štiripotni ventil, ventilator zunanje enote
+- [ ] 3. čet 26. 11. 2026 — Vzdrževanje — Sneg, led in veter: na kaj paziti pri zunanji enoti pozimi — pojmi: kondenzat, grelni kabel
+- [ ] 4. pon 30. 11. 2026 — Kako deluje — Krivulja ogrevanja: kaj je in zakaj vpliva na račun za elektriko — pojmi: temperatura dovoda, bivalentna točka
+- [ ] 5. čet 3. 12. 2026 — Aktualno — Omrežnina in tarife elektrike: kdaj je ogrevanje s toplotno črpalko najcenejše — pojmi: časovni blok, SG Ready
+- [ ] 6. pon 7. 12. 2026 — Zakaj se kvarijo — Koda napake na zaslonu: kaj pomeni in kdaj poklicati serviserja — pojmi: manometer, obtočna črpalka
+- [ ] 7. čet 10. 12. 2026 — Zakaj se kvarijo — Visoka poraba elektrike pozimi: najpogostejši vzroki — pojmi: sezonska učinkovitost, toplotna obremenitev
+- [ ] 8. pon 14. 12. 2026 — Kako deluje — Rezervni električni grelnik: kdaj se vklopi in zakaj podraži račun — pojmi: rezervni grelnik, vršna moč
+- [ ] 9. čet 17. 12. 2026 — Vzdrževanje — Servisni zapisnik: servisna knjižica vaše toplotne črpalke — pojmi: servisni zapisnik, garancijski list
+- [ ] 10. pon 21. 12. 2026 — Zakaj se kvarijo — Toplotna črpalka ne pripravi dovolj tople vode — pojmi: bojler, sanitarna toplotna črpalka
+- [ ] 11. čet 24. 12. 2026 — Kako deluje — Kako toplotna črpalka deluje pri −15 °C — pojmi: mejna temperatura delovanja, parno vbrizgavanje
+- [ ] 12. pon 28. 12. 2026 — Zakaj se kvarijo — Zakaj je v nekaterih prostorih hladno — pojmi: hidravlično uravnoteženje, termostatski ventil
+- [ ] 13. čet 31. 12. 2026 — Vzdrževanje — Kaj se zgodi, če toplotne črpalke pet let ne servisirate — pojmi: korozija, obloge v izmenjevalniku
+- [ ] 14. pon 4. 1. 2027 — Aktualno — Predpisi o F-plinih: kaj pomenijo za lastnika toplotne črpalke — pojmi: F-plini, ekvivalent CO₂
+- [ ] 15. čet 7. 1. 2027 — Kako deluje — Talno ogrevanje ali radiatorji s toplotno črpalko — pojmi: ekspanzijska posoda, nizkotemperaturno ogrevanje
+- [ ] 16. pon 11. 1. 2027 — Zakaj se kvarijo — Izpad elektrike in toplotna črpalka: kaj se zgodi in kdaj poklicati serviserja — pojmi: zaščitno stikalo, ponovni zagon
+- [ ] 17. čet 14. 1. 2027 — Vzdrževanje — Topla voda in legionela: zakaj je zaščita pomembna — pojmi: legionela, termična dezinfekcija
+- [ ] 18. pon 18. 1. 2027 — Kako deluje — Monoblok ali split izvedba: razlike za lastnika — pojmi: monoblok, split izvedba
+- [ ] 19. čet 21. 1. 2027 — Zakaj se kvarijo — Zakaj tlak v ogrevalnem sistemu pada — pojmi: tlak v sistemu, varnostni ventil
+- [ ] 20. pon 25. 1. 2027 — Aktualno — Cene elektrike 2027: koliko stane ogrevanje s toplotno črpalko — pojmi: cena kWh, dinamična tarifa
+- [ ] 21. čet 28. 1. 2027 — Vzdrževanje — Kako izbrati dobrega serviserja — pojmi: spričevalo za F-pline, pooblaščeni serviser
+- [ ] 22. pon 1. 2. 2027 — Kako deluje — Hranilnik toplote: kdaj je potreben in zakaj — pojmi: hranilnik toplote, hidravlična kretnica
+- [ ] 23. čet 4. 2. 2027 — Zakaj se kvarijo — Napake pri vgradnji, ki kasneje povzročajo okvare — pojmi: dimenzioniranje, predimenzionirana črpalka
+- [ ] 24. pon 8. 2. 2027 — Kako deluje — Toplotna črpalka v stari, slabo izolirani hiši — pojmi: toplotne izgube, toplotna potreba stavbe
+- [ ] 25. čet 11. 2. 2027 — Vzdrževanje — Garancija toplotne črpalke: kaj krije in kako jo ohraniti — pojmi: podaljšana garancija, garancijski pogoji
+- [ ] 26. pon 15. 2. 2027 — Zakaj se kvarijo — Nova okna ali izolacija: zakaj črpalka zdaj deluje drugače — pojmi: energijska izkaznica, ogrevalna moč
+- [ ] 27. čet 18. 2. 2027 — Aktualno — Subvencija Eko sklada 2027: posodobitev (preveri aktualni poziv in posodobi tudi obstoječi članek) — pojmi: javni poziv, priznani stroški
+- [ ] 28. pon 22. 2. 2027 — Kako deluje — Kako dolgo zdrži toplotna črpalka — pojmi: življenjska doba, scroll kompresor
+- [ ] 29. čet 25. 2. 2027 — Vzdrževanje — Kdaj je najboljši čas za letni servis — pojmi: kurilna sezona, servisni interval
+
+Pomlad (marec–maj, 1 članek na teden: ponedeljek)
+
+- [ ] 30. pon 1. 3. 2027 — Zakaj se kvarijo — Menjava stare toplotne črpalke: kdaj se splača — pojmi: R410A, R290
+- [ ] 31. pon 8. 3. 2027 — Vzdrževanje — Po zimi: zakaj je spomladi pravi čas za pregled — pojmi: obraba, sezonski pregled
+- [ ] 32. pon 15. 3. 2027 — Aktualno — Energijska nalepka toplotne črpalke: kaj pomenijo oznake — pojmi: energijska nalepka, energijski razred
+- [ ] 33. pon 22. 3. 2027 — Kako deluje — Toplotna črpalka in sončna elektrarna — pojmi: samooskrba, lastna raba
+- [ ] 34. pon 29. 3. 2027 — Zakaj se kvarijo — Zakaj črpalka v prehodnem obdobju pogosto vklaplja — pojmi: prehodno obdobje, minimalna moč
+- [ ] 35. pon 5. 4. 2027 — Vzdrževanje — Redni servis in vrednost naprave: zakaj se splača dolgoročno — pojmi: stroški življenjskega cikla, preventivno vzdrževanje
+- [ ] 36. pon 12. 4. 2027 — Kako deluje — Ali toplotna črpalka lahko poleti hladi — pojmi: hlajenje s talnim ogrevanjem, rosišče
+- [ ] 37. pon 19. 4. 2027 — Aktualno — Eko kredit in drugi viri financiranja toplotne črpalke — pojmi: eko kredit, nepovratna sredstva
+- [ ] 38. pon 26. 4. 2027 — Zakaj se kvarijo — Neprijeten vonj ali voda pri notranji enoti — pojmi: odtok kondenzata, notranja enota
+- [ ] 39. pon 3. 5. 2027 — Vzdrževanje — Sanitarna toplotna črpalka: zakaj tudi ona potrebuje servis — pojmi: grelna tuljava, magnezijeva anoda
+- [ ] 40. pon 10. 5. 2027 — Kako deluje — Hrup in sosedje: zakaj je postavitev zunanje enote pomembna — pojmi: zvočna moč, decibel
+- [ ] 41. pon 17. 5. 2027 — Kako deluje — Zmote o toplotnih črpalkah: kaj drži in kaj ne — pojmi: grelno število, toplotni vir
+- [ ] 42. pon 24. 5. 2027 — Zakaj se kvarijo — Zakaj toplotna črpalka poleti ne hladi dovolj — pojmi: hladilna moč, obtočni pretok
+- [ ] 43. pon 31. 5. 2027 — Vzdrževanje — Poletni servis: zakaj ga ne odlašati do jeseni — pojmi: čakalna doba, predsezonski servis
+
+Datumi so okvirni: objava vedno vzame prvo neodkljukano temo. Če je pojem že v slovarju, izberi drug soroden pojem.
 
 ## Hitrost (proračun)
 

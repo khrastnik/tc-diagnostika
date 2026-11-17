@@ -70,11 +70,6 @@ const jsonLd = [
           </aside>
         )}
 
-        <aside class="cta-band">
-          <div><h2>Potrebujete pregled?</h2><p>Pridem na dom, izmerim delovanje in vam v poročilu povem, kaj storiti.</p></div>
-          <a class="btn btn-primary" href={u('/narocilo/')}>Naroči pregled <Icon name="arrow" /></a>
-        </aside>
-
         {d.sources && (
           <section class="sources"><h2 class="subhead">Viri</h2><ul>{d.sources.map((src) => <li><a href={src.url} rel="noopener">{src.name}</a></li>)}</ul></section>
         )}

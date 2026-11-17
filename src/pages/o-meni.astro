@@ -2,7 +2,6 @@
 import Base from '../layouts/Base.astro';
 import Icon from '../components/Icon.astro';
 import Crumbs from '../components/Crumbs.astro';
-import { u } from '../lib/url';
 ---
 <Base title="O meni" description="Kdo piše stran TC diagnostika, zakaj in kako me kontaktirate.">
   <header class="page-head c-teal">
@@ -16,9 +15,8 @@ import { u } from '../lib/url';
     <div class="container" style="max-width:calc(var(--readw) + 3rem)">
       <div class="prose">
         <p>To stran pišem, ker lastniki toplotnih črpalk ob težavah večinoma naletijo le na forumske niti z nasprotujočimi si nasveti. Tu zbiram razlage o tem, kako črpalke delujejo, zakaj se kvarijo in kaj je aktualno pri subvencijah in predpisih, napisane razumljivo in z navedenimi viri.</p>
-        <h2>Diagnostika na domu</h2>
-        <p>Pregledam napravo, nastavitve in ogrevalni sistem, izmerim delovanje in pripravim pisno poročilo. Na pregled se lahko <a href={u('/narocilo/')}>naročite prek obrazca</a>.</p>
-        <p>Posegov v hladilni krog (polnjenje, praznjenje, spajkanje) ne izvajam in zanje ne objavljam navodil: to sme izvajati le pooblaščeno podjetje s spričevalom za F-pline.</p>
+        <h2>Kaj ta stran ni</h2>
+        <p>Stran trenutno <strong>ne ponuja servisnih storitev</strong>. Ne objavljam navodil za posege v hladilni krog (polnjenje, praznjenje, spajkanje): to sme izvajati le pooblaščeno podjetje s spričevalom za F-pline.</p>
         <h2>Podatki o izdajatelju</h2>
         <p>Fizična oseba, nekomercialna informativna stran. Ko bo stran postala poslovna, bodo tu navedeni firma, sedež, e-pošta in matična številka.</p>
       </div>

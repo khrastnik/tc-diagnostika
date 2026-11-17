@@ -26,7 +26,7 @@ const symptoms = [
         <p class="lead">Kako deluje, zakaj se kvari in kdaj je čas za strokovnjaka. Jasni odgovori namesto nasprotujočih si forumskih nasvetov.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href={u('/zakaj-se-kvarijo/')}>Imam težavo s črpalko <Icon name="arrow" /></a>
-          <a class="btn btn-ghost" href={u('/narocilo/')}>Naroči pregled</a>
+          <a class="btn btn-ghost" href={u('/kako-deluje/')}>Kako deluje</a>
         </div>
         <ul class="trust">
           <li><Icon name="shield" />Varno: brez posegov v hladilni krog</li>
@@ -62,7 +62,6 @@ const symptoms = [
           <span class="tag tag-warm">Hitra pomoč</span>
           <h2>Kaj se dogaja z vašo črpalko?</h2>
           <p>Izberite znak, ki ga opazite. Povemo, kaj je normalno, kaj lahko varno preverite sami in kdaj poklicati serviserja.</p>
-          <p style="margin-top:1rem"><a class="link-arrow" href={u('/narocilo/')} style="color:var(--warm-ink)">Raje naročim pregled <Icon name="arrow" /></a></p>
         </div>
         <ul class="symptoms">
           {symptoms.map((s) => (
@@ -100,26 +99,6 @@ const symptoms = [
     </div>
   </section>
 
-  <section class="section" style="padding-top:0">
-    <div class="container">
-      <div class="service reveal">
-        <div>
-          <span class="badge-soon"><i></i>Diagnostika na domu</span>
-          <h2>Strokovni pregled vaše toplotne črpalke</h2>
-          <p>Ugotovim, zakaj črpalka ne deluje, kot bi morala, in vam v pisnem poročilu povem, kaj storiti. Brez posegov v hladilni krog.</p>
-          <div class="hero-actions" style="margin-top:1.5rem">
-            <a class="btn btn-primary" href={u('/narocilo/')} style="background:#13a07f">Naroči pregled <Icon name="arrow" /></a>
-            <a class="btn btn-ghost" href={u('/o-meni/')} style="background:transparent;color:#fff;border-color:rgba(255,255,255,.25)">O meni</a>
-          </div>
-        </div>
-        <ol class="steps">
-          <li><div><b>Pregled na domu</b><span>Ogled naprave, nastavitev in ogrevalnega sistema.</span></div></li>
-          <li><div><b>Meritve delovanja</b><span>Temperature, pretoki, poraba in odtaljevanje.</span></div></li>
-          <li><div><b>Pisno poročilo</b><span>Kaj deluje, kaj ne in kaj priporočam.</span></div></li>
-        </ol>
-      </div>
-    </div>
-  </section>
 
   <section class="section section-alt">
     <div class="container glossary-band">

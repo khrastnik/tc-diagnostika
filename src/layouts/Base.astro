@@ -53,10 +53,8 @@ const nav: [string, string][] = [
           {nav.map(([href, label]) => (
             <li><a href={u(href)} aria-current={path.startsWith(u(href)) ? 'page' : undefined}><span class="dot" />{label}</a></li>
           ))}
-          <li class="nav-cta-mobile"><a href={u('/narocilo/')}>Naroči pregled</a></li>
         </ul>
       </nav>
-      <a class="btn btn-primary header-cta" href={u('/narocilo/')}>Naroči pregled <Icon name="arrow" /></a>
     </div>
   </header>
 
@@ -83,7 +81,6 @@ const nav: [string, string][] = [
         <div>
           <h2>Stran</h2>
           <ul>
-            <li><a href={u('/narocilo/')}>Naročilo na pregled</a></li>
             <li><a href={u('/o-meni/')}>O meni in kontakt</a></li>
             <li><a href={u('/zasebnost/')}>Zasebnost</a></li>
           </ul>

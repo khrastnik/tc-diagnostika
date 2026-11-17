@@ -7,20 +7,19 @@ updated: 2026-11-17
 terms: [uparjalnik, odtaljevanje]
 related: [kako-deluje-toplotna-crpalka, cop-in-scop, hladivo-v-toplotni-crpalki]
 remember:
-  - Najprej preverite nastavitve, filter in prosto pot zraka okoli zunanje enote.
+  - Najprej preverite nastavitve na zaslonu in prosto pot zraka okoli zunanje enote.
   - Kode napak na zaslonu zapišite, preden pokličete serviserja.
   - Če je težava v hladilnem krogu, je to delo za pooblaščenega serviserja.
 ---
 
-**Najpogostejši razlogi so napačne nastavitve, zamašen filter, ovirana zunanja enota ali premalo pretoka vode.** Nekaj od tega lahko preverite sami, brez orodja in brez odpiranja naprave.
+**Najpogostejši razlogi so napačne nastavitve, zamašen filter, ovirana zunanja enota ali premalo pretoka vode.** Nekaj od tega lahko opazite sami, brez orodja in brez odpiranja naprave. Vse ostalo je delo za serviserja.
 
-## Kaj lahko preverite sami
+## Kaj lahko opazite sami
 
 1. **Nastavitve in urnik.** Je vključen način ogrevanja? Ni morda aktiven nočni ali počitniški režim? Je krivulja ogrevanja nastavljena prenizko?
 2. **Zunanja enota.** Je okoli nje prost prostor? Je ne zasipa sneg ali listje? Ni prekrita s cerado?
 3. **Ventili na radiatorjih ali razdelilcu talnega.** So odprti? Termostatske glave niso zaprte?
-4. **Tlak v ogrevalnem sistemu.** Manometer na notranji enoti mora kazati vrednost, ki jo navaja proizvajalec (pogosto okoli 1 do 2 bara).
-5. **Filter (lovilnik nesnage) na vodni strani.** Če je dostopen in proizvajalec v navodilih za uporabnika opisuje čiščenje, ga očistite po navodilih.
+4. **Tlak v ogrevalnem sistemu.** Poglejte manometer na notranji enoti. Če kaže manj, kot navaja proizvajalec, to povejte serviserju.
 
 ## Kaj je normalno
 

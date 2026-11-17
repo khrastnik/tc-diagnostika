@@ -8,7 +8,7 @@ Ko je članek objavljen, se vrstica odkljuka (`[x]`) in doda datum ter slug.
 
 - [ ] 1. Zakaj se kvarijo — Zakaj se toplotna črpalka pogosto vklaplja in izklaplja (taktiranje) — pojmi: taktiranje, inverter
 - [ ] 2. Zakaj se kvarijo — Hrup toplotne črpalke: kdaj je normalen in kdaj ne — pojmi: štiripotni ventil, ventilator zunanje enote
-- [ ] 3. Kako deluje — Krivulja ogrevanja: kako jo nastaviti za nižje račune — pojmi: temperatura dovoda, bivalentna točka
+- [ ] 3. Kako deluje — Krivulja ogrevanja: kaj je in zakaj vpliva na račun za elektriko — pojmi: temperatura dovoda, bivalentna točka
 - [ ] 4. Aktualno — Omrežnina in tarife elektrike: kdaj je ogrevanje s toplotno črpalko najcenejše — pojmi: časovni blok, SG Ready
 - [ ] 5. Zakaj se kvarijo — Koda napake na zaslonu: kaj narediti, preden pokličete serviserja — pojmi: manometer, obtočna črpalka
 - [ ] 6. Vzdrževanje — Sneg, led in veter: zaščita zunanje enote pozimi — pojmi: kondenzat, grelni kabel
@@ -16,14 +16,14 @@ Ko je članek objavljen, se vrstica odkljuka (`[x]`) in doda datum ter slug.
 - [ ] 8. Kako deluje — Rezervni električni grelnik: kdaj se vklopi in koliko stane — pojmi: monoblok, split izvedba
 - [ ] 9. Aktualno — Predpisi o F-plinih: kaj pomenijo za lastnika toplotne črpalke — pojmi: F-plini, ekvivalent CO₂
 - [ ] 10. Kako deluje — Talno ogrevanje ali radiatorji s toplotno črpalko — pojmi: ekspanzijska posoda, nizkotemperaturno ogrevanje
-- [ ] 11. Vzdrževanje — Topla voda in legionela: kako nastaviti program — pojmi: legionela, sanitarna toplotna črpalka
+- [ ] 11. Vzdrževanje — Topla voda in legionela: zakaj je zaščita pomembna — pojmi: legionela, sanitarna toplotna črpalka
 - [ ] 12. Vzdrževanje — Kako izbrati dobrega serviserja — pojmi: spričevalo za F-pline, servisni zapisnik
 - [ ] 13. Vzdrževanje — Kdaj je najboljši čas za letni servis — pojmi: kurilna sezona, energijska nalepka
 - [ ] 14. Kako deluje — Kako dolgo zdrži toplotna črpalka — pojmi: življenjska doba, kompresor scroll
 - [ ] 15. Zakaj se kvarijo — Menjava stare toplotne črpalke: kdaj se splača — pojmi: R410A, R290
 - [ ] 16. Kako deluje — Ali toplotna črpalka lahko poleti hladi — pojmi: hlajenje s talnim ogrevanjem, rosišče
 - [ ] 17. Kako deluje — Toplotna črpalka in sončna elektrarna — pojmi: samooskrba, net metering
-- [ ] 18. Vzdrževanje — Kontrolni seznam pred kurilno sezono — pojmi: odzračevanje, lovilnik nesnage
+- [ ] 18. Vzdrževanje — Pred kurilno sezono: zakaj je zdaj pravi čas za servis — pojmi: odzračevanje, lovilnik nesnage
 
 ## Podaljševanje plana
 
@@ -40,6 +40,7 @@ Ko v seznamu ostaneta 2 ali manj neodkljukanih tem, pri isti objavi dodaj na kon
 1. Članek v `src/content/clanki/<slug>.md`, frontmatter kot obstoječi članki; `pubDate` in `updated` = današnji datum.
 2. Slovenščina, preprosto, brez žargona; kratki odstavki, H2 podnaslovi, 600–1000 besed.
 3. Brez navodil za posege v hladilni krog; ob težavah napotek na serviserja s spričevalom za F-pline.
+3a. **Uporabnika ne učimo servisirati.** Ne opisujemo, kako se izvaja servis, popravilo, čiščenje, odzračevanje, nastavljanje parametrov ali menjava delov, niti v obliki korakov »naredi sam«. Namen strani je razložiti, kako črpalka deluje, zakaj se kvari in **zakaj je redni servis pri serviserju nujen**. Lastnik lahko le opazuje (zaslon, zvok, led, okolica enote) in pokliče serviserja. Ko omenjamo, kaj vključuje servis, je to vedno opis, kaj naredi serviser, ne navodilo za lastnika.
 4. Brez izmišljenih številk. Zneski, cene, predpisi in roki samo z virom (polje `sources`), ki ga preveriš s spletnim iskanjem; v članku napiši mesec preverjanja. Če vira ne najdeš, številke ne navedi.
 5. `remember` (3 alineje), `related` (3 obstoječi slugi), `terms` (obstoječi + nova pojma).
 6. Nova pojma v `src/content/slovar/<slug>.md` (title, description ≤160 znakov, updated, 2–4 stavki).

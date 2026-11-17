@@ -12,7 +12,7 @@ remember:
   - Primerjava zapisnikov iz leta v leto pokaže, ali se delovanje slabša.
 ---
 
-**Letni servis toplotne črpalke vključuje čiščenje, pregled, meritve in nastavitve.** Spodnji seznam vam pomaga vedeti, kaj pričakovati in o čem vprašati serviserja. Natančen obseg je odvisen od vrste in modela naprave.
+**Letni servis toplotne črpalke vključuje čiščenje, pregled, meritve in nastavitve.** Spodnji seznam ni navodilo za delo, ampak vam pove, kaj lahko pričakujete od serviserja in o čem ga vprašati. Vsa navedena dela opravi serviser. Natančen obseg je odvisen od vrste in modela naprave.
 
 ## Zunanja enota
 

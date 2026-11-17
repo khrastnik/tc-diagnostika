@@ -1,6 +1,6 @@
 ---
-title: "Kaj lahko lastnik naredi sam med servisi"
-description: "Preprosta opravila, s katerimi lastnik toplotne črpalke skrbi zanjo med letnimi servisi, brez orodja in brez odpiranja naprave."
+title: "Kako lastnik skrbi za toplotno črpalko med servisi"
+description: "Kaj lahko lastnik med letnimi servisi opazi in na kaj pazi, da pravočasno pokliče serviserja. Brez orodja in brez posegov v napravo."
 section: vzdrzevanje
 pubDate: 2026-11-17
 updated: 2026-11-17
@@ -12,7 +12,7 @@ remember:
   - Vse nenavadno zapišite in povejte serviserju.
 ---
 
-**Med servisi lahko za toplotno črpalko poskrbite sami z nekaj preprostimi pregledi.** Podobno kot pri avtu, ko pogledate tlak v gumah in nivo tekočine za stekla, ne da bi odprli motor.
+**Med servisi za toplotno črpalko skrbite predvsem tako, da jo opazujete.** Podobno kot pri avtu: pogledate, ali sveti opozorilna lučka, in poslušate motor, servis pa prepustite serviserju. To niso servisna dela, ampak pozornost, s katero težavo opazite pravočasno.
 
 ## Vsak mesec
 

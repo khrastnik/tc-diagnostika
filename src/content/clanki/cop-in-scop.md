@@ -2,8 +2,8 @@
 title: "Kaj sta COP in SCOP"
 description: "COP pove, koliko toplote dobite za kilovatno uro elektrike v enem trenutku, SCOP pa povprečje čez celo sezono. Kako ju brati na nalepki."
 section: kako-deluje
-pubDate: 2026-12-01
-updated: 2026-12-01
+pubDate: 2026-11-17
+updated: 2026-11-17
 related: [kako-deluje-toplotna-crpalka, vrste-toplotnih-crpalk]
 remember:
   - COP 4 pomeni 4 kWh toplote za 1 kWh elektrike, a le pri navedenih pogojih.

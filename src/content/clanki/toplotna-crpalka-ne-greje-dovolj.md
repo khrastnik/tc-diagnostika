@@ -2,8 +2,8 @@
 title: "Zakaj toplotna črpalka ne greje dovolj"
 description: "Najpogostejši razlogi, zakaj je v hiši prehladno, kaj lahko preverite sami brez posega v napravo in kdaj poklicati strokovnjaka."
 section: zakaj-se-kvarijo
-pubDate: 2026-12-22
-updated: 2026-12-22
+pubDate: 2026-11-17
+updated: 2026-11-17
 terms: [uparjalnik, odtaljevanje]
 related: [kako-deluje-toplotna-crpalka, cop-in-scop, hladivo-v-toplotni-crpalki]
 remember:

@@ -11,6 +11,7 @@ const fullTitle = title === SITE_NAME ? `${SITE_NAME}: toplotne črpalke, razlo�
 const path = Astro.url.pathname;
 const nav: [string, string][] = [
   ['/kako-deluje/', 'Kako deluje'],
+  ['/vzdrzevanje/', 'Vzdrževanje'],
   ['/zakaj-se-kvarijo/', 'Zakaj se kvarijo'],
   ['/aktualno/', 'Aktualno'],
   ['/slovar/', 'Slovar'],
@@ -73,6 +74,7 @@ const nav: [string, string][] = [
           <h2>Vsebina</h2>
           <ul>
             <li><a href={u('/kako-deluje/')}>Kako deluje</a></li>
+            <li><a href={u('/vzdrzevanje/')}>Vzdrževanje</a></li>
             <li><a href={u('/zakaj-se-kvarijo/')}>Zakaj se kvarijo</a></li>
             <li><a href={u('/aktualno/')}>Aktualno</a></li>
             <li><a href={u('/slovar/')}>Slovar pojmov</a></li>

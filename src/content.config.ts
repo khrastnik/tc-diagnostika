@@ -6,7 +6,7 @@ const clanki = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string().max(160),
-    section: z.enum(['kako-deluje', 'zakaj-se-kvarijo', 'aktualno']),
+    section: z.enum(['kako-deluje', 'vzdrzevanje', 'zakaj-se-kvarijo', 'aktualno']),
     pubDate: z.coerce.date(),
     updated: z.coerce.date(),
     remember: z.array(z.string()).optional(),

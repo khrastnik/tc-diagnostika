@@ -16,6 +16,13 @@ export const SECTIONS = {
     color: 'teal',
     intro: 'Osnove brez žargona: kako toplotna črpalka greje, katere vrste obstajajo in kaj pomenijo številke na nalepki.',
   },
+  vzdrzevanje: {
+    title: 'Vzdrževanje',
+    short: 'Servis',
+    icon: 'shield',
+    color: 'violet',
+    intro: 'Toplotna črpalka potrebuje redno nego, tako kot avto. Kaj vključuje servis, kako pogosto in kaj lahko naredite sami.',
+  },
   'zakaj-se-kvarijo': {
     title: 'Zakaj se kvarijo',
     short: 'Težave',

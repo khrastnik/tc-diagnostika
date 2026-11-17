@@ -20,7 +20,7 @@ Dodaj datoteko v `src/content/clanki/<slug>.md` s frontmatterjem:
 ```yaml
 title: "Naslov z iskano frazo"
 description: "Opis do 160 znakov"
-section: kako-deluje   # ali zakaj-se-kvarijo, aktualno
+section: kako-deluje   # ali vzdrzevanje, zakaj-se-kvarijo, aktualno
 pubDate: 2026-12-01
 updated: 2026-12-01
 remember: ["Kaj to pomeni za vas ..."]

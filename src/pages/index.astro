@@ -23,7 +23,7 @@ const symptoms = [
     <div class="container hero-grid">
       <div class="hero-copy">
         <h1>Vaša toplotna črpalka, <em>razložena po domače.</em></h1>
-        <p class="lead">Kako deluje, zakaj se kvari in kdaj je čas za strokovnjaka. Jasni odgovori namesto nasprotujočih si forumskih nasvetov.</p>
+        <p class="lead">Kako deluje, zakaj se kvari in zakaj ji redni servis podaljša življenje. Jasni odgovori namesto nasprotujočih si forumskih nasvetov.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href={u('/zakaj-se-kvarijo/')}>Imam težavo s črpalko <Icon name="arrow" /></a>
           <a class="btn btn-ghost" href={u('/kako-deluje/')}>Kako deluje</a>
@@ -40,7 +40,7 @@ const symptoms = [
   <section class="section">
     <div class="container">
       <div class="section-head reveal">
-        <div><h2>Kje začeti</h2><p>Tri poti, glede na to, kaj vas zanima.</p></div>
+        <div><h2>Kje začeti</h2><p>Štiri poti, glede na to, kaj vas zanima.</p></div>
       </div>
       <div class="pillars">
         {Object.entries(SECTIONS).map(([key, s], i) => (
@@ -55,7 +55,46 @@ const symptoms = [
     </div>
   </section>
 
-  <section class="section" style="padding-top:0">
+
+  <section class="section section-alt">
+    <div class="container care">
+      <div class="reveal">
+        <span class="tag tag-violet">Vzdrževanje</span>
+        <h2>Skrbite zanjo kot za svoj avto</h2>
+        <p class="lead">Toplotna črpalka dela vso zimo, tisoče ur na leto. Tako kot avto potrebuje redni servis, da deluje brezhibno, varčno in dolgo.</p>
+        <ul class="care-points">
+          <li><Icon name="check" />Nižji računi za elektriko, ker ohrani izkoristek</li>
+          <li><Icon name="check" />Manj okvar sredi zime, ko jo najbolj potrebujete</li>
+          <li><Icon name="check" />Daljša življenjska doba kompresorja in naprave</li>
+          <li><Icon name="check" />Ohranjena garancija pri mnogih proizvajalcih</li>
+        </ul>
+        <a class="btn btn-primary" href={u('/vzdrzevanje/zakaj-je-redni-servis-nujen/')}>Zakaj je servis nujen <Icon name="arrow" /></a>
+      </div>
+      <div class="reveal" style="--d:.1s">
+        <div class="compare">
+          <div class="cmp-col">
+            <div class="cmp-head"><span class="icon-badge" style="width:40px;height:40px;background:var(--surface-2);color:var(--ink-2)"><Icon name="car" /></span>Avto</div>
+            <ul><li>Menjava olja in filtrov</li><li>Tlak v pnevmatikah</li><li>Računalniška diagnostika</li><li>Servisna knjižica</li></ul>
+          </div>
+          <div class="cmp-col hp">
+            <div class="cmp-head"><span class="icon-badge" style="width:40px;height:40px;background:var(--violet-50);color:var(--violet)"><Icon name="fan" /></span>Toplotna črpalka</div>
+            <ul><li>Čiščenje filtra in uparjalnika</li><li>Tlak v ogrevalnem sistemu</li><li>Pregled napak in parametrov</li><li>Servisni zapisnik</li></ul>
+          </div>
+        </div>
+        <div class="year reveal" style="--d:.2s">
+          <p class="year-title">Servisni koledar</p>
+          <div class="year-track">
+            <div class="season"><i></i><b>Pomlad</b>pregled po zimi</div>
+            <div class="season on"><i></i><b>Poletje</b>letni servis</div>
+            <div class="season on"><i></i><b>Jesen</b>pred sezono</div>
+            <div class="season"><i></i><b>Zima</b>mesečni pogled</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
     <div class="container">
       <div class="help-box reveal">
         <div>

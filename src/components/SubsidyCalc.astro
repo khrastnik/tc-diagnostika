@@ -1,0 +1,47 @@
+---
+---
+<section class="calc" aria-labelledby="sub-t">
+  <div class="calc-head"><span class="calc-badge" style="background:var(--sky)">Interaktivno</span><h2 id="sub-t">Okvirna subvencija za vašo črpalko</h2></div>
+  <div class="calc-grid">
+    <label class="calc-field">
+      <span>Vrsta toplotne črpalke</span>
+      <select id="s-type" class="calc-select">
+        <option value="air">Zrak-voda</option>
+        <option value="ground">Zemlja-voda ali voda-voda</option>
+      </select>
+    </label>
+    <label class="calc-field">
+      <span>Ali zamenjate staro kurilno napravo?</span>
+      <select id="s-repl" class="calc-select">
+        <option value="yes">Da, zamenjam star kotel ali peč</option>
+        <option value="no">Ne, to je prva vgradnja</option>
+      </select>
+    </label>
+    <label class="calc-field" style="grid-column:1/-1">
+      <span>Priznani stroški naložbe <output id="s-o-cost">12.000</output> €</span>
+      <input id="s-cost" type="range" min="3000" max="30000" step="500" value="12000" />
+    </label>
+  </div>
+  <div class="calc-result">
+    <div><b id="s-res">4.500</b><span>€ okvirne subvencije</span></div>
+    <div class="calc-bar" aria-hidden="true"><em id="s-bar-sub" style="background:var(--sky)"></em><i id="s-bar-own" style="background:var(--surface-2)"></i></div>
+    <p><span class="dot" style="background:var(--sky)"></span>subvencija <span class="dot" style="background:#cfd9d5;margin-left:.5rem"></span>vaš delež: <b id="s-own">7.500</b> € · <span id="s-rule">50 %, največ 4.500 €</span></p>
+  </div>
+  <p class="calc-note">Izračun po pozivu 126SUB-OB26 (stanje november 2026). Končni znesek določi Eko sklad glede na priznane stroške in izpolnjevanje pogojev.</p>
+</section>
+<script>
+  const g = (id: string) => document.getElementById(id) as HTMLInputElement;
+  const f = (n: number) => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+  const RULES = { air: { yes: [0.5, 4500], no: [0.2, 1000] }, ground: { yes: [0.5, 8000], no: [0.2, 3000] } } as const;
+  function upd() {
+    const cost = +g('s-cost').value;
+    const [rate, cap] = RULES[g('s-type').value as 'air' | 'ground'][g('s-repl').value as 'yes' | 'no'];
+    const sub = Math.min(cost * rate, cap);
+    g('s-o-cost').value = f(cost);
+    g('s-res').textContent = f(sub); g('s-own').textContent = f(cost - sub);
+    g('s-rule').textContent = `${rate * 100} %, največ ${f(cap)} €`;
+    (document.getElementById('s-bar-sub') as HTMLElement).style.width = (sub / cost * 100) + '%';
+    (document.getElementById('s-bar-own') as HTMLElement).style.width = (100 - sub / cost * 100) + '%';
+  }
+  ['s-cost', 's-type', 's-repl'].forEach((id) => g(id).addEventListener('input', upd)); upd();
+</script>

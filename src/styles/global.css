@@ -465,3 +465,5 @@ body.nav-open { overflow: hidden; }
   .main-nav a[aria-current="page"] { background: var(--brand-50); color: var(--brand-ink); }
   .main-nav a { position: relative; }
 }
+.calc-select { width: 100%; font: inherit; font-size: 1rem; color: var(--ink); background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235b6b65' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E") no-repeat right .8rem center / 18px; border: 1.5px solid var(--line); border-radius: 12px; padding: .75rem 2.5rem .75rem .9rem; min-height: 50px; appearance: none; -webkit-appearance: none; }
+.calc-select:focus { outline: none; border-color: var(--brand); box-shadow: 0 0 0 4px var(--brand-50); }

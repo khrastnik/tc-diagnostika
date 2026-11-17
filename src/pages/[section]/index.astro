@@ -27,6 +27,7 @@ const items = (await getCollection('clanki', (a) => a.data.section === section))
           <p>Tu bodo subvencije, predpisi in cene, vsak z datumom posodobitve in povezavo na uradni vir.</p>
         </div>
       ) : (
+        <h2 class="sr-only">Članki v razdelku {s.title}</h2>
         <div class="posts three">{items.map((a, i) => <PostCard entry={a} delay={(i % 3) * 0.08} />)}</div>
       )}
     </div>

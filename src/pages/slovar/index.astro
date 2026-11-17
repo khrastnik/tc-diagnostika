@@ -14,6 +14,7 @@ const terms = (await getCollection('slovar')).sort((a, b) => a.data.title.locale
     <div class="container">
       <div class="search"><Icon name="book" /><input id="q" type="search" placeholder="Poišči pojem, npr. kompresor" aria-label="Poišči pojem" autocomplete="off" /></div>
       <p class="no-results" id="none">Ni zadetkov. Poskusite z drugo besedo.</p>
+    <h2 class="sr-only">Seznam pojmov</h2>
     <div class="az">
       {terms.map((t, i) => (
         <a class="term-tile reveal" data-q={`${t.data.title} ${t.data.description}`.toLowerCase()} style={`--d:${(i % 3) * 0.06}s`} href={u(`/slovar/${t.id}/`)}>

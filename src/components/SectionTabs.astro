@@ -15,5 +15,5 @@ const { current } = Astro.props;
 <script>
   const cur = document.querySelector<HTMLElement>('.sec-tabs a[aria-current]');
   const ul = cur?.closest('ul');
-  if (cur && ul) ul.scrollLeft = cur.offsetLeft - (ul.clientWidth - cur.offsetWidth) / 2;
+  if (cur && ul) requestAnimationFrame(() => { ul.scrollLeft = cur.offsetLeft - (ul.clientWidth - cur.offsetWidth) / 2; });
 </script>

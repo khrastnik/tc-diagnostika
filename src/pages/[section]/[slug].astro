@@ -135,7 +135,7 @@ const jsonLd = [
         bar.style.transform = `scaleX(${p})`;
       };
       addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(upd); }, { passive: true });
-      upd();
+      raf = requestAnimationFrame(upd);
     }
   </script>
 </Base>

@@ -3,6 +3,8 @@ import '../styles/global.css';
 import { u, SITE_NAME } from '../lib/url';
 import Icon from '../components/Icon.astro';
 import Logo from '../components/Logo.astro';
+import fontLatin from '@fontsource-variable/plus-jakarta-sans/files/plus-jakarta-sans-latin-wght-normal.woff2?url';
+import fontLatinExt from '@fontsource-variable/plus-jakarta-sans/files/plus-jakarta-sans-latin-ext-wght-normal.woff2?url';
 
 interface Props { title: string; description: string; jsonLd?: object[]; noindex?: boolean; }
 const { title, description, jsonLd = [], noindex = false } = Astro.props;
@@ -35,6 +37,8 @@ const nav: { href: string; label: string; icon: string; color: string; desc: str
   <meta property="og:url" content={canonical} />
   <meta property="og:locale" content="sl_SI" />
   <meta property="og:site_name" content={SITE_NAME} />
+  <link rel="preload" href={fontLatin} as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href={fontLatinExt} as="font" type="font/woff2" crossorigin />
   <link rel="icon" href={u('/favicon.svg')} type="image/svg+xml" />
   <link rel="sitemap" href={u('/sitemap-index.xml')} />
   <script is:inline>document.documentElement.classList.add('js')</script>
@@ -111,6 +115,15 @@ const nav: { href: string; label: string; icon: string; color: string; desc: str
     btn.addEventListener('click', () => setOpen(header.dataset.open !== 'true'));
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
     matchMedia('(min-width: 900px)').addEventListener('change', () => setOpen(false));
+
+    const anims = document.querySelectorAll<HTMLElement>('.hero-art, .sart, .cycle, .defrost');
+    if ('IntersectionObserver' in window) {
+      const ao = new IntersectionObserver((entries) => {
+        for (const e of entries) e.target.classList.toggle('anim-paused', !e.isIntersecting);
+      });
+      anims.forEach((el) => ao.observe(el));
+    }
+    document.addEventListener('visibilitychange', () => document.documentElement.classList.toggle('anim-paused', document.hidden));
 
     const els = document.querySelectorAll<HTMLElement>('.reveal');
     if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {

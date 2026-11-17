@@ -25,6 +25,17 @@ Ko je članek objavljen, se vrstica odkljuka (`[x]`) in doda datum ter slug.
 - [ ] 17. Kako deluje — Toplotna črpalka in sončna elektrarna — pojmi: samooskrba, net metering
 - [ ] 18. Vzdrževanje — Pred kurilno sezono: zakaj je zdaj pravi čas za servis — pojmi: odzračevanje, lovilnik nesnage
 
+## Hitrost (proračun)
+
+Stanje 17. 11. 2026 (Lighthouse, telefon): Performance 100, Accessibility 100, Best Practices 100, SEO 100; FCP ≈ 0,7 s, LCP ≈ 1,3 s, CLS 0, skupaj ≈ 65 KB na stran.
+
+Meje, ki jih nobena sprememba ne sme preseči:
+- Lighthouse Performance ≥ 95 in Accessibility = 100 na telefonu,
+- LCP ≤ 2,0 s, CLS ≤ 0,05, TBT ≤ 150 ms,
+- skupna teža strani ≤ 150 KB (brez slik ≤ 100 KB),
+- brez zunanjih skript, pisav, sledilnikov ali CDN-jev; CSS ostane vgrajen (`inlineStylesheets: 'always'`),
+- slike samo kot SVG ali WebP/AVIF z `width`, `height` in `loading="lazy"`; nove animacije le s `transform`/`opacity` in brez `filter` na animiranih elementih.
+
 ## Podaljševanje plana
 
 Ko v seznamu ostaneta 2 ali manj neodkljukanih tem, pri isti objavi dodaj na konec seznama **12 novih tem** v enaki obliki (številka, razdelek, naslov, dva pojma):

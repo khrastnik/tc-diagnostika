@@ -10,5 +10,7 @@ export default defineConfig({
   site,
   base,
   trailingSlash: 'always',
+  build: { inlineStylesheets: 'always' },
+  compressHTML: true,
   integrations: [sitemap()],
 });

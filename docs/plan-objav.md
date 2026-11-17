@@ -1,6 +1,6 @@
 # Plan objav
 
-Samodejna objava: vsak ponedeljek en članek + 2 pojma v slovarju.
+Samodejna objava: vsak ponedeljek ob 6.47 en članek + 2 pojma v slovarju. Do 28. 2. 2027 dodatno še vsak četrtek ob 6.47 (dva članka na teden v kurilni sezoni), nato samo ponedeljek.
 Postopek in pravila: glej razdelek »Pravila za samodejno objavo« spodaj.
 Ko je članek objavljen, se vrstica odkljuka (`[x]`) in doda datum ter slug.
 

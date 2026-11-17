@@ -43,7 +43,7 @@ const nav: [string, string][] = [
   <a class="skip" href="#vsebina">Preskoči na vsebino</a>
   <header class="site-header" data-open="false">
     <div class="container bar">
-      <a class="logo" href={u('/')} aria-label={`${SITE_NAME}, domov`}><Logo /><span>TC <b>diagnostika</b></span></a>
+      <a class="logo" href={u("/")} aria-label={`${SITE_NAME}, domov`}><Logo /><span>TC <b>diagnostika</b></span></a>
       <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="glavni-meni">
         <span class="sr-only">Meni</span>
         <Icon name="menu" class="i-open" /><Icon name="close" class="i-close" />
@@ -53,8 +53,10 @@ const nav: [string, string][] = [
           {nav.map(([href, label]) => (
             <li><a href={u(href)} aria-current={path.startsWith(u(href)) ? 'page' : undefined}><span class="dot" />{label}</a></li>
           ))}
+          <li class="nav-cta-mobile"><a href={u('/narocilo/')}>Naroči pregled</a></li>
         </ul>
       </nav>
+      <a class="btn btn-primary header-cta" href={u('/narocilo/')}>Naroči pregled <Icon name="arrow" /></a>
     </div>
   </header>
 
@@ -81,6 +83,7 @@ const nav: [string, string][] = [
         <div>
           <h2>Stran</h2>
           <ul>
+            <li><a href={u('/narocilo/')}>Naročilo na pregled</a></li>
             <li><a href={u('/o-meni/')}>O meni in kontakt</a></li>
             <li><a href={u('/zasebnost/')}>Zasebnost</a></li>
           </ul>

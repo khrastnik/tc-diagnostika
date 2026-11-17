@@ -1,0 +1,144 @@
+---
+import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
+import Crumbs from '../components/Crumbs.astro';
+import { u } from '../lib/url';
+import { FORM_ACCESS_KEY, FORM_ENDPOINT } from '../lib/config';
+
+const ready = FORM_ACCESS_KEY.length > 0;
+const thanks = new URL(u('/narocilo/hvala/'), Astro.site).href;
+const symptoms = [
+  'Ne greje dovolj', 'Ne pripravi dovolj tople vode', 'Visoka poraba elektrike', 'Koda napake na zaslonu',
+  'Glasno delovanje', 'Pogosto vklapljanje in izklapljanje', 'Zunanja enota zaledeni', 'Redni preventivni pregled',
+];
+---
+<Base title="Naročilo na pregled" description="Naročite pregled in diagnostiko toplotne črpalke. Izpolnite obrazec in v roku dveh delovnih dni vas pokličem za dogovor o terminu.">
+  <header class="page-head c-teal">
+    <div class="container">
+      <Crumbs items={[['Naročilo na pregled']]} />
+      <div class="row" style="margin-top:1.25rem"><span class="icon-badge"><Icon name="calendar" /></span><span class="tag tag-teal">Diagnostika na domu</span></div>
+      <h1>Naročilo na pregled</h1>
+      <p class="lead">Izpolnite obrazec. Poklical vas bom v dveh delovnih dneh in se dogovoril za termin.</p>
+    </div>
+  </header>
+
+  <section class="section" style="padding-top:2rem">
+    <div class="container booking">
+      <form class="form card-form" id="narocilo" action={FORM_ENDPOINT} method="POST" novalidate data-ready={String(ready)}>
+        <input type="hidden" name="access_key" value={FORM_ACCESS_KEY} />
+        <input type="hidden" name="subject" value="Novo naročilo na pregled toplotne črpalke" />
+        <input type="hidden" name="from_name" value="TC diagnostika – spletni obrazec" />
+        <input type="hidden" name="redirect" value={thanks} />
+        <input type="checkbox" name="botcheck" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+        {!ready && (
+          <div class="callout callout-warn" style="margin:0 0 1.5rem">
+            <Icon name="alert" />
+            <p>Spletno naročanje še ni vklopljeno. Obrazec bo deloval v kratkem.</p>
+          </div>
+        )}
+
+        <fieldset>
+          <legend><span class="num">1</span>Kontakt</legend>
+          <div class="grid2">
+            <label class="field"><span>Ime in priimek *</span><input name="ime" required autocomplete="name" /></label>
+            <label class="field"><span>Telefon *</span><input name="telefon" type="tel" required autocomplete="tel" inputmode="tel" placeholder="040 123 456" /></label>
+            <label class="field"><span>E-pošta *</span><input name="email" type="email" required autocomplete="email" /></label>
+            <label class="field"><span>Kraj ali poštna številka *</span><input name="kraj" required autocomplete="address-level2" placeholder="npr. 1000 Ljubljana" /></label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend><span class="num">2</span>Naprava</legend>
+          <div class="grid2">
+            <label class="field"><span>Vrsta toplotne črpalke</span>
+              <select name="vrsta">
+                <option value="">Ne vem</option><option>Zrak-voda</option><option>Zemlja-voda</option><option>Voda-voda</option><option>Zrak-zrak (klima)</option><option>Sanitarna (samo topla voda)</option>
+              </select>
+            </label>
+            <label class="field"><span>Znamka in model</span><input name="model" placeholder="npr. Daikin Altherma 3" /></label>
+            <label class="field"><span>Leto vgradnje</span><input name="leto" inputmode="numeric" pattern="[0-9]{4}" maxlength="4" placeholder="npr. 2019" /></label>
+            <label class="field"><span>Ogrevanje</span>
+              <select name="ogrevanje"><option value="">Ne vem</option><option>Talno</option><option>Radiatorji</option><option>Talno in radiatorji</option><option>Konvektorji</option></select>
+            </label>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend><span class="num">3</span>Kaj opažate?</legend>
+          <div class="checks">
+            {symptoms.map((s) => (
+              <label class="check"><input type="checkbox" name="tezave[]" value={s} /><span>{s}</span></label>
+            ))}
+          </div>
+          <label class="field" style="margin-top:1rem"><span>Opis težave</span><textarea name="opis" rows="4" placeholder="Kdaj se težava pojavi, koda napake, kaj ste že preverili …"></textarea></label>
+        </fieldset>
+
+        <fieldset>
+          <legend><span class="num">4</span>Termin</legend>
+          <div class="radios">
+            {['Kadarkoli', 'Dopoldne', 'Popoldne', 'Sobota'].map((t, i) => (
+              <label class="radio"><input type="radio" name="termin" value={t} checked={i === 0} /><span>{t}</span></label>
+            ))}
+          </div>
+        </fieldset>
+
+        <label class="check consent">
+          <input type="checkbox" name="soglasje" value="da" required />
+          <span>Strinjam se, da se moji podatki uporabijo za dogovor o pregledu, kot je opisano v <a href={u('/zasebnost/')}>politiki zasebnosti</a>. *</span>
+        </label>
+
+        <div class="form-actions">
+          <button class="btn btn-primary" type="submit" disabled={!ready}>Pošlji naročilo <Icon name="arrow" /></button>
+          <p class="form-status" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+
+      <aside class="booking-side">
+        <div class="side-card">
+          <h2>Kako poteka</h2>
+          <ol class="steps-light">
+            <li><b>Pokličem vas</b><span>V dveh delovnih dneh za dogovor o terminu in okvirni ceni.</span></li>
+            <li><b>Pregled na domu</b><span>Ogled naprave, nastavitev, ogrevalnega sistema in meritve delovanja.</span></li>
+            <li><b>Pisno poročilo</b><span>Kaj deluje, kaj ne in kaj priporočam.</span></li>
+          </ol>
+        </div>
+        <div class="side-card muted">
+          <Icon name="shield" />
+          <p>Pregled ne vključuje posegov v hladilni krog. Če je potreben, vam priporočim pooblaščenega serviserja s spričevalom za F-pline.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <script>
+    const form = document.getElementById('narocilo') as HTMLFormElement;
+    const status = form.querySelector('.form-status') as HTMLElement;
+    const btn = form.querySelector('button[type=submit]') as HTMLButtonElement;
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (form.dataset.ready !== 'true') return;
+      form.classList.add('validated');
+      if (!form.checkValidity()) {
+        status.textContent = 'Prosim, izpolnite označena polja.';
+        status.dataset.state = 'error';
+        (form.querySelector(':invalid') as HTMLElement | null)?.focus();
+        return;
+      }
+      const data = new FormData(form);
+      const tezave = data.getAll('tezave[]').join(', ');
+      data.delete('tezave[]'); data.set('tezave', tezave || '—'); data.delete('redirect');
+      btn.disabled = true; status.dataset.state = ''; status.textContent = 'Pošiljam …';
+      try {
+        const res = await fetch(form.action, { method: 'POST', headers: { Accept: 'application/json' }, body: data });
+        const json = await res.json();
+        if (!json.success) throw new Error(json.message);
+        location.href = new URL((form.querySelector('input[name=redirect]') as HTMLInputElement).value).pathname;
+      } catch {
+        status.textContent = 'Pošiljanje ni uspelo. Poskusite znova čez nekaj minut.';
+        status.dataset.state = 'error';
+        btn.disabled = false;
+      }
+    });
+  </script>
+</Base>

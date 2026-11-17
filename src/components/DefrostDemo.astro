@@ -1,0 +1,110 @@
+---
+---
+<section class="calc defrost" aria-labelledby="df-t">
+  <div class="calc-head"><span class="calc-badge" style="background:var(--sky)">Interaktivno</span><h2 id="df-t">Poglejte, kako poteka odtaljevanje</h2></div>
+  <div class="df-wrap">
+    <svg class="df-svg" viewBox="0 0 360 220" role="img" aria-labelledby="df-svg-t">
+      <title id="df-svg-t">Zunanja enota toplotne črpalke, na kateri se nabira ivje</title>
+      <rect x="0" y="0" width="360" height="220" rx="18" fill="#edf3ff"/>
+      <rect x="0" y="186" width="360" height="34" fill="#dbe7fb"/>
+      <g transform="translate(70 40)">
+        <rect x="8" y="140" width="14" height="10" rx="2" fill="#9fb1aa"/><rect x="198" y="140" width="14" height="10" rx="2" fill="#9fb1aa"/>
+        <rect width="220" height="142" rx="14" fill="#fff" stroke="#cfd9d5" stroke-width="2"/>
+        <g transform="translate(84 71)">
+          <circle r="56" fill="#f1f5f3" stroke="#cfd9d5" stroke-width="2"/>
+          <g class="df-fan">
+            <path d="M0 0C9-20 3-42-9-45C-15-30-12-12 0 0zM0 0C20 9 42 3 45-9C30-15 12-12 0 0zM0 0C-9 20-3 42 9 45C15 30 12 12 0 0zM0 0C-20-9-42-3-45 9C-30 15-12 12 0 0z" fill="#0a7d65"/>
+          </g>
+          <circle r="8" fill="#fff" stroke="#0a7d65" stroke-width="2"/>
+          <g class="df-frost">
+            <circle r="56" fill="#dbe8ff" opacity=".88"/>
+            <g fill="#fff"><circle cx="-24" cy="-20" r="4"/><circle cx="18" cy="-30" r="3"/><circle cx="30" cy="10" r="4"/><circle cx="-10" cy="28" r="3.5"/><circle cx="-34" cy="12" r="3"/><circle cx="6" cy="2" r="2.5"/></g>
+            <path d="M-20-40l6 10-6 10M28-24l-8 8 8 8M-38 18l10 4" stroke="#fff" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          </g>
+        </g>
+        <g class="df-frost">
+          <rect x="152" y="16" width="56" height="110" rx="6" fill="#cfe0ff"/>
+          <path d="M160 30h40M160 46h40M160 62h40M160 78h40M160 94h40M160 110h40" stroke="#fff" stroke-width="3"/>
+        </g>
+        <path d="M152 16h56v110h-56z" fill="none" stroke="#cfd9d5" stroke-width="2" rx="6"/>
+        <circle class="df-led" cx="196" cy="132" r="4" fill="#22c55e"/>
+      </g>
+      <defs>
+        <radialGradient id="df-ice"><stop offset=".55" stop-color="#e6f0ff" stop-opacity=".2"/><stop offset="1" stop-color="#cfe0ff" stop-opacity=".95"/></radialGradient>
+      </defs>
+      <g class="df-steam" fill="none" stroke="#9ab3d6" stroke-width="4" stroke-linecap="round">
+        <path d="M130 36c-8-10 8-16 0-26"/><path d="M160 32c-8-10 8-16 0-26"/><path d="M190 36c-8-10 8-16 0-26"/>
+      </g>
+      <g class="df-drops" fill="#2b6be0"><circle cx="120" cy="190" r="3"/><circle cx="170" cy="192" r="3"/><circle cx="220" cy="190" r="3"/></g>
+      <g class="df-flakes" stroke="#2b6be0" stroke-width="2" stroke-linecap="round">
+        <path d="M30 40v12M24 46h12"/><path d="M326 64v10M321 69h10"/><path d="M40 140v10M35 145h10"/><path d="M322 150v12M316 156h12"/>
+      </g>
+    </svg>
+    <div class="df-side">
+      <p class="df-state" aria-live="polite"><b id="df-label">Ogrevanje</b><span id="df-desc">Ventilator vleče zrak skozi uparjalnik. Ker je uparjalnik hladnejši od zraka, se na njem nabira ivje.</span></p>
+      <div class="df-meter"><span>Ivje na uparjalniku</span><div class="calc-bar"><i id="df-bar" style="background:#7aa7ef;width:0%"></i></div></div>
+      <button class="btn btn-primary" id="df-btn" type="button">Zaženi odtaljevanje</button>
+    </div>
+  </div>
+</section>
+<style>
+  .df-wrap { display: grid; gap: 1.25rem; align-items: center; }
+  @media (min-width: 640px) { .df-wrap { grid-template-columns: 1.2fr 1fr; } }
+  .df-svg { width: 100%; height: auto; display: block; }
+  .df-fan { animation: df-spin 1.4s linear infinite; transform-origin: 0 0; }
+  .defrost[data-mode="defrost"] .df-fan { animation-play-state: paused; }
+  .df-frost { opacity: var(--frost, 0); transition: opacity .15s linear; }
+  .df-steam, .df-drops { opacity: 0; }
+  .defrost[data-mode="defrost"] .df-steam { opacity: 1; }
+  .defrost[data-mode="defrost"] .df-steam path { animation: df-rise 1.6s ease-in-out infinite; }
+  .defrost[data-mode="defrost"] .df-steam path:nth-child(2) { animation-delay: .3s; }
+  .defrost[data-mode="defrost"] .df-steam path:nth-child(3) { animation-delay: .6s; }
+  .defrost[data-mode="defrost"] .df-drops { opacity: 1; }
+  .defrost[data-mode="defrost"] .df-drops circle { animation: df-drop 1s ease-in infinite; }
+  .defrost[data-mode="defrost"] .df-drops circle:nth-child(2) { animation-delay: .35s; }
+  .defrost[data-mode="defrost"] .df-drops circle:nth-child(3) { animation-delay: .7s; }
+  .defrost[data-mode="defrost"] .df-led { fill: #f59e0b; animation: df-blink .6s infinite; }
+  .df-flakes path { animation: df-fall 3s ease-in-out infinite; }
+  .df-flakes path:nth-child(2) { animation-delay: .8s; } .df-flakes path:nth-child(3) { animation-delay: 1.6s; } .df-flakes path:nth-child(4) { animation-delay: 2.2s; }
+  .df-state { margin: 0 0 1rem; display: flex; flex-direction: column; gap: .3rem; }
+  .df-state b { font-size: 1.15rem; color: var(--ink); }
+  .df-state span { font-size: .95rem; color: var(--ink-2); line-height: 1.5; }
+  .df-meter span { font-size: .85rem; font-weight: 650; color: var(--muted); }
+  .df-meter .calc-bar { margin: .4rem 0 1.1rem; }
+  .df-meter i { transition: width .3s linear; }
+  #df-btn { width: 100%; }
+  @keyframes df-spin { to { transform: rotate(360deg); } }
+  @keyframes df-rise { 0% { transform: translateY(8px); opacity: 0; } 50% { opacity: 1; } 100% { transform: translateY(-10px); opacity: 0; } }
+  @keyframes df-drop { 0% { transform: translateY(-14px); opacity: 0; } 30% { opacity: 1; } 100% { transform: translateY(10px); opacity: 0; } }
+  @keyframes df-blink { 50% { opacity: .3; } }
+  @keyframes df-fall { 0% { transform: translateY(-6px); opacity: 0; } 30% { opacity: 1; } 100% { transform: translateY(14px); opacity: 0; } }
+  @media (prefers-reduced-motion: reduce) { .defrost * { animation: none !important; } }
+</style>
+<script>
+  const box = document.querySelector<HTMLElement>('.defrost')!;
+  const bar = document.getElementById('df-bar')!;
+  const btn = document.getElementById('df-btn') as HTMLButtonElement;
+  const label = document.getElementById('df-label')!;
+  const desc = document.getElementById('df-desc')!;
+  let frost = 0.15, mode: 'heat' | 'defrost' = 'heat';
+  const render = () => { box.style.setProperty('--frost', String(frost)); bar.style.width = Math.round(frost * 100) + '%'; };
+  const setMode = (m: typeof mode) => {
+    mode = m; box.dataset.mode = m;
+    if (m === 'defrost') {
+      label.textContent = 'Odtaljevanje';
+      desc.textContent = 'Črpalka za nekaj minut obrne krog: topel plin teče skozi uparjalnik, ventilator stoji. Led se stopi, iz enote se kadi para in odteka voda. Ogrevanje hiše ta čas počiva.';
+      btn.disabled = true; btn.textContent = 'Odtaljujem …';
+    } else {
+      label.textContent = 'Ogrevanje';
+      desc.textContent = 'Ventilator vleče zrak skozi uparjalnik. Ker je uparjalnik hladnejši od zraka, se na njem nabira ivje.';
+      btn.disabled = false; btn.textContent = 'Zaženi odtaljevanje';
+    }
+  };
+  btn.addEventListener('click', () => setMode('defrost'));
+  setInterval(() => {
+    if (mode === 'heat') { frost = Math.min(1, frost + 0.012); if (frost >= 1) setMode('defrost'); }
+    else { frost = Math.max(0, frost - 0.05); if (frost <= 0) setMode('heat'); }
+    render();
+  }, 150);
+  render();
+</script>

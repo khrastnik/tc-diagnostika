@@ -7,6 +7,7 @@ import PostCard from '../../components/PostCard.astro';
 import CycleDiagram from '../../components/CycleDiagram.astro';
 import CopCalc from '../../components/CopCalc.astro';
 import SubsidyCalc from '../../components/SubsidyCalc.astro';
+import DefrostDemo from '../../components/DefrostDemo.astro';
 import SectionArt from '../../components/SectionArt.astro';
 import { u, SECTIONS, SITE_NAME, fmtDate, readingTime } from '../../lib/url';
 
@@ -68,6 +69,7 @@ const jsonLd = [
         {entry.id === 'kako-deluje-toplotna-crpalka' && <CycleDiagram />}
         {entry.id === 'cop-in-scop' && <CopCalc />}
         {entry.id === 'subvencija-eko-sklada-za-toplotno-crpalko' && <SubsidyCalc />}
+        {entry.id === 'zakaj-crpalka-pozimi-odtaljuje' && <DefrostDemo />}
 
         {d.remember && (
           <aside class="callout callout-teal">

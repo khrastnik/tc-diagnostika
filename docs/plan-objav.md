@@ -25,7 +25,15 @@ Ko je članek objavljen, se vrstica odkljuka (`[x]`) in doda datum ter slug.
 - [ ] 17. Kako deluje — Toplotna črpalka in sončna elektrarna — pojmi: samooskrba, net metering
 - [ ] 18. Vzdrževanje — Kontrolni seznam pred kurilno sezono — pojmi: odzračevanje, lovilnik nesnage
 
-Ko je seznam izčrpan, nadaljuj z novimi temami v enakem slogu (razdelki naj se izmenjujejo, Vzdrževanje vsaj vsak tretji teden).
+## Podaljševanje plana
+
+Ko v seznamu ostaneta 2 ali manj neodkljukanih tem, pri isti objavi dodaj na konec seznama **12 novih tem** v enaki obliki (številka, razdelek, naslov, dva pojma):
+
+- teme ne smejo podvajati obstoječih člankov ali pojmov (preveri `src/content/clanki/` in `src/content/slovar/`),
+- upoštevaj letni čas naslednjih 12 tednov (pozimi okvare in poraba, spomladi servis in menjava, poleti hlajenje in priprava, jeseni pred sezono),
+- razdelki naj se izmenjujejo, Vzdrževanje vsaj vsak tretji teden, Aktualno vsaj enkrat na mesec (subvencije, predpisi, tarife – vedno z virom),
+- izberi vprašanja, ki jih lastniki dejansko iščejo (»zakaj …«, »koliko stane …«, »kdaj …«),
+- vsakih 6 mesecev uvrsti posodobitev članka o subvenciji Eko sklada (preveri aktualni poziv).
 
 ## Pravila za samodejno objavo
 

@@ -5,6 +5,8 @@ import Icon from '../../components/Icon.astro';
 import Crumbs from '../../components/Crumbs.astro';
 import PostCard from '../../components/PostCard.astro';
 import CycleDiagram from '../../components/CycleDiagram.astro';
+import CopCalc from '../../components/CopCalc.astro';
+import SectionArt from '../../components/SectionArt.astro';
 import { u, SECTIONS, SITE_NAME, fmtDate, readingTime } from '../../lib/url';
 
 export async function getStaticPaths() {
@@ -15,6 +17,10 @@ const { entry, all } = Astro.props;
 const { Content } = await render(entry);
 const d = entry.data;
 const s = SECTIONS[d.section];
+const siblings = all.filter((a) => a.data.section === d.section).sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf() || a.id.localeCompare(b.id));
+const idx = siblings.findIndex((a) => a.id === entry.id);
+const prev = idx > 0 ? siblings[idx - 1] : null;
+const next = idx < siblings.length - 1 ? siblings[idx + 1] : null;
 const related = (d.related ?? []).map((id) => all.find((a) => a.id === id)).filter(Boolean);
 const glossary = d.terms?.length ? (await getCollection('slovar')).filter((t) => d.terms!.includes(t.id)) : [];
 const abs = (p: string) => new URL(u(p), Astro.site).href;
@@ -36,8 +42,10 @@ const jsonLd = [
 ---
 <Base title={d.title} description={d.description} jsonLd={jsonLd}>
   <article>
+    <div class="read-progress" aria-hidden="true"><i></i></div>
     <header class="article-head">
-      <div class="container read" style="max-width:calc(var(--readw) + 3rem)">
+      <div class="container ah-grid">
+      <div>
         <Crumbs items={[[s.title, `/${d.section}/`], [d.title]]} />
         <div style="margin-top:1.25rem"><span class={`tag tag-${s.color}`}>{s.title}</span></div>
         <h1>{d.title}</h1>
@@ -48,6 +56,8 @@ const jsonLd = [
           <span><Icon name="refresh" />Posodobljeno <time datetime={d.updated.toISOString()}>{fmtDate(d.updated)}</time></span>
         </div>
       </div>
+      <div class="ah-art"><SectionArt kind={d.section} /></div>
+      </div>
     </header>
 
     <div class="article-body">
@@ -55,6 +65,7 @@ const jsonLd = [
         <div class="prose"><Content /></div>
 
         {entry.id === 'kako-deluje-toplotna-crpalka' && <CycleDiagram />}
+        {entry.id === 'cop-in-scop' && <CopCalc />}
 
         {d.remember && (
           <aside class="callout callout-teal">
@@ -88,6 +99,13 @@ const jsonLd = [
             <ul class="terms-list">{glossary.map((t) => <li><a class="term-card" href={u(`/slovar/${t.id}/`)}><b>{t.data.title}</b>{t.data.description}</a></li>)}</ul>
           </section>
         )}
+
+        {(prev || next) && (
+          <nav class="prevnext" aria-label={`Več v razdelku ${s.title}`}>
+            {prev && <a href={u(`/${prev.data.section}/${prev.id}/`)}><small>← Prejšnji</small><b>{prev.data.title}</b></a>}
+            {next && <a class={`next ${!prev ? 'only-next' : ''}`} href={u(`/${next.data.section}/${next.id}/`)}><small>Naslednji →</small><b>{next.data.title}</b></a>}
+          </nav>
+        )}
       </div>
     </div>
   </article>
@@ -100,4 +118,20 @@ const jsonLd = [
       </div>
     </section>
   )}
+  <script>
+    const bar = document.querySelector<HTMLElement>('.read-progress i');
+    const art = document.querySelector<HTMLElement>('.article-body');
+    if (bar && art) {
+      let raf = 0;
+      const upd = () => {
+        raf = 0;
+        const r = art.getBoundingClientRect();
+        const total = r.height - innerHeight * 0.6;
+        const p = Math.min(1, Math.max(0, -r.top / (total > 0 ? total : 1)));
+        bar.style.transform = `scaleX(${p})`;
+      };
+      addEventListener('scroll', () => { if (!raf) raf = requestAnimationFrame(upd); }, { passive: true });
+      upd();
+    }
+  </script>
 </Base>

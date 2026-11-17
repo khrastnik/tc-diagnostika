@@ -1,0 +1,19 @@
+---
+import Icon from './Icon.astro';
+import { u, SECTIONS } from '../lib/url';
+interface Props { current?: string; }
+const { current } = Astro.props;
+---
+<nav class="sec-tabs" aria-label="Razdelki">
+  <div class="container"><ul>
+    {Object.entries(SECTIONS).map(([k, s]) => (
+      <li><a class={`c-${s.color}`} href={u(`/${k}/`)} aria-current={k === current ? 'page' : undefined}><Icon name={s.icon} />{s.title}</a></li>
+    ))}
+    <li><a class="c-teal" href={u('/slovar/')} aria-current={current === 'slovar' ? 'page' : undefined}><Icon name="book" />Slovar</a></li>
+  </ul></div>
+</nav>
+<script>
+  const cur = document.querySelector<HTMLElement>('.sec-tabs a[aria-current]');
+  const ul = cur?.closest('ul');
+  if (cur && ul) ul.scrollLeft = cur.offsetLeft - (ul.clientWidth - cur.offsetWidth) / 2;
+</script>

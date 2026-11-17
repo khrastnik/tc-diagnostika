@@ -4,6 +4,8 @@ import Base from '../../layouts/Base.astro';
 import Icon from '../../components/Icon.astro';
 import Crumbs from '../../components/Crumbs.astro';
 import PostCard from '../../components/PostCard.astro';
+import SectionArt from '../../components/SectionArt.astro';
+import SectionTabs from '../../components/SectionTabs.astro';
 import { u, fmtDate } from '../../lib/url';
 export async function getStaticPaths() {
   const terms = await getCollection('slovar');
@@ -25,13 +27,16 @@ const jsonLd = [
 ---
 <Base title={`${entry.data.title}: kaj pomeni`} description={entry.data.description} jsonLd={jsonLd}>
   <header class="article-head">
-    <div class="container" style="max-width:calc(var(--readw) + 3rem)">
+    <div class="container ah-grid"><div>
       <Crumbs items={[['Slovar', '/slovar/'], [entry.data.title]]} />
       <div style="margin-top:1.25rem"><span class="tag tag-teal">Pojem</span></div>
       <h1>{entry.data.title}</h1>
       <p class="desc" style="margin:0">{entry.data.description}</p>
     </div>
+    <div class="ah-art"><SectionArt kind="slovar" /></div>
+    </div>
   </header>
+  <SectionTabs current="slovar" />
   <div class="article-body">
     <div class="container" style="max-width:calc(var(--readw) + 3rem)">
       <div class="prose"><Content /></div>

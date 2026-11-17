@@ -1,15 +1,9 @@
 ---
 import Base from '../layouts/Base.astro';
-import Crumbs from '../components/Crumbs.astro';
+import PageHead from '../components/PageHead.astro';
 ---
 <Base title="O meni" description="Kdo piše stran TC diagnostika in zakaj.">
-  <header class="page-head c-teal">
-    <div class="container">
-      <Crumbs items={[['O meni']]} />
-      <h1 style="margin-top:1.25rem">O meni</h1>
-      <p class="lead">Sem Klemen in pripravljam samostojno dejavnost diagnostike toplotnih črpalk.</p>
-    </div>
-  </header>
+  <PageHead title="O meni" lead="Sem Klemen in pripravljam samostojno dejavnost diagnostike toplotnih črpalk." crumbs={[['O meni']]} art="o-meni" />
   <div class="page-body">
     <div class="container" style="max-width:calc(var(--readw) + 3rem)">
       <div class="prose">

@@ -9,13 +9,13 @@ const { title, description, jsonLd = [], noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 const fullTitle = title === SITE_NAME ? `${SITE_NAME}: toplotne črpalke, razložene po domače` : `${title} | ${SITE_NAME}`;
 const path = Astro.url.pathname;
-const nav: [string, string][] = [
-  ['/kako-deluje/', 'Kako deluje'],
-  ['/vzdrzevanje/', 'Vzdrževanje'],
-  ['/zakaj-se-kvarijo/', 'Zakaj se kvarijo'],
-  ['/aktualno/', 'Aktualno'],
-  ['/slovar/', 'Slovar'],
-  ['/o-meni/', 'O meni'],
+const nav: { href: string; label: string; icon: string; color: string; desc: string }[] = [
+  { href: '/kako-deluje/', label: 'Kako deluje', icon: 'cycle', color: 'teal', desc: 'Osnove, vrste, COP' },
+  { href: '/vzdrzevanje/', label: 'Vzdrževanje', icon: 'shield', color: 'violet', desc: 'Servis in nega' },
+  { href: '/zakaj-se-kvarijo/', label: 'Zakaj se kvarijo', icon: 'wrench', color: 'warm', desc: 'Težave in znaki' },
+  { href: '/aktualno/', label: 'Aktualno', icon: 'news', color: 'sky', desc: 'Subvencije, predpisi' },
+  { href: '/slovar/', label: 'Slovar', icon: 'book', color: 'teal', desc: 'Pojmi na kratko' },
+  { href: '/o-meni/', label: 'O meni', icon: 'bulb', color: 'teal', desc: 'Kdo piše stran' },
 ];
 ---
 <!doctype html>
@@ -51,13 +51,16 @@ const nav: [string, string][] = [
       </button>
       <nav class="main-nav" id="glavni-meni" aria-label="Glavni meni">
         <ul>
-          {nav.map(([href, label]) => (
-            <li><a href={u(href)} aria-current={path.startsWith(u(href)) ? 'page' : undefined}><span class="dot" />{label}</a></li>
+          {nav.map((n) => (
+            <li><a class={`c-${n.color}`} href={u(n.href)} aria-current={path.startsWith(u(n.href)) ? 'page' : undefined}>
+              <span class="nav-ic"><Icon name={n.icon} /></span><span class="nav-txt">{n.label}<small>{n.desc}</small></span>
+            </a></li>
           ))}
         </ul>
       </nav>
     </div>
   </header>
+  <div class="nav-backdrop" aria-hidden="true"></div>
 
   <main id="vsebina">
     <slot />
@@ -101,7 +104,10 @@ const nav: [string, string][] = [
     const setOpen = (open: boolean) => {
       header.dataset.open = String(open);
       btn.setAttribute('aria-expanded', String(open));
+      document.body.classList.toggle('nav-open', open);
     };
+    document.querySelector('.nav-backdrop')?.addEventListener('click', () => setOpen(false));
+    header.querySelectorAll('.main-nav a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
     btn.addEventListener('click', () => setOpen(header.dataset.open !== 'true'));
     document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
     matchMedia('(min-width: 900px)').addEventListener('change', () => setOpen(false));

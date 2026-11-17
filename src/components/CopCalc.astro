@@ -1,0 +1,36 @@
+---
+---
+<section class="calc" aria-labelledby="calc-t">
+  <div class="calc-head"><span class="calc-badge">Interaktivno</span><h2 id="calc-t">Izračunajte okvirno porabo elektrike</h2></div>
+  <div class="calc-grid">
+    <label class="calc-field">
+      <span>Toplota, ki jo hiša potrebuje na leto <output id="o-heat">12.000</output> kWh</span>
+      <input id="i-heat" type="range" min="4000" max="30000" step="500" value="12000" />
+    </label>
+    <label class="calc-field">
+      <span>SCOP črpalke <output id="o-scop">4,0</output></span>
+      <input id="i-scop" type="range" min="2" max="6" step="0.1" value="4" />
+    </label>
+  </div>
+  <div class="calc-result">
+    <div><b id="r-el">3.000</b><span>kWh elektrike na leto</span></div>
+    <div class="calc-bar" aria-hidden="true"><i id="r-bar-el"></i><em id="r-bar-free"></em></div>
+    <p><span class="dot el"></span>elektrika <span class="dot free"></span>brezplačna toplota iz okolice: <b id="r-free">9.000</b> kWh</p>
+  </div>
+  <p class="calc-note">Okvirni izračun: poraba = potrebna toplota ÷ SCOP. Dejanska poraba je odvisna od hiše, nastavitev in vremena.</p>
+</section>
+<script>
+  const $ = (id: string) => document.getElementById(id) as HTMLInputElement;
+  const nf = { format: (n: number) => String(Math.round(n)).replace(/\B(?=(\d{3})+(?!\d))/g, '.') };
+  const heat = $('i-heat'), scop = $('i-scop');
+  function update() {
+    const h = +heat.value, s = +scop.value, el = Math.round(h / s / 10) * 10, free = h - el;
+    $('o-heat').value = nf.format(h);
+    $('o-scop').value = s.toLocaleString('sl-SI', { minimumFractionDigits: 1 });
+    $('r-el').textContent = nf.format(el);
+    $('r-free').textContent = nf.format(free);
+    (document.getElementById('r-bar-el') as HTMLElement).style.width = (el / h * 100) + '%';
+    (document.getElementById('r-bar-free') as HTMLElement).style.width = (free / h * 100) + '%';
+  }
+  heat.addEventListener('input', update); scop.addEventListener('input', update); update();
+</script>

@@ -1,0 +1,172 @@
+---
+interface Props { kind: string; }
+const { kind } = Astro.props;
+---
+<div class={`sart sart-${kind}`} aria-hidden="true">
+  {kind === 'kako-deluje' && (
+    <svg viewBox="0 0 320 220">
+      <rect x="10" y="10" width="300" height="200" rx="28" fill="#e7f6f1"/>
+      <circle cx="160" cy="110" r="62" fill="none" stroke="#c9ebe0" stroke-width="16"/>
+      <path class="loop hot" d="M160 48a62 62 0 0 1 62 62" fill="none" stroke="#e8603c" stroke-width="8" stroke-linecap="round"/>
+      <path class="loop cold" d="M160 172a62 62 0 0 1-62-62" fill="none" stroke="#2b6be0" stroke-width="8" stroke-linecap="round"/>
+      <g class="orbit"><circle cx="160" cy="48" r="9" fill="#e8603c"/><circle cx="160" cy="172" r="9" fill="#2b6be0"/></g>
+      <rect x="128" y="88" width="64" height="44" rx="10" fill="#fff" stroke="#0a7d65" stroke-width="3"/>
+      <circle class="spin" cx="160" cy="110" r="12" fill="none" stroke="#0a7d65" stroke-width="3" stroke-dasharray="6 6"/>
+      <g font-family="inherit" font-weight="800" font-size="13" fill="#0e1f1a">
+        <rect x="222" y="34" width="74" height="30" rx="15" fill="#fff"/><text x="259" y="54" text-anchor="middle" fill="#b2421f">toplo</text>
+        <rect x="24" y="156" width="74" height="30" rx="15" fill="#fff"/><text x="61" y="176" text-anchor="middle" fill="#1c4fb0">hladno</text>
+      </g>
+    </svg>
+  )}
+  {kind === 'vzdrzevanje' && (
+    <svg viewBox="0 0 320 220">
+      <rect x="10" y="10" width="300" height="200" rx="28" fill="#f1edff"/>
+      <g transform="translate(40 40)">
+        <rect width="130" height="150" rx="14" fill="#fff" stroke="#ddd4fc" stroke-width="2"/>
+        <rect x="40" y="-8" width="50" height="18" rx="6" fill="#6a4fd6"/>
+        <g stroke-linecap="round" stroke-linejoin="round" fill="none">
+          <path class="tick t1" d="M18 40l7 7 13-13" stroke="#6a4fd6" stroke-width="4"/>
+          <path class="tick t2" d="M18 78l7 7 13-13" stroke="#6a4fd6" stroke-width="4"/>
+          <path class="tick t3" d="M18 116l7 7 13-13" stroke="#6a4fd6" stroke-width="4"/>
+        </g>
+        <rect x="50" y="36" width="62" height="8" rx="4" fill="#e2e9e6"/><rect x="50" y="74" width="54" height="8" rx="4" fill="#e2e9e6"/><rect x="50" y="112" width="60" height="8" rx="4" fill="#e2e9e6"/>
+      </g>
+      <g transform="translate(232 112)">
+        <circle r="52" fill="#fff" stroke="#ddd4fc" stroke-width="2"/>
+        <path d="M-38 16a40 40 0 1 1 76 0" fill="none" stroke="#e2e9e6" stroke-width="8" stroke-linecap="round"/>
+        <path d="M-38 16a40 40 0 0 1 20-48" fill="none" stroke="#e8603c" stroke-width="8" stroke-linecap="round"/>
+        <path d="M18-32a40 40 0 0 1 20 48" fill="none" stroke="#13a07f" stroke-width="8" stroke-linecap="round"/>
+        <g class="needle"><path d="M0 0L0-34" stroke="#0e1f1a" stroke-width="4" stroke-linecap="round"/></g>
+        <circle r="7" fill="#6a4fd6"/>
+        <text y="38" text-anchor="middle" font-family="inherit" font-size="12" font-weight="800" fill="#4d35b0">1,5 bar</text>
+      </g>
+    </svg>
+  )}
+  {kind === 'zakaj-se-kvarijo' && (
+    <svg viewBox="0 0 320 220">
+      <rect x="10" y="10" width="300" height="200" rx="28" fill="#fff1eb"/>
+      <g transform="translate(54 62)">
+        <rect width="150" height="104" rx="12" fill="#fff" stroke="#f6c8b5" stroke-width="2"/>
+        <g transform="translate(58 52)">
+          <circle r="38" fill="#fff6f2" stroke="#f6c8b5" stroke-width="2"/>
+          <g class="wobble"><path d="M0 0C6-14 2-28-6-30C-10-20-8-8 0 0zM0 0C14 6 28 2 30-6C20-10 8-8 0 0zM0 0C-6 14-2 28 6 30C10 20 8 8 0 0zM0 0C-14-6-28-2-30 6C-20 10-8 8 0 0z" fill="#e8603c"/></g>
+          <circle r="6" fill="#fff" stroke="#e8603c" stroke-width="2"/>
+        </g>
+        <g fill="#f6c8b5"><rect x="112" y="20" width="26" height="4" rx="2"/><rect x="112" y="30" width="26" height="4" rx="2"/><rect x="112" y="40" width="26" height="4" rx="2"/></g>
+      </g>
+      <g class="alert-badge" transform="translate(222 52)">
+        <circle r="26" fill="#e8603c"/><path d="M0-12v14" stroke="#fff" stroke-width="5" stroke-linecap="round"/><circle cy="11" r="3.2" fill="#fff"/>
+      </g>
+      <g class="ring" transform="translate(222 52)"><circle r="26" fill="none" stroke="#e8603c" stroke-width="3"/></g>
+      <g transform="translate(248 110)">
+        <rect x="-10" y="0" width="20" height="70" rx="10" fill="#fff" stroke="#f6c8b5" stroke-width="2"/>
+        <rect class="mercury" x="-5" y="12" width="10" height="52" rx="5" fill="#2b6be0"/>
+        <circle cy="72" r="14" fill="#2b6be0"/>
+      </g>
+      <g class="snowflakes" stroke="#2b6be0" stroke-width="2" stroke-linecap="round">
+        <path class="sf s1" d="M40 40v12M34 46h12"/><path class="sf s2" d="M280 34v10M275 39h10"/><path class="sf s3" d="M226 180v10M221 185h10"/>
+      </g>
+    </svg>
+  )}
+  {kind === 'aktualno' && (
+    <svg viewBox="0 0 320 220">
+      <rect x="10" y="10" width="300" height="200" rx="28" fill="#edf3ff"/>
+      <g transform="translate(46 40)">
+        <rect width="150" height="140" rx="14" fill="#fff" stroke="#c4d7fb" stroke-width="2"/>
+        <rect width="150" height="34" rx="14" fill="#2b6be0"/><rect y="20" width="150" height="14" fill="#2b6be0"/>
+        <rect x="30" y="-10" width="8" height="22" rx="4" fill="#1c4fb0"/><rect x="112" y="-10" width="8" height="22" rx="4" fill="#1c4fb0"/>
+        <g fill="#e2e9e6">
+          {[0,1,2,3].map((r) => [0,1,2,3,4].map((c) => <rect x={14 + c * 26} y={48 + r * 22} width="18" height="14" rx="4" />))}
+        </g>
+        <rect class="today" x="66" y="70" width="18" height="14" rx="4" fill="#2b6be0"/>
+      </g>
+      <g class="coin" transform="translate(240 120)">
+        <circle r="34" fill="#ffd27a" stroke="#f0b443" stroke-width="3"/>
+        <text y="12" text-anchor="middle" font-family="inherit" font-size="34" font-weight="800" fill="#a8741a">€</text>
+      </g>
+      <g class="doc" transform="translate(212 32)">
+        <rect width="62" height="40" rx="8" fill="#fff" stroke="#c4d7fb" stroke-width="2"/>
+        <rect x="10" y="10" width="40" height="5" rx="2.5" fill="#c4d7fb"/><rect x="10" y="22" width="28" height="5" rx="2.5" fill="#c4d7fb"/>
+      </g>
+    </svg>
+  )}
+  {kind === 'slovar' && (
+    <svg viewBox="0 0 320 220">
+      <rect x="10" y="10" width="300" height="200" rx="28" fill="#e7f6f1"/>
+      <g transform="translate(160 132)">
+        <path d="M0-50C-30-64-70-62-100-50V40C-70 28-30 26 0 40z" fill="#fff" stroke="#c9ebe0" stroke-width="2"/>
+        <path d="M0-50C30-64 70-62 100-50V40C70 28 30 26 0 40z" fill="#fff" stroke="#c9ebe0" stroke-width="2"/>
+        <path d="M0-50V40" stroke="#0a7d65" stroke-width="3"/>
+        <g fill="#c9ebe0"><rect x="-84" y="-34" width="64" height="6" rx="3"/><rect x="-84" y="-18" width="52" height="6" rx="3"/><rect x="-84" y="-2" width="60" height="6" rx="3"/><rect x="22" y="-34" width="60" height="6" rx="3"/><rect x="22" y="-18" width="64" height="6" rx="3"/><rect x="22" y="-2" width="44" height="6" rx="3"/></g>
+      </g>
+      <g font-family="inherit" font-weight="800" text-anchor="middle">
+        <g class="letter l1"><circle cx="96" cy="48" r="20" fill="#0a7d65"/><text x="96" y="55" font-size="20" fill="#fff">K</text></g>
+        <g class="letter l2"><circle cx="160" cy="36" r="20" fill="#e8603c"/><text x="160" y="43" font-size="20" fill="#fff">H</text></g>
+        <g class="letter l3"><circle cx="224" cy="48" r="20" fill="#2b6be0"/><text x="224" y="55" font-size="20" fill="#fff">U</text></g>
+      </g>
+    </svg>
+  )}
+  {kind === 'o-meni' && (
+    <svg viewBox="0 0 320 220">
+      <rect x="10" y="10" width="300" height="200" rx="28" fill="#e7f6f1"/>
+      <g transform="translate(110 70)">
+        <circle cx="0" cy="0" r="30" fill="#fff" stroke="#0a7d65" stroke-width="3"/>
+        <circle cx="0" cy="-6" r="10" fill="#0a7d65"/><path d="M-16 18a16 14 0 0 1 32 0" fill="#0a7d65"/>
+      </g>
+      <g class="bubble" transform="translate(150 40)">
+        <rect width="132" height="56" rx="16" fill="#fff" stroke="#c9ebe0" stroke-width="2"/>
+        <path d="M14 56l-6 14 18-14z" fill="#fff"/>
+        <rect x="16" y="16" width="96" height="7" rx="3.5" fill="#c9ebe0"/><rect x="16" y="31" width="70" height="7" rx="3.5" fill="#c9ebe0"/>
+      </g>
+      <g transform="translate(60 120)">
+        <rect width="200" height="64" rx="14" fill="#fff" stroke="#e2e9e6" stroke-width="2"/>
+        <g class="typing" fill="#0a7d65"><circle cx="30" cy="32" r="5"/><circle cx="48" cy="32" r="5"/><circle cx="66" cy="32" r="5"/></g>
+        <rect x="90" y="22" width="92" height="7" rx="3.5" fill="#e2e9e6"/><rect x="90" y="36" width="64" height="7" rx="3.5" fill="#e2e9e6"/>
+      </g>
+    </svg>
+  )}
+  {kind === 'zasebnost' && (
+    <svg viewBox="0 0 320 220">
+      <rect x="10" y="10" width="300" height="200" rx="28" fill="#e7f6f1"/>
+      <circle class="pulse" cx="160" cy="110" r="70" fill="#c9ebe0"/>
+      <path d="M160 44 108 62v42c0 34 22 54 52 64 30-10 52-30 52-64V62z" fill="#fff" stroke="#0a7d65" stroke-width="4" stroke-linejoin="round"/>
+      <rect x="138" y="100" width="44" height="36" rx="8" fill="#0a7d65"/>
+      <path d="M146 100v-10a14 14 0 0 1 28 0v10" fill="none" stroke="#0a7d65" stroke-width="5"/>
+      <circle cx="160" cy="116" r="5" fill="#fff"/><rect x="158" y="118" width="4" height="10" rx="2" fill="#fff"/>
+    </svg>
+  )}
+</div>
+<style>
+  .sart svg { width: 100%; height: auto; display: block; }
+  .loop { stroke-dasharray: 10 8; animation: sa-dash 1.2s linear infinite; }
+  .orbit { transform-origin: 160px 110px; animation: sa-spin 6s linear infinite; }
+  .spin { transform-box: fill-box; transform-origin: center; animation: sa-spin 3s linear infinite; }
+  .tick { stroke-dasharray: 30; stroke-dashoffset: 30; animation: sa-draw 4.5s ease-in-out infinite; }
+  .t2 { animation-delay: .5s; } .t3 { animation-delay: 1s; }
+  .needle { animation: sa-needle 4s ease-in-out infinite; }
+  .wobble { animation: sa-wobble 1.6s ease-in-out infinite; transform-origin: 0 0; }
+  .alert-badge { animation: sa-bob 2s ease-in-out infinite; }
+  .ring circle { transform-box: fill-box; transform-origin: center; animation: sa-ring 2s ease-out infinite; }
+  .mercury { transform-box: fill-box; transform-origin: bottom; animation: sa-merc 4s ease-in-out infinite; }
+  .sf { animation: sa-fall 3.5s ease-in-out infinite; } .s2 { animation-delay: 1.2s; } .s3 { animation-delay: 2.1s; }
+  .coin { animation: sa-coin 3s ease-in-out infinite; }
+  .doc { animation: sa-bob 4s ease-in-out infinite; }
+  .today { animation: sa-blink 2s ease-in-out infinite; }
+  .letter { animation: sa-bob 3s ease-in-out infinite; } .l2 { animation-delay: -1s; } .l3 { animation-delay: -2s; }
+  .bubble { animation: sa-bob 4s ease-in-out infinite; }
+  .typing circle { animation: sa-blink 1.2s ease-in-out infinite; } .typing circle:nth-child(2) { animation-delay: .2s; } .typing circle:nth-child(3) { animation-delay: .4s; }
+  .pulse { transform-box: fill-box; transform-origin: center; animation: sa-pulse 3s ease-in-out infinite; }
+  @keyframes sa-dash { to { stroke-dashoffset: -18; } }
+  @keyframes sa-spin { to { transform: rotate(360deg); } }
+  @keyframes sa-draw { 0%, 10% { stroke-dashoffset: 30; } 35%, 85% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 30; } }
+  @keyframes sa-needle { 0%, 100% { transform: rotate(-30deg); } 50% { transform: rotate(18deg); } }
+  @keyframes sa-wobble { 0%, 100% { transform: rotate(0); } 25% { transform: rotate(14deg); } 50% { transform: rotate(-8deg); } 75% { transform: rotate(20deg); } }
+  @keyframes sa-bob { 0%, 100% { translate: 0 0; } 50% { translate: 0 -6px; } }
+  @keyframes sa-ring { 0% { transform: scale(1); opacity: .8; } 100% { transform: scale(1.7); opacity: 0; } }
+  @keyframes sa-merc { 0%, 100% { transform: scaleY(1); } 50% { transform: scaleY(.35); } }
+  @keyframes sa-fall { 0% { translate: 0 -6px; opacity: 0; } 30% { opacity: 1; } 100% { translate: 0 14px; opacity: 0; } }
+  @keyframes sa-coin { 0%, 100% { translate: 0 0; rotate: 0deg; } 50% { translate: 0 -10px; rotate: 8deg; } }
+  @keyframes sa-blink { 50% { opacity: .35; } }
+  @keyframes sa-pulse { 0%, 100% { transform: scale(.92); opacity: .7; } 50% { transform: scale(1.05); opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) { .sart * { animation: none !important; } .tick { stroke-dashoffset: 0; } }
+</style>

@@ -1,0 +1,31 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { u, fmtDate } from '../../lib/url';
+export async function getStaticPaths() {
+  const terms = await getCollection('slovar');
+  return terms.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+const usedIn = (await getCollection('clanki', (a) => a.data.terms?.includes(entry.id) ?? false));
+const abs = (p: string) => new URL(u(p), Astro.site).href;
+const jsonLd = [{
+  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Domov', item: abs('/') },
+    { '@type': 'ListItem', position: 2, name: 'Slovar', item: abs('/slovar/') },
+    { '@type': 'ListItem', position: 3, name: entry.data.title },
+  ],
+}];
+---
+<Base title={`${entry.data.title}: kaj pomeni`} description={entry.data.description} jsonLd={jsonLd}>
+  <nav class="crumbs" aria-label="Drobtinice"><ol><li><a href={u('/')}>Domov</a></li><li><a href={u('/slovar/')}>Slovar</a></li><li>{entry.data.title}</li></ol></nav>
+  <h1>{entry.data.title}</h1>
+  <p class="lead">{entry.data.description}</p>
+  <div class="prose"><Content /></div>
+  <p class="meta">Posodobljeno {fmtDate(entry.data.updated)}</p>
+  {usedIn.length > 0 && (
+    <section><h2>Kje se pojem pojavi</h2><ul>{usedIn.map((a) => <li><a href={u(`/${a.data.section}/${a.id}/`)}>{a.data.title}</a></li>)}</ul></section>
+  )}
+</Base>

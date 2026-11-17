@@ -1,0 +1,42 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../layouts/Base.astro';
+import { u, SITE_NAME, SECTIONS, fmtDate } from '../lib/url';
+
+const all = (await getCollection('clanki')).sort((a, b) => b.data.updated.valueOf() - a.data.updated.valueOf());
+const popular = ['kako-deluje-toplotna-crpalka', 'toplotna-crpalka-ne-greje-dovolj', 'cop-in-scop'];
+const top = popular.map((id) => all.find((a) => a.id === id)).filter(Boolean);
+const latest = all.slice(0, 5);
+const desc = 'Kako toplotne črpalke delujejo, zakaj se kvarijo in kaj je aktualno: subvencije, predpisi, cene. Razloženo preprosto, v slovenščini.';
+const jsonLd = [{ '@context': 'https://schema.org', '@type': 'WebSite', name: SITE_NAME, inLanguage: 'sl', url: new URL(u('/'), Astro.site).href }];
+---
+<Base title={SITE_NAME} description={desc} jsonLd={jsonLd}>
+  <h1>Toplotne črpalke, razložene po domače</h1>
+  <p class="lead">Kako deluje vaša toplotna črpalka, zakaj se kvari in kdaj je čas za strokovnjaka. Brez žargona in brez navodil, ki bi vas spravila v nevarnost.</p>
+
+  <div class="cards">
+    {Object.entries(SECTIONS).map(([key, s]) => (
+      <a class="card" href={u(`/${key}/`)} style="text-decoration:none;color:inherit">
+        <h3 style="color:var(--accent)">{s.title} →</h3>
+        <p>{s.intro}</p>
+      </a>
+    ))}
+  </div>
+
+  <h2>Največkrat brano</h2>
+  <ul class="list">
+    {top.map((a) => (
+      <li><a href={u(`/${a!.data.section}/${a!.id}/`)}>{a!.data.title}</a><p>{a!.data.description}</p></li>
+    ))}
+  </ul>
+
+  <h2>Zadnje novice in posodobitve</h2>
+  <ul class="list">
+    {latest.map((a) => (
+      <li>
+        <a href={u(`/${a.data.section}/${a.id}/`)}>{a.data.title}</a>
+        <p>{SECTIONS[a.data.section].title} · posodobljeno {fmtDate(a.data.updated)}</p>
+      </li>
+    ))}
+  </ul>
+</Base>

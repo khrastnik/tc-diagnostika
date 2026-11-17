@@ -1,0 +1,66 @@
+---
+import '../styles/global.css';
+import { u, SITE_NAME } from '../lib/url';
+
+interface Props {
+  title: string;
+  description: string;
+  jsonLd?: object[];
+  noindex?: boolean;
+}
+const { title, description, jsonLd = [], noindex = false } = Astro.props;
+const canonical = new URL(Astro.url.pathname, Astro.site);
+const fullTitle = title === SITE_NAME ? title : `${title} | ${SITE_NAME}`;
+const path = Astro.url.pathname;
+const nav = [
+  ['/kako-deluje/', 'Kako deluje'],
+  ['/zakaj-se-kvarijo/', 'Zakaj se kvarijo'],
+  ['/aktualno/', 'Aktualno'],
+  ['/slovar/', 'Slovar'],
+  ['/o-meni/', 'O meni'],
+];
+---
+<!doctype html>
+<html lang="sl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={canonical} />
+  {noindex && <meta name="robots" content="noindex" />}
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:locale" content="sl_SI" />
+  <link rel="icon" href={u('/favicon.svg')} type="image/svg+xml" />
+  <link rel="sitemap" href={u('/sitemap-index.xml')} />
+  {jsonLd.map((d) => <script type="application/ld+json" set:html={JSON.stringify(d)} />)}
+</head>
+<body>
+  <a class="skip" href="#vsebina">Preskoči na vsebino</a>
+  <header class="site">
+    <div class="wrap">
+      <a class="brand" href={u('/')}>TC <span>diagnostika</span></a>
+      <nav class="main" aria-label="Glavni meni">
+        <ul>
+          {nav.map(([href, label]) => (
+            <li><a href={u(href)} aria-current={path.startsWith(u(href)) ? 'page' : undefined}>{label}</a></li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="vsebina" class="wrap">
+    <slot />
+  </main>
+  <footer class="site">
+    <div class="wrap">
+      <p><strong>Odgovornost:</strong> vsebina je splošna informacija in ne nadomesti strokovnega svetovanja. Stran ne ponuja storitev servisa. Posegov v hladilni krog ne izvajajte sami: to sme le pooblaščeno podjetje s spričevalom za F-pline.</p>
+      <p><a href={u('/o-meni/')}>O meni in kontakt</a> · <a href={u('/zasebnost/')}>Zasebnost</a> · <a href={u('/slovar/')}>Slovar</a></p>
+      <p>© {new Date().getFullYear()} {SITE_NAME}</p>
+    </div>
+  </footer>
+</body>
+</html>

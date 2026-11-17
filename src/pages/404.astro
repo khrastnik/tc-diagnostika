@@ -1,0 +1,8 @@
+---
+import Base from '../layouts/Base.astro';
+import { u } from '../lib/url';
+---
+<Base title="Stran ne obstaja" description="Iskane strani ni bilo mogoče najti." noindex>
+  <h1>Te strani ni</h1>
+  <p>Morda je bila premaknjena. Pojdite na <a href={u('/')}>domačo stran</a> ali v <a href={u('/slovar/')}>slovar</a>.</p>
+</Base>

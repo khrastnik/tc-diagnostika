@@ -1,7 +1,11 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
-import { u, SECTIONS, SITE_NAME, fmtDate } from '../../lib/url';
+import Icon from '../../components/Icon.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import PostCard from '../../components/PostCard.astro';
+import CycleDiagram from '../../components/CycleDiagram.astro';
+import { u, SECTIONS, SITE_NAME, fmtDate, readingTime } from '../../lib/url';
 
 export async function getStaticPaths() {
   const all = await getCollection('clanki');
@@ -12,9 +16,7 @@ const { Content } = await render(entry);
 const d = entry.data;
 const s = SECTIONS[d.section];
 const related = (d.related ?? []).map((id) => all.find((a) => a.id === id)).filter(Boolean);
-const glossary = d.terms?.length
-  ? (await getCollection('slovar')).filter((t) => d.terms!.includes(t.id))
-  : [];
+const glossary = d.terms?.length ? (await getCollection('slovar')).filter((t) => d.terms!.includes(t.id)) : [];
 const abs = (p: string) => new URL(u(p), Astro.site).href;
 const jsonLd = [
   {
@@ -33,32 +35,61 @@ const jsonLd = [
 ];
 ---
 <Base title={d.title} description={d.description} jsonLd={jsonLd}>
-  <nav class="crumbs" aria-label="Drobtinice"><ol>
-    <li><a href={u('/')}>Domov</a></li><li><a href={u(`/${d.section}/`)}>{s.title}</a></li><li>{d.title}</li>
-  </ol></nav>
   <article>
-    <h1>{d.title}</h1>
-    <p class="meta">Objavljeno {fmtDate(d.pubDate)} · posodobljeno <time datetime={d.updated.toISOString()}>{fmtDate(d.updated)}</time></p>
-    <div class="prose"><Content /></div>
+    <header class="article-head">
+      <div class="container read" style="max-width:calc(var(--readw) + 3rem)">
+        <Crumbs items={[[s.title, `/${d.section}/`], [d.title]]} />
+        <div style="margin-top:1.25rem"><span class={`tag tag-${s.color}`}>{s.title}</span></div>
+        <h1>{d.title}</h1>
+        <p class="desc">{d.description}</p>
+        <div class="byline">
+          <span><Icon name="clock" />{readingTime(entry.body)} min branja</span>
+          <span><Icon name="calendar" />Objavljeno {fmtDate(d.pubDate)}</span>
+          <span><Icon name="refresh" />Posodobljeno <time datetime={d.updated.toISOString()}>{fmtDate(d.updated)}</time></span>
+        </div>
+      </div>
+    </header>
 
-    {d.remember && (
-      <aside class="remember"><h2>Kaj to pomeni za vas</h2><ul>{d.remember.map((r) => <li>{r}</li>)}</ul></aside>
-    )}
+    <div class="article-body">
+      <div class="container read" style="max-width:calc(var(--readw) + 3rem)">
+        <div class="prose"><Content /></div>
 
-    {d.section === 'zakaj-se-kvarijo' && (
-      <p class="notice">Če znaki ostanejo ali gre za karkoli v hladilnem krogu (puščanje, zmrzal na ceveh, napake tlaka), pokličite <strong>pooblaščenega serviserja s spričevalom za F-pline</strong>. Posegi v hladilni krog brez spričevala niso dovoljeni in so nevarni.</p>
-    )}
+        {entry.id === 'kako-deluje-toplotna-crpalka' && <CycleDiagram />}
 
-    {d.sources && (
-      <section class="sources"><h2>Viri</h2><ul>{d.sources.map((src) => <li><a href={src.url} rel="noopener">{src.name}</a></li>)}</ul></section>
-    )}
+        {d.remember && (
+          <aside class="callout callout-teal">
+            <Icon name="bulb" />
+            <div><h2>Kaj to pomeni za vas</h2><ul>{d.remember.map((r) => <li>{r}</li>)}</ul></div>
+          </aside>
+        )}
 
-    {glossary.length > 0 && (
-      <section><h2>Pojmi v članku</h2><ul>{glossary.map((t) => <li><a href={u(`/slovar/${t.id}/`)}>{t.data.title}</a>: {t.data.description}</li>)}</ul></section>
-    )}
+        {d.section === 'zakaj-se-kvarijo' && (
+          <aside class="callout callout-warn">
+            <Icon name="alert" />
+            <p>Če znaki ostanejo ali gre za karkoli v hladilnem krogu (puščanje, zmrzal na ceveh, napake tlaka), pokličite <strong>pooblaščenega serviserja s spričevalom za F-pline</strong>. Posegi v hladilni krog brez spričevala niso dovoljeni in so nevarni.</p>
+          </aside>
+        )}
 
-    {related.length > 0 && (
-      <section><h2>Preberite še</h2><ul class="list">{related.map((r) => <li><a href={u(`/${r!.data.section}/${r!.id}/`)}>{r!.data.title}</a><p>{r!.data.description}</p></li>)}</ul></section>
-    )}
+        {d.sources && (
+          <section class="sources"><h2 class="subhead">Viri</h2><ul>{d.sources.map((src) => <li><a href={src.url} rel="noopener">{src.name}</a></li>)}</ul></section>
+        )}
+
+        {glossary.length > 0 && (
+          <section>
+            <h2 class="subhead">Pojmi v članku</h2>
+            <ul class="terms-list">{glossary.map((t) => <li><a class="term-card" href={u(`/slovar/${t.id}/`)}><b>{t.data.title}</b>{t.data.description}</a></li>)}</ul>
+          </section>
+        )}
+      </div>
+    </div>
   </article>
+
+  {related.length > 0 && (
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-head"><div><h2>Preberite še</h2></div></div>
+        <div class="posts three">{related.map((r, i) => <PostCard entry={r} delay={i * 0.08} />)}</div>
+      </div>
+    </section>
+  )}
 </Base>

@@ -1,0 +1,46 @@
+---
+---
+<figure class="cycle">
+  <svg class="cycle-svg" viewBox="0 0 640 300" role="img" aria-labelledby="cyc-t">
+    <title id="cyc-t">Krog toplotne črpalke: uparjalnik, kompresor, kondenzator, ekspanzijski ventil</title>
+    <defs>
+      <linearGradient id="cg-hot" x1="0" x2="1"><stop offset="0" stop-color="#f59e7c"/><stop offset="1" stop-color="#e8603c"/></linearGradient>
+      <marker id="ar-h" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 10 5 0 10z" fill="#e8603c"/></marker>
+      <marker id="ar-c" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0 0 10 5 0 10z" fill="#2b6be0"/></marker>
+    </defs>
+    <rect x="1" y="1" width="638" height="298" rx="22" fill="#f5f8f7" stroke="#e2e9e6"/>
+    <path class="cy-flow hot" d="M244 70 H396" stroke="#e8603c" stroke-width="5" fill="none" marker-end="url(#ar-h)"/>
+    <path class="cy-flow hot" d="M500 116 V182" stroke="#e8603c" stroke-width="5" fill="none" marker-end="url(#ar-h)"/>
+    <path class="cy-flow cold" d="M396 230 H244" stroke="#2b6be0" stroke-width="5" fill="none" marker-end="url(#ar-c)"/>
+    <path class="cy-flow cold" d="M140 184 V118" stroke="#2b6be0" stroke-width="5" fill="none" marker-end="url(#ar-c)"/>
+    <g font-family="inherit" text-anchor="middle">
+      <g transform="translate(140 70)"><rect x="-92" y="-36" width="184" height="72" rx="16" fill="#fff" stroke="#c9ebe0" stroke-width="2"/><text y="-6" font-size="15" font-weight="800" fill="#0e1f1a">2 · Kompresor</text><text y="16" font-size="12.5" fill="#5b6b65">stisne in segreje paro</text></g>
+      <g transform="translate(500 70)"><rect x="-92" y="-36" width="184" height="72" rx="16" fill="#fff1eb" stroke="#f6c8b5" stroke-width="2"/><text y="-6" font-size="15" font-weight="800" fill="#b2421f">3 · Kondenzator</text><text y="16" font-size="12.5" fill="#5b6b65">odda toploto v hišo</text></g>
+      <g transform="translate(500 230)"><rect x="-92" y="-36" width="184" height="72" rx="16" fill="#fff" stroke="#c9ebe0" stroke-width="2"/><text y="-6" font-size="15" font-weight="800" fill="#0e1f1a">4 · Ventil</text><text y="16" font-size="12.5" fill="#5b6b65">zniža tlak in ohladi</text></g>
+      <g transform="translate(140 230)"><rect x="-92" y="-36" width="184" height="72" rx="16" fill="#edf3ff" stroke="#c4d7fb" stroke-width="2"/><text y="-6" font-size="15" font-weight="800" fill="#1c4fb0">1 · Uparjalnik</text><text y="16" font-size="12.5" fill="#5b6b65">vzame toploto iz zraka</text></g>
+      <g transform="translate(320 150)"><circle r="40" fill="#fff" stroke="#e2e9e6" stroke-width="2"/><text y="-4" font-size="12" font-weight="700" fill="#5b6b65">hladivo</text><text y="14" font-size="12" font-weight="700" fill="#0a7d65">kroži</text></g>
+    </g>
+  </svg>
+  <ol class="cycle-list">
+    <li class="cl-sky"><b>Uparjalnik</b><span>vzame toploto iz zunanjega zraka</span></li>
+    <li class="cl-teal"><b>Kompresor</b><span>stisne paro hladiva, da se segreje</span></li>
+    <li class="cl-warm"><b>Kondenzator</b><span>odda toploto ogrevanju v hiši</span></li>
+    <li class="cl-teal"><b>Ekspanzijski ventil</b><span>zniža tlak, hladivo se ohladi in krog se ponovi</span></li>
+  </ol>
+  <figcaption>Hladivo kroži v zaprtem krogu: toploto pobere zunaj in jo odda v hiši.</figcaption>
+</figure>
+<style>
+  .cycle { margin: 2rem auto; max-width: 760px; }
+  .cycle-svg { display: none; width: 100%; height: auto; }
+  .cycle-list { list-style: none; margin: 0; padding: 0; display: grid; gap: .6rem; counter-reset: c; }
+  .cycle-list li { position: relative; display: flex; flex-direction: column; padding: .85rem 1rem .85rem 3.4rem; border-radius: 14px; background: #fff; border: 1px solid var(--line); }
+  .cycle-list li::before { counter-increment: c; content: counter(c); position: absolute; left: .9rem; top: 50%; translate: 0 -50%; width: 30px; height: 30px; border-radius: 9px; display: grid; place-items: center; font-weight: 800; color: #fff; background: var(--brand); }
+  .cycle-list li:not(:last-child)::after { content: ""; position: absolute; left: 1.85rem; bottom: -.62rem; width: 2px; height: .6rem; background: var(--line); }
+  .cycle-list .cl-sky::before { background: var(--sky); } .cycle-list .cl-warm::before { background: var(--warm); }
+  .cycle-list b { font-size: 1rem; color: var(--ink); } .cycle-list span { font-size: .92rem; color: var(--muted); line-height: 1.45; }
+  @media (min-width: 640px) { .cycle-svg { display: block; } .cycle-list { display: none; } }
+  .cycle figcaption { font-size: .88rem; color: var(--muted); text-align: center; margin-top: .6rem; }
+  .cy-flow { stroke-dasharray: 12 10; animation: cyd 1.2s linear infinite; }
+  @keyframes cyd { to { stroke-dashoffset: -22; } }
+  @media (prefers-reduced-motion: reduce) { .cy-flow { animation: none; } }
+</style>

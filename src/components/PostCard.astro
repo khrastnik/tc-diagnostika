@@ -1,0 +1,16 @@
+---
+import Icon from './Icon.astro';
+import { u, SECTIONS, fmtDate, readingTime } from '../lib/url';
+interface Props { entry: any; delay?: number; }
+const { entry, delay = 0 } = Astro.props;
+const s = SECTIONS[entry.data.section as keyof typeof SECTIONS];
+---
+<a class="post reveal" style={`--d:${delay}s`} href={u(`/${entry.data.section}/${entry.id}/`)}>
+  <span class={`tag tag-${s.color}`}>{s.short}</span>
+  <h3>{entry.data.title}</h3>
+  <p>{entry.data.description}</p>
+  <div class="foot">
+    <span><Icon name="clock" />{readingTime(entry.body)} min</span>
+    <span><Icon name="refresh" />{fmtDate(entry.data.updated)}</span>
+  </div>
+</a>

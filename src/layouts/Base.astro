@@ -1,18 +1,15 @@
 ---
 import '../styles/global.css';
 import { u, SITE_NAME } from '../lib/url';
+import Icon from '../components/Icon.astro';
+import Logo from '../components/Logo.astro';
 
-interface Props {
-  title: string;
-  description: string;
-  jsonLd?: object[];
-  noindex?: boolean;
-}
+interface Props { title: string; description: string; jsonLd?: object[]; noindex?: boolean; }
 const { title, description, jsonLd = [], noindex = false } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
-const fullTitle = title === SITE_NAME ? title : `${title} | ${SITE_NAME}`;
+const fullTitle = title === SITE_NAME ? `${SITE_NAME}: toplotne črpalke, razložene po domače` : `${title} | ${SITE_NAME}`;
 const path = Astro.url.pathname;
-const nav = [
+const nav: [string, string][] = [
   ['/kako-deluje/', 'Kako deluje'],
   ['/zakaj-se-kvarijo/', 'Zakaj se kvarijo'],
   ['/aktualno/', 'Aktualno'],
@@ -24,7 +21,9 @@ const nav = [
 <html lang="sl">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="color-scheme" content="light" />
   <title>{fullTitle}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={canonical} />
@@ -34,33 +33,86 @@ const nav = [
   <meta property="og:type" content="website" />
   <meta property="og:url" content={canonical} />
   <meta property="og:locale" content="sl_SI" />
+  <meta property="og:site_name" content={SITE_NAME} />
   <link rel="icon" href={u('/favicon.svg')} type="image/svg+xml" />
   <link rel="sitemap" href={u('/sitemap-index.xml')} />
+  <script is:inline>document.documentElement.classList.add('js')</script>
   {jsonLd.map((d) => <script type="application/ld+json" set:html={JSON.stringify(d)} />)}
 </head>
 <body>
   <a class="skip" href="#vsebina">Preskoči na vsebino</a>
-  <header class="site">
-    <div class="wrap">
-      <a class="brand" href={u('/')}>TC <span>diagnostika</span></a>
-      <nav class="main" aria-label="Glavni meni">
+  <header class="site-header" data-open="false">
+    <div class="container bar">
+      <a class="logo" href={u('/')} aria-label={`${SITE_NAME}, domov`}><Logo /><span>TC <b>diagnostika</b></span></a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="glavni-meni">
+        <span class="sr-only">Meni</span>
+        <Icon name="menu" class="i-open" /><Icon name="close" class="i-close" />
+      </button>
+      <nav class="main-nav" id="glavni-meni" aria-label="Glavni meni">
         <ul>
           {nav.map(([href, label]) => (
-            <li><a href={u(href)} aria-current={path.startsWith(u(href)) ? 'page' : undefined}>{label}</a></li>
+            <li><a href={u(href)} aria-current={path.startsWith(u(href)) ? 'page' : undefined}><span class="dot" />{label}</a></li>
           ))}
         </ul>
       </nav>
     </div>
   </header>
-  <main id="vsebina" class="wrap">
+
+  <main id="vsebina">
     <slot />
   </main>
-  <footer class="site">
-    <div class="wrap">
-      <p><strong>Odgovornost:</strong> vsebina je splošna informacija in ne nadomesti strokovnega svetovanja. Stran ne ponuja storitev servisa. Posegov v hladilni krog ne izvajajte sami: to sme le pooblaščeno podjetje s spričevalom za F-pline.</p>
-      <p><a href={u('/o-meni/')}>O meni in kontakt</a> · <a href={u('/zasebnost/')}>Zasebnost</a> · <a href={u('/slovar/')}>Slovar</a></p>
-      <p>© {new Date().getFullYear()} {SITE_NAME}</p>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a class="logo" href={u('/')}><Logo /><span>TC <b>diagnostika</b></span></a>
+          <p class="disclaimer">Vsebina je splošna informacija in ne nadomesti strokovnega svetovanja. Posegov v hladilni krog ne izvajajte sami: to sme le pooblaščeno podjetje s spričevalom za F-pline.</p>
+        </div>
+        <div>
+          <h2>Vsebina</h2>
+          <ul>
+            <li><a href={u('/kako-deluje/')}>Kako deluje</a></li>
+            <li><a href={u('/zakaj-se-kvarijo/')}>Zakaj se kvarijo</a></li>
+            <li><a href={u('/aktualno/')}>Aktualno</a></li>
+            <li><a href={u('/slovar/')}>Slovar pojmov</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Stran</h2>
+          <ul>
+            <li><a href={u('/o-meni/')}>O meni in kontakt</a></li>
+            <li><a href={u('/zasebnost/')}>Zasebnost</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© {new Date().getFullYear()} {SITE_NAME}</span>
+        <span>Brez piškotkov · brez sledilnikov</span>
+      </div>
     </div>
   </footer>
+
+  <script>
+    const header = document.querySelector<HTMLElement>('.site-header')!;
+    const btn = header.querySelector<HTMLButtonElement>('.nav-toggle')!;
+    const setOpen = (open: boolean) => {
+      header.dataset.open = String(open);
+      btn.setAttribute('aria-expanded', String(open));
+    };
+    btn.addEventListener('click', () => setOpen(header.dataset.open !== 'true'));
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setOpen(false); });
+    matchMedia('(min-width: 900px)').addEventListener('change', () => setOpen(false));
+
+    const els = document.querySelectorAll<HTMLElement>('.reveal');
+    if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const io = new IntersectionObserver((entries) => {
+        for (const e of entries) if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+      els.forEach((el) => io.observe(el));
+    } else {
+      els.forEach((el) => el.classList.add('in'));
+    }
+  </script>
 </body>
 </html>

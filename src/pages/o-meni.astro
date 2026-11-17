@@ -1,16 +1,29 @@
 ---
 import Base from '../layouts/Base.astro';
-import { u } from '../lib/url';
+import Icon from '../components/Icon.astro';
+import Crumbs from '../components/Crumbs.astro';
 ---
 <Base title="O meni" description="Kdo piše stran TC diagnostika, zakaj in kako me kontaktirate.">
-  <nav class="crumbs" aria-label="Drobtinice"><ol><li><a href={u('/')}>Domov</a></li><li>O meni</li></ol></nav>
-  <h1>O meni</h1>
-  <p class="lead">Sem Klemen in pripravljam samostojno dejavnost diagnostike toplotnih črpalk.</p>
-  <p>To stran pišem, ker lastniki toplotnih črpalk ob težavah večinoma naletijo le na forumske niti z nasprotujočimi si nasveti. Tu zbiram razlage o tem, kako črpalke delujejo, zakaj se kvarijo in kaj je aktualno pri subvencijah in predpisih, napisane razumljivo in z navedenimi viri.</p>
-  <h2>Kaj ta stran ni</h2>
-  <p>Stran trenutno <strong>ne ponuja servisnih storitev</strong>. Ne objavljam navodil za posege v hladilni krog (polnjenje, praznjenje, spajkanje): to sme izvajati le pooblaščeno podjetje s spričevalom za F-pline.</p>
-  <h2>Kontakt</h2>
-  <p>Vprašanja, popravki in predlogi tem: odprite <a href="https://github.com/khrastnik/tc-diagnostika/issues" rel="noopener">vprašanje na GitHubu</a>. E-poštni naslov na lastni domeni bo objavljen, ko bo domena kupljena.</p>
-  <h2>Podatki o izdajatelju</h2>
-  <p>Fizična oseba, nekomercialna informativna stran. Ko bo stran postala poslovna, bodo tu navedeni firma, sedež, e-pošta in matična številka.</p>
+  <header class="page-head c-teal">
+    <div class="container">
+      <Crumbs items={[['O meni']]} />
+      <h1 style="margin-top:1.25rem">O meni</h1>
+      <p class="lead">Sem Klemen in pripravljam samostojno dejavnost diagnostike toplotnih črpalk.</p>
+    </div>
+  </header>
+  <div class="page-body">
+    <div class="container" style="max-width:calc(var(--readw) + 3rem)">
+      <div class="prose">
+        <p>To stran pišem, ker lastniki toplotnih črpalk ob težavah večinoma naletijo le na forumske niti z nasprotujočimi si nasveti. Tu zbiram razlage o tem, kako črpalke delujejo, zakaj se kvarijo in kaj je aktualno pri subvencijah in predpisih, napisane razumljivo in z navedenimi viri.</p>
+        <h2>Kaj ta stran ni</h2>
+        <p>Stran trenutno <strong>ne ponuja servisnih storitev</strong>. Ne objavljam navodil za posege v hladilni krog (polnjenje, praznjenje, spajkanje): to sme izvajati le pooblaščeno podjetje s spričevalom za F-pline.</p>
+        <h2>Podatki o izdajatelju</h2>
+        <p>Fizična oseba, nekomercialna informativna stran. Ko bo stran postala poslovna, bodo tu navedeni firma, sedež, e-pošta in matična številka.</p>
+      </div>
+      <aside class="callout callout-teal">
+        <Icon name="mail" />
+        <div><h2>Kontakt</h2><p>Vprašanja, popravki in predlogi tem: odprite <a href="https://github.com/khrastnik/tc-diagnostika/issues" rel="noopener">vprašanje na GitHubu</a>. E-poštni naslov na lastni domeni bo objavljen, ko bo domena kupljena.</p></div>
+      </aside>
+    </div>
+  </div>
 </Base>

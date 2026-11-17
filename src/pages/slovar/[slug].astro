@@ -1,31 +1,51 @@
 ---
 import { getCollection, render } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import PostCard from '../../components/PostCard.astro';
 import { u, fmtDate } from '../../lib/url';
 export async function getStaticPaths() {
   const terms = await getCollection('slovar');
-  return terms.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+  return terms.map((entry) => ({ params: { slug: entry.id }, props: { entry, terms } }));
 }
-const { entry } = Astro.props;
+const { entry, terms } = Astro.props;
 const { Content } = await render(entry);
-const usedIn = (await getCollection('clanki', (a) => a.data.terms?.includes(entry.id) ?? false));
+const usedIn = await getCollection('clanki', (a) => a.data.terms?.includes(entry.id) ?? false);
+const others = terms.filter((t) => t.id !== entry.id).sort((a, b) => a.data.title.localeCompare(b.data.title, 'sl'));
 const abs = (p: string) => new URL(u(p), Astro.site).href;
-const jsonLd = [{
-  '@context': 'https://schema.org', '@type': 'BreadcrumbList',
-  itemListElement: [
+const jsonLd = [
+  { '@context': 'https://schema.org', '@type': 'DefinedTerm', name: entry.data.title, description: entry.data.description, inDefinedTermSet: abs('/slovar/') },
+  { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: [
     { '@type': 'ListItem', position: 1, name: 'Domov', item: abs('/') },
     { '@type': 'ListItem', position: 2, name: 'Slovar', item: abs('/slovar/') },
     { '@type': 'ListItem', position: 3, name: entry.data.title },
-  ],
-}];
+  ] },
+];
 ---
 <Base title={`${entry.data.title}: kaj pomeni`} description={entry.data.description} jsonLd={jsonLd}>
-  <nav class="crumbs" aria-label="Drobtinice"><ol><li><a href={u('/')}>Domov</a></li><li><a href={u('/slovar/')}>Slovar</a></li><li>{entry.data.title}</li></ol></nav>
-  <h1>{entry.data.title}</h1>
-  <p class="lead">{entry.data.description}</p>
-  <div class="prose"><Content /></div>
-  <p class="meta">Posodobljeno {fmtDate(entry.data.updated)}</p>
+  <header class="article-head">
+    <div class="container" style="max-width:calc(var(--readw) + 3rem)">
+      <Crumbs items={[['Slovar', '/slovar/'], [entry.data.title]]} />
+      <div style="margin-top:1.25rem"><span class="tag tag-teal">Pojem</span></div>
+      <h1>{entry.data.title}</h1>
+      <p class="desc" style="margin:0">{entry.data.description}</p>
+    </div>
+  </header>
+  <div class="article-body">
+    <div class="container" style="max-width:calc(var(--readw) + 3rem)">
+      <div class="prose"><Content /></div>
+      <p class="byline"><span><Icon name="refresh" />Posodobljeno {fmtDate(entry.data.updated)}</span></p>
+      <h2 class="subhead">Drugi pojmi</h2>
+      <ul class="chips">{others.map((t) => <li><a class="chip" href={u(`/slovar/${t.id}/`)}><Icon name="book" />{t.data.title}</a></li>)}</ul>
+    </div>
+  </div>
   {usedIn.length > 0 && (
-    <section><h2>Kje se pojem pojavi</h2><ul>{usedIn.map((a) => <li><a href={u(`/${a.data.section}/${a.id}/`)}>{a.data.title}</a></li>)}</ul></section>
+    <section class="section section-alt">
+      <div class="container">
+        <div class="section-head"><div><h2>Kje se pojem pojavi</h2></div></div>
+        <div class="posts three">{usedIn.map((a, i) => <PostCard entry={a} delay={i * 0.08} />)}</div>
+      </div>
+    </section>
   )}
 </Base>

@@ -1,7 +1,10 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
-import { u, SECTIONS, fmtDate, type SectionKey } from '../../lib/url';
+import Icon from '../../components/Icon.astro';
+import Crumbs from '../../components/Crumbs.astro';
+import PostCard from '../../components/PostCard.astro';
+import { SECTIONS, type SectionKey } from '../../lib/url';
 
 export function getStaticPaths() {
   return Object.keys(SECTIONS).map((section) => ({ params: { section } }));
@@ -12,20 +15,25 @@ const items = (await getCollection('clanki', (a) => a.data.section === section))
   .sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
 ---
 <Base title={s.title} description={s.intro}>
-  <nav class="crumbs" aria-label="Drobtinice"><ol><li><a href={u('/')}>Domov</a></li><li>{s.title}</li></ol></nav>
-  <h1>{s.title}</h1>
-  <p class="lead">{s.intro}</p>
-  {items.length === 0 ? (
-    <p>Prvi članki v tem razdelku so v pripravi.</p>
-  ) : (
-    <ul class="list">
-      {items.map((a) => (
-        <li>
-          <a href={u(`/${section}/${a.id}/`)}>{a.data.title}</a>
-          <p>{a.data.description}</p>
-          <p class="meta">Posodobljeno {fmtDate(a.data.updated)}</p>
-        </li>
-      ))}
-    </ul>
-  )}
+  <header class={`page-head c-${s.color}`}>
+    <div class="container">
+      <Crumbs items={[[s.title]]} />
+      <div class="row" style="margin-top:1.25rem"><span class="icon-badge"><Icon name={s.icon} /></span><span class={`tag tag-${s.color}`}>{items.length} {items.length === 1 ? 'članek' : items.length === 2 ? 'članka' : items.length < 5 && items.length > 0 ? 'članki' : 'člankov'}</span></div>
+      <h1>{s.title}</h1>
+      <p class="lead">{s.intro}</p>
+    </div>
+  </header>
+  <section class="section" style="padding-top:2rem">
+    <div class="container">
+      {items.length === 0 ? (
+        <div class="empty reveal">
+          <Icon name="calendar" />
+          <h2>Prvi članki so v pripravi</h2>
+          <p>Tu bodo subvencije, predpisi in cene, vsak z datumom posodobitve in povezavo na uradni vir.</p>
+        </div>
+      ) : (
+        <div class="posts three">{items.map((a, i) => <PostCard entry={a} delay={(i % 3) * 0.08} />)}</div>
+      )}
+    </div>
+  </section>
 </Base>

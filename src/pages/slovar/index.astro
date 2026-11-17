@@ -1,14 +1,28 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import Crumbs from '../../components/Crumbs.astro';
 import { u } from '../../lib/url';
 const terms = (await getCollection('slovar')).sort((a, b) => a.data.title.localeCompare(b.data.title, 'sl'));
 ---
 <Base title="Slovar pojmov" description="Kratke razlage pojmov o toplotnih črpalkah: kompresor, uparjalnik, hladivo, odtaljevanje in drugi.">
-  <nav class="crumbs" aria-label="Drobtinice"><ol><li><a href={u('/')}>Domov</a></li><li>Slovar</li></ol></nav>
-  <h1>Slovar pojmov</h1>
-  <p class="lead">Ena stran na pojem, kratek odgovor in povezava naprej.</p>
-  <ul class="list">
-    {terms.map((t) => <li><a href={u(`/slovar/${t.id}/`)}>{t.data.title}</a><p>{t.data.description}</p></li>)}
-  </ul>
+  <header class="page-head c-teal">
+    <div class="container">
+      <Crumbs items={[['Slovar']]} />
+      <div class="row" style="margin-top:1.25rem"><span class="icon-badge"><Icon name="book" /></span><span class="tag tag-teal">{terms.length} pojmov</span></div>
+      <h1>Slovar pojmov</h1>
+      <p class="lead">Ena stran na pojem, kratek odgovor in povezava naprej.</p>
+    </div>
+  </header>
+  <section class="section" style="padding-top:2rem">
+    <div class="container az">
+      {terms.map((t, i) => (
+        <a class="term-tile reveal" style={`--d:${(i % 3) * 0.06}s`} href={u(`/slovar/${t.id}/`)}>
+          <span class="letter">{t.data.title[0]}</span>
+          <div><h3>{t.data.title}</h3><p>{t.data.description}</p></div>
+        </a>
+      ))}
+    </div>
+  </section>
 </Base>

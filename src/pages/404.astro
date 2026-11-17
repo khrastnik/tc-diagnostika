@@ -1,8 +1,18 @@
 ---
 import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
 import { u } from '../lib/url';
 ---
 <Base title="Stran ne obstaja" description="Iskane strani ni bilo mogoče najti." noindex>
-  <h1>Te strani ni</h1>
-  <p>Morda je bila premaknjena. Pojdite na <a href={u('/')}>domačo stran</a> ali v <a href={u('/slovar/')}>slovar</a>.</p>
+  <section class="section">
+    <div class="container" style="max-width:36rem;text-align:center">
+      <p class="tag tag-warm" style="margin:0 auto">Napaka 404</p>
+      <h1 style="font-size:clamp(2rem,6vw,3rem);margin:1rem 0 .75rem">Te strani ni</h1>
+      <p style="color:var(--muted);margin:0 0 1.5rem">Morda je bila premaknjena ali preimenovana.</p>
+      <div class="hero-actions" style="justify-content:center">
+        <a class="btn btn-primary" href={u('/')}>Na domačo stran <Icon name="arrow" /></a>
+        <a class="btn btn-ghost" href={u('/slovar/')}>Slovar</a>
+      </div>
+    </div>
+  </section>
 </Base>

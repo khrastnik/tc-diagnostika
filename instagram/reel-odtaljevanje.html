@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="sl"><head><meta charset="utf-8">
+<style>
+@font-face { font-family: PJ; src: url("file:///home/user/tc-diagnostika/node_modules/@fontsource-variable/plus-jakarta-sans/files/plus-jakarta-sans-latin-wght-normal.woff2") format("woff2"); font-weight: 200 800; unicode-range: U+0000-00FF; }
+@font-face { font-family: PJ; src: url("file:///home/user/tc-diagnostika/node_modules/@fontsource-variable/plus-jakarta-sans/files/plus-jakarta-sans-latin-ext-wght-normal.woff2") format("woff2"); font-weight: 200 800; unicode-range: U+0100-024F, U+2000-206F, U+20AC; }
+:root { --T: 21s; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0e1f1a; font-family: PJ, sans-serif; color: #fff; }
+.stage { position: relative; width: 1080px; height: 1920px; overflow: hidden;
+  background: radial-gradient(900px 700px at 85% 5%, rgba(232,96,60,.35), transparent 60%), radial-gradient(900px 800px at 0% 100%, rgba(19,160,127,.45), transparent 60%), #0e1f1a; }
+.brand { position: absolute; top: 90px; left: 80px; display: flex; align-items: center; gap: 18px; font-weight: 800; font-size: 40px; letter-spacing: -.02em; }
+.brand i { width: 58px; height: 58px; border-radius: 18px; background: linear-gradient(135deg,#0a7d65,#13a07f); display: grid; place-items: center; font-style: normal; font-size: 30px; }
+.brand b { color: #6ed8b8; }
+.scene { position: absolute; left: 80px; right: 80px; top: 230px; opacity: 0; animation: var(--T) linear both; }
+.scene h1 { font-size: 104px; line-height: 1.02; font-weight: 800; letter-spacing: -.04em; }
+.scene h1 em { font-style: normal; color: #ff8a65; }
+.scene h1 .ok { color: #6ed8b8; }
+.scene p { margin-top: 28px; font-size: 50px; line-height: 1.25; color: #c9d6d1; font-weight: 600; }
+.list { margin-top: 40px; display: grid; gap: 22px; }
+.list div { display: flex; gap: 22px; align-items: center; font-size: 52px; font-weight: 700; background: rgba(255,255,255,.08); border: 2px solid rgba(255,255,255,.14); border-radius: 26px; padding: 22px 28px; }
+.list span { width: 64px; height: 64px; flex: none; border-radius: 18px; display: grid; place-items: center; font-size: 40px; font-weight: 800; }
+.yes span { background: #13a07f; } .no span { background: #e8603c; }
+.unit { position: absolute; left: 140px; width: 800px; top: 1010px; }
+.unit svg { width: 100%; height: auto; overflow: visible; }
+.cta { position: absolute; left: 80px; right: 80px; top: 600px; text-align: center; opacity: 0; animation: var(--T) linear both; }
+.cta .logo { width: 180px; height: 180px; margin: 0 auto 40px; border-radius: 52px; background: linear-gradient(135deg,#0a7d65,#13a07f); display: grid; place-items: center; font-size: 96px; font-weight: 800; box-shadow: 0 30px 80px -20px rgba(19,160,127,.7); }
+.cta h2 { font-size: 120px; font-weight: 800; letter-spacing: -.04em; }
+.cta p { font-size: 52px; color: #c9d6d1; margin-top: 30px; line-height: 1.3; font-weight: 600; }
+.cta .pill { display: inline-block; margin-top: 60px; background: #fff; color: #0e1f1a; font-size: 46px; font-weight: 800; padding: 28px 50px; border-radius: 999px; }
+.progress { position: absolute; left: 80px; right: 80px; top: 60px; height: 8px; border-radius: 8px; background: rgba(255,255,255,.15); overflow: hidden; }
+.progress i { display: block; height: 100%; width: 100%; background: #6ed8b8; transform-origin: left; animation: prog var(--T) linear both; }
+@keyframes prog { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+/* scene timings (T = 21s) */
+.s1 { animation-name: s1; } @keyframes s1 { 0% { opacity: 0; transform: translateY(40px); } 2% { opacity: 1; transform: none; } 13% { opacity: 1; } 15% { opacity: 0; } 100% { opacity: 0; } }
+.s2 { animation-name: s2; } @keyframes s2 { 0%, 15% { opacity: 0; transform: translateY(40px); } 17% { opacity: 1; transform: none; } 29.5% { opacity: 1; } 31% { opacity: 0; } 100% { opacity: 0; } }
+.s3 { animation-name: s3; } @keyframes s3 { 0%, 31% { opacity: 0; transform: translateY(40px); } 33% { opacity: 1; transform: none; } 43% { opacity: 1; } 44.5% { opacity: 0; } 100% { opacity: 0; } }
+.s4 { animation-name: s4; } @keyframes s4 { 0%, 44.5% { opacity: 0; transform: translateY(40px); } 46.5% { opacity: 1; transform: none; } 51% { opacity: 1; } 52.4% { opacity: 0; } 100% { opacity: 0; } }
+.s5 { animation-name: s5; } @keyframes s5 { 0%, 52.4% { opacity: 0; transform: translateY(40px); } 54.4% { opacity: 1; transform: none; } 69.5% { opacity: 1; } 71% { opacity: 0; } 100% { opacity: 0; } }
+.s6 { animation-name: s6; } @keyframes s6 { 0%, 71% { opacity: 0; transform: translateY(40px); } 73% { opacity: 1; transform: none; } 86.5% { opacity: 1; } 88% { opacity: 0; } 100% { opacity: 0; } }
+.cta { animation-name: s7; } @keyframes s7 { 0%, 88% { opacity: 0; transform: scale(.94); } 90.5% { opacity: 1; transform: none; } 100% { opacity: 1; } }
+.unit { animation: unitv var(--T) linear both; } @keyframes unitv { 0% { opacity: 0; transform: translateY(60px); } 2.5% { opacity: 1; transform: none; } 86.5% { opacity: 1; } 88% { opacity: 0; } 100% { opacity: 0; } }
+.s2 .ok, .s4 .ok { display: inline-block; }
+
+/* unit internals */
+.fan { transform-box: view-box; transform-origin: 300px 350px; animation: fan var(--T) linear both; }
+@keyframes fan { 0%, 31% { transform: rotate(0deg); } 44.8% { transform: rotate(2160deg); } 100% { transform: rotate(2160deg); } }
+.frost { animation: frost var(--T) linear both; }
+@keyframes frost { 0%, 31% { opacity: 0; } 43% { opacity: .95; } 44.8% { opacity: .95; } 52.4% { opacity: 0; } 71% { opacity: 0; } 73% { opacity: 1; } 88% { opacity: 1; } 100% { opacity: 1; } }
+.steam { animation: steamv var(--T) linear both; }
+@keyframes steamv { 0% { opacity: 1; } 30% { opacity: 1; } 31.5% { opacity: 0; } 44.8% { opacity: 0; } 46% { opacity: 1; } 70% { opacity: 1; } 71.5% { opacity: 0; } 100% { opacity: 0; } }
+.steam path { animation: rise 1.6s ease-in-out infinite; }
+.steam path:nth-child(2) { animation-delay: -.5s; } .steam path:nth-child(3) { animation-delay: -1s; } .steam path:nth-child(4) { animation-delay: -.25s; }
+@keyframes rise { 0% { transform: translateY(40px); opacity: 0; } 40% { opacity: 1; } 100% { transform: translateY(-70px); opacity: 0; } }
+.drops { animation: dropsv var(--T) linear both; }
+@keyframes dropsv { 0%, 44.8% { opacity: 0; } 46% { opacity: 1; } 70% { opacity: 1; } 71.5% { opacity: 0; } 100% { opacity: 0; } }
+.drops circle { animation: drop .9s ease-in infinite; } .drops circle:nth-child(2) { animation-delay: -.3s; } .drops circle:nth-child(3) { animation-delay: -.6s; }
+@keyframes drop { 0% { transform: translateY(-20px); opacity: 0; } 30% { opacity: 1; } 100% { transform: translateY(40px); opacity: 0; } }
+.alert { animation: alertv var(--T) linear both; transform-box: view-box; transform-origin: 640px 90px; }
+@keyframes alertv { 0%, 71% { opacity: 0; transform: scale(.4); } 73% { opacity: 1; transform: scale(1.1); } 74% { transform: scale(1); } 88% { opacity: 1; } 100% { opacity: 1; } }
+.led { animation: led var(--T) steps(1) both; }
+@keyframes led { 0% { fill: #f59e0b; } 31% { fill: #22c55e; } 44.8% { fill: #f59e0b; } 52.4% { fill: #22c55e; } 71% { fill: #ef4444; } 100% { fill: #ef4444; } }
+</style></head>
+<body><div class="stage">
+  <div class="progress"><i></i></div>
+  <div class="brand"><i>T</i><span>Topl<b>olog</b></span></div>
+
+  <div class="scene s1"><h1>Iz vaše toplotne črpalke se pozimi <em>kadi?!</em></h1></div>
+  <div class="scene s2"><h1>Brez panike.<br>To ni dim.<br><span class="ok">To je para.</span></h1></div>
+  <div class="scene s3"><h1>Na zunanji enoti se nabira <span class="ok">ivje.</span></h1><p>Mrzle lamele »ulovijo« vlago iz zraka.</p></div>
+  <div class="scene s4"><h1>Črpalka ga za nekaj minut <span class="ok">stopi.</span></h1><p>Temu pravimo odtaljevanje.</p></div>
+  <div class="scene s5"><h1>To je <span class="ok">normalno:</span></h1>
+    <div class="list"><div class="yes"><span>✓</span>para iz enote</div><div class="yes"><span>✓</span>voda kaplja</div><div class="yes"><span>✓</span>ventilator nekaj minut stoji</div></div></div>
+  <div class="scene s6"><h1>To <em>ni</em> normalno:</h1>
+    <div class="list"><div class="no"><span>✕</span>enota je v celoti zaledenela</div><div class="no"><span>✕</span>led se ne stopi</div></div>
+    <p data-keep style="margin-top:40px;color:#fff;font-weight:800">→ pokličite serviserja.</p></div>
+
+  <div class="unit"><svg viewBox="0 0 800 640">
+    <g class="steam" fill="none" stroke="#cfe0ff" stroke-width="16" stroke-linecap="round" opacity=".9">
+      <path d="M200 120c-30-40 30-60 0-100"/><path d="M320 110c-30-40 30-60 0-100"/><path d="M440 120c-30-40 30-60 0-100"/><path d="M560 115c-30-40 30-60 0-100"/>
+    </g>
+    <rect x="40" y="150" width="720" height="400" rx="40" fill="#f7faf9"/>
+    <rect x="40" y="150" width="720" height="400" rx="40" fill="none" stroke="#cfd9d5" stroke-width="6"/>
+    <circle cx="300" cy="350" r="160" fill="#e6eeeb" stroke="#cfd9d5" stroke-width="6"/>
+    <g class="fan"><g transform="translate(300 350)">
+      <path d="M0 0C25-55 8-120-25-128C-42-85-34-34 0 0zM0 0C55 25 120 8 128-25C85-42 34-34 0 0zM0 0C-25 55-8 120 25 128C42 85 34 34 0 0zM0 0C-55-25-120-8-128 25C-85 42-34 34 0 0z" fill="#0a7d65"/>
+    </g></g>
+    <circle cx="300" cy="350" r="22" fill="#fff" stroke="#0a7d65" stroke-width="6"/>
+    <rect x="530" y="200" width="180" height="300" rx="16" fill="#e6eeeb"/>
+    <g stroke="#cfd9d5" stroke-width="8"><path d="M550 240h140M550 280h140M550 320h140M550 360h140M550 400h140M550 440h140"/></g>
+    <g class="frost">
+      <circle cx="300" cy="350" r="160" fill="#dbe8ff"/>
+      <rect x="530" y="200" width="180" height="300" rx="16" fill="#cfe0ff"/>
+      <rect x="40" y="150" width="720" height="400" rx="40" fill="#e9f1ff" opacity=".35"/>
+      <g fill="#fff"><circle cx="240" cy="290" r="12"/><circle cx="350" cy="260" r="9"/><circle cx="380" cy="400" r="12"/><circle cx="250" cy="430" r="10"/><circle cx="600" cy="260" r="10"/><circle cx="650" cy="380" r="12"/><circle cx="580" cy="450" r="8"/></g>
+      <path d="M200 240l20 30-20 30M410 300l-24 24 24 24M610 220l16 24-16 24" stroke="#fff" stroke-width="7" fill="none" stroke-linecap="round"/>
+    </g>
+    <circle class="led" cx="710" cy="520" r="12"/>
+    <rect x="90" y="550" width="40" height="30" rx="6" fill="#9fb1aa"/><rect x="670" y="550" width="40" height="30" rx="6" fill="#9fb1aa"/>
+    <g class="drops" fill="#7aa7ef"><circle cx="240" cy="600" r="10"/><circle cx="400" cy="606" r="10"/><circle cx="560" cy="600" r="10"/></g>
+    <g class="alert"><circle cx="640" cy="90" r="70" fill="#e8603c"/><path d="M640 50v50" stroke="#fff" stroke-width="16" stroke-linecap="round"/><circle cx="640" cy="128" r="10" fill="#fff"/></g>
+  </svg></div>
+
+  <div class="cta">
+    <div class="logo">T</div>
+    <h2>Toplolog</h2>
+    <p>Toplotne črpalke, razložene po domače.<br>Več o odtaljevanju na spletni strani.</p>
+    <div class="pill">Povezava v opisu ↗</div>
+  </div>
+</div></body></html>

@@ -2,6 +2,7 @@
 title: "Zrak-voda, zemlja-voda, voda-voda: razlike"
 description: "Tri glavne vrste toplotnih črpalk za ogrevanje hiše: od kod jemljejo toploto, koliko stane vgradnja in za koga je katera primerna."
 section: kako-deluje
+kategorija: primerjava
 pubDate: 2026-11-17
 updated: 2026-11-17
 terms: [uparjalnik]

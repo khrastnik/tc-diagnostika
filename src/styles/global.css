@@ -478,3 +478,15 @@ body.nav-open { overflow: hidden; }
 
 /* Animacije izven zaslona se ustavijo (manj dela za procesor in baterijo) */
 .anim-paused, .anim-paused * { animation-play-state: paused !important; }
+
+/* ---------- Kategorije (oznake, ne podstrani) ---------- */
+.tags { display: flex; flex-wrap: wrap; gap: .35rem; align-self: flex-start; }
+.post .tags .tag { align-self: auto; }
+.tag-cat { background: #fff; color: var(--ink-2); border: 1px solid var(--line); text-decoration: none; }
+.tag-cat svg { width: 13px; height: 13px; }
+a.tag-cat:hover { border-color: var(--brand); color: var(--brand-ink); }
+.cat-filter { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0 0 1.25rem; }
+.cat-filter button { display: inline-flex; align-items: center; gap: .4rem; font: inherit; font-size: .92rem; font-weight: 650; padding: .55rem 1rem; min-height: 44px; border-radius: 999px; border: 1px solid var(--line); background: #fff; color: var(--ink-2); cursor: pointer; transition: background .15s, border-color .15s, color .15s; }
+.cat-filter button svg { width: 16px; height: 16px; }
+.cat-filter button:hover { border-color: #c8d3cf; color: var(--ink); }
+.cat-filter button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }

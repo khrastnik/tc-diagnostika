@@ -1,12 +1,13 @@
 ---
 import Icon from './Icon.astro';
-import { u, SECTIONS, fmtDate, readingTime } from '../lib/url';
+import { u, SECTIONS, CATEGORIES, fmtDate, readingTime } from '../lib/url';
 interface Props { entry: any; delay?: number; }
 const { entry, delay = 0 } = Astro.props;
 const s = SECTIONS[entry.data.section as keyof typeof SECTIONS];
+const cat = entry.data.kategorija ? CATEGORIES[entry.data.kategorija as keyof typeof CATEGORIES] : null;
 ---
-<a class="post reveal" style={`--d:${delay}s`} href={u(`/${entry.data.section}/${entry.id}/`)}>
-  <span class={`tag tag-${s.color}`}>{s.short}</span>
+<a class="post reveal" style={`--d:${delay}s`} href={u(`/${entry.data.section}/${entry.id}/`)} data-cat={entry.data.kategorija ?? ''}>
+  <span class="tags"><span class={`tag tag-${s.color}`}>{s.short}</span>{cat && <span class="tag tag-cat"><Icon name={cat.icon} />{cat.label}</span>}</span>
   <h3>{entry.data.title}</h3>
   <p>{entry.data.description}</p>
   <div class="foot">

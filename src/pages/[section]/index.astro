@@ -5,7 +5,7 @@ import Icon from '../../components/Icon.astro';
 import PageHead from '../../components/PageHead.astro';
 import SectionTabs from '../../components/SectionTabs.astro';
 import PostCard from '../../components/PostCard.astro';
-import { SECTIONS, type SectionKey } from '../../lib/url';
+import { SECTIONS, CATEGORIES, type SectionKey, type CategoryKey } from '../../lib/url';
 
 export function getStaticPaths() {
   return Object.keys(SECTIONS).map((section) => ({ params: { section } }));
@@ -14,6 +14,7 @@ const section = Astro.params.section as SectionKey;
 const s = SECTIONS[section];
 const items = (await getCollection('clanki', (a) => a.data.section === section))
   .sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
+const cats = [...new Set(items.map((a) => a.data.kategorija).filter(Boolean))] as CategoryKey[];
 ---
 <Base title={s.title} description={s.intro}>
   <PageHead title={s.title} lead={s.intro} crumbs={[[s.title]]} art={section} color={s.color} icon={s.icon} tag={`${items.length} ${items.length === 1 ? 'članek' : items.length === 2 ? 'članka' : items.length > 0 && items.length < 5 ? 'članki' : 'člankov'}`} />
@@ -27,9 +28,31 @@ const items = (await getCollection('clanki', (a) => a.data.section === section))
           <p>Tu bodo subvencije, predpisi in cene, vsak z datumom posodobitve in povezavo na uradni vir.</p>
         </div>
       ) : (
+        <>
         <h2 class="sr-only">Članki v razdelku {s.title}</h2>
+        {cats.length > 0 && (
+          <div class="cat-filter" role="group" aria-label="Filtriraj po kategoriji">
+            <button type="button" data-f="" aria-pressed="true">Vse</button>
+            {cats.map((c) => <button type="button" data-f={c} aria-pressed="false"><Icon name={CATEGORIES[c].icon} />{CATEGORIES[c].label}</button>)}
+          </div>
+        )}
         <div class="posts three">{items.map((a, i) => <PostCard entry={a} delay={(i % 3) * 0.08} />)}</div>
+        </>
       )}
     </div>
   </section>
+  <script>
+    const box = document.querySelector<HTMLElement>('.cat-filter');
+    if (box) {
+      const btns = [...box.querySelectorAll<HTMLButtonElement>('button')];
+      const posts = [...document.querySelectorAll<HTMLElement>('.post')];
+      const apply = (f: string) => {
+        btns.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.f === f)));
+        posts.forEach((p) => { const hit = !f || p.dataset.cat === f; p.style.display = hit ? '' : 'none'; if (hit) p.classList.add('in'); });
+      };
+      btns.forEach((b) => b.addEventListener('click', () => { apply(b.dataset.f || ''); history.replaceState(null, '', b.dataset.f ? '#' + b.dataset.f : location.pathname); }));
+      const h = location.hash.slice(1);
+      if (h && btns.some((b) => b.dataset.f === h)) apply(h);
+    }
+  </script>
 </Base>

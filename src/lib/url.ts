@@ -41,6 +41,14 @@ export const SECTIONS = {
 
 export type SectionKey = keyof typeof SECTIONS;
 
+/** Kategorije so oznake na člankih, ne ločene podstrani. */
+export const CATEGORIES = {
+  primerjava: { label: 'Primerjava', icon: 'scale' },
+  zgodovina: { label: 'Zgodovina', icon: 'clock' },
+  zanimivosti: { label: 'Zanimivost', icon: 'bulb' },
+} as const;
+export type CategoryKey = keyof typeof CATEGORIES;
+
 export function fmtDate(d: Date): string {
   return d.toLocaleDateString('sl-SI', { day: 'numeric', month: 'long', year: 'numeric' });
 }

@@ -14,8 +14,10 @@ const section = Astro.params.section as SectionKey;
 const s = SECTIONS[section];
 const items = (await getCollection('clanki', (a) => a.data.section === section))
   .sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf());
-const used = new Set(items.flatMap((a) => a.data.kategorija));
-const cats = (Object.keys(CATEGORIES) as CategoryKey[]).filter((c) => used.has(c));
+const tagged = items.filter((a) => a.data.kategorija);
+const used = new Set(tagged.map((a) => a.data.kategorija));
+// Filter le, kadar ima smisel: vsaj 2 kategoriji in vsaj 4 označeni članki.
+const cats = used.size >= 2 && tagged.length >= 4 ? (Object.keys(CATEGORIES) as CategoryKey[]).filter((c) => used.has(c)) : [];
 ---
 <Base title={s.title} description={s.intro}>
   <PageHead title={s.title} lead={s.intro} crumbs={[[s.title]]} art={section} color={s.color} icon={s.icon} tag={`${items.length} ${items.length === 1 ? 'članek' : items.length === 2 ? 'članka' : items.length > 0 && items.length < 5 ? 'članki' : 'člankov'}`} />
@@ -34,10 +36,10 @@ const cats = (Object.keys(CATEGORIES) as CategoryKey[]).filter((c) => used.has(c
         {cats.length > 0 && (
           <div class="cat-filter" role="group" aria-label="Filtriraj po kategoriji">
             <button type="button" data-f="" aria-pressed="true">Vse</button>
-            {cats.map((c) => <button type="button" data-f={c} aria-pressed="false"><Icon name={CATEGORIES[c].icon} />{CATEGORIES[c].label}</button>)}
+            {cats.map((c) => <button type="button" data-f={c} aria-pressed="false">{CATEGORIES[c].label}</button>)}
           </div>
         )}
-        <div class="posts three">{items.map((a, i) => <PostCard entry={a} delay={(i % 3) * 0.08} />)}</div>
+        <div class="posts three">{items.map((a, i) => <PostCard entry={a} delay={(i % 3) * 0.08} show="category" />)}</div>
         </>
       )}
     </div>
@@ -49,7 +51,7 @@ const cats = (Object.keys(CATEGORIES) as CategoryKey[]).filter((c) => used.has(c
       const posts = [...document.querySelectorAll<HTMLElement>('.post')];
       const apply = (f: string) => {
         btns.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.f === f)));
-        posts.forEach((p) => { const hit = !f || (p.dataset.cat || '').split(' ').includes(f); p.style.display = hit ? '' : 'none'; if (hit) p.classList.add('in'); });
+        posts.forEach((p) => { const hit = !f || p.dataset.cat === f; p.style.display = hit ? '' : 'none'; if (hit) p.classList.add('in'); });
       };
       btns.forEach((b) => b.addEventListener('click', () => { apply(b.dataset.f || ''); history.replaceState(null, '', b.dataset.f ? '#' + b.dataset.f : location.pathname); }));
       const h = location.hash.slice(1);

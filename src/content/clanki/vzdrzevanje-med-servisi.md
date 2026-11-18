@@ -2,7 +2,6 @@
 title: "Kako lastnik skrbi za toplotno črpalko med servisi"
 description: "Kaj lahko lastnik med letnimi servisi opazi in na kaj pazi, da pravočasno pokliče serviserja. Brez orodja in brez posegov v napravo."
 section: vzdrzevanje
-kategorija: zima
 pubDate: 2026-11-17
 updated: 2026-11-17
 terms: [uparjalnik, odtaljevanje]

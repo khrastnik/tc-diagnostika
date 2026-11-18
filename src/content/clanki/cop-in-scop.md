@@ -2,7 +2,7 @@
 title: "Kaj sta COP in SCOP"
 description: "COP pove, koliko toplote dobite za kilovatno uro elektrike v enem trenutku, SCOP pa povprečje čez celo sezono. Kako ju brati na nalepki."
 section: kako-deluje
-kategorija: [zacetniki, stroski]
+kategorija: zacetniki
 pubDate: 2026-11-17
 updated: 2026-11-17
 related: [kako-deluje-toplotna-crpalka, vrste-toplotnih-crpalk]

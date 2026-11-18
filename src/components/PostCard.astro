@@ -1,13 +1,15 @@
 ---
 import Icon from './Icon.astro';
 import { u, SECTIONS, CATEGORIES, fmtDate, readingTime } from '../lib/url';
-interface Props { entry: any; delay?: number; }
-const { entry, delay = 0 } = Astro.props;
+interface Props { entry: any; delay?: number; show?: 'section' | 'category'; }
+const { entry, delay = 0, show = 'section' } = Astro.props;
 const s = SECTIONS[entry.data.section as keyof typeof SECTIONS];
-const cats = (entry.data.kategorija as (keyof typeof CATEGORIES)[]).slice(0, 2);
+const cat = entry.data.kategorija ? CATEGORIES[entry.data.kategorija as keyof typeof CATEGORIES] : null;
+const label = show === 'section' ? s.title : cat?.label;
+const color = show === 'section' ? s.color : 'muted';
 ---
-<a class="post reveal" style={`--d:${delay}s`} href={u(`/${entry.data.section}/${entry.id}/`)} data-cat={(entry.data.kategorija as string[]).join(' ')}>
-  <span class="tags"><span class={`tag tag-${s.color}`}>{s.short}</span>{cats.map((c) => <span class="tag tag-cat"><Icon name={CATEGORIES[c].icon} />{CATEGORIES[c].label}</span>)}</span>
+<a class="post reveal" style={`--d:${delay}s`} href={u(`/${entry.data.section}/${entry.id}/`)} data-cat={entry.data.kategorija ?? ''}>
+  {label && <span class={`eyebrow-text c-${color}`}>{label}</span>}
   <h3>{entry.data.title}</h3>
   <p>{entry.data.description}</p>
   <div class="foot">

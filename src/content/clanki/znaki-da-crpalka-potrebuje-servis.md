@@ -2,7 +2,6 @@
 title: "Znaki, da toplotna črpalka potrebuje servis"
 description: "Višji računi, nov hrup, pogosto vklapljanje, led na enoti ali padanje tlaka. Kateri znaki pomenijo, da je čas za servis, in kako nujno je."
 section: vzdrzevanje
-kategorija: varnost
 pubDate: 2026-11-17
 updated: 2026-11-17
 terms: [kompresor, uparjalnik, odtaljevanje, krivulja-ogrevanja, hladivo]

@@ -2,6 +2,7 @@
 title: "Koliko stane letni servis toplotne črpalke"
 description: "Letni servis toplotne črpalke v Sloveniji stane okvirno od 75 do 200 € z DDV. Kaj vpliva na ceno, kaj mora biti vključeno in na kaj paziti pri ponudbi."
 section: vzdrzevanje
+kategorija: primerjava
 pubDate: 2026-11-17
 updated: 2026-11-17
 terms: [uparjalnik, hladivo, zascitna-anoda]

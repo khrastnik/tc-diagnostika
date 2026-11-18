@@ -2,6 +2,7 @@
 title: "Subvencija Eko sklada za toplotno črpalko 2026"
 description: "Eko sklad pri zamenjavi starega kotla krije 50 % stroškov toplotne črpalke, do 4.500 € za zrak-voda in do 8.000 € za zemlja-voda. Pogoji in postopek."
 section: aktualno
+kategorija: stroski
 pubDate: 2026-11-17
 updated: 2026-11-17
 terms: [kompresor]

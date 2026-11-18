@@ -43,6 +43,10 @@ export type SectionKey = keyof typeof SECTIONS;
 
 /** Kategorije so oznake na člankih, ne ločene podstrani. */
 export const CATEGORIES = {
+  zacetniki: { label: 'Za začetnike', icon: 'leaf' },
+  stroski: { label: 'Stroški', icon: 'euro' },
+  zima: { label: 'Zima', icon: 'snow' },
+  varnost: { label: 'Varnost', icon: 'shield' },
   primerjava: { label: 'Primerjava', icon: 'scale' },
   zgodovina: { label: 'Zgodovina', icon: 'clock' },
   zanimivosti: { label: 'Zanimivost', icon: 'bulb' },

@@ -13,7 +13,8 @@ const clanki = defineCollection({
     sources: z.array(z.object({ name: z.string(), url: z.string().url() })).optional(),
     related: z.array(z.string()).optional(),
     terms: z.array(z.string()).optional(),
-    kategorija: z.enum(['zanimivosti', 'zgodovina', 'primerjava']).optional(),
+    kategorija: z.union([z.enum(['zacetniki', 'stroski', 'zima', 'varnost', 'primerjava', 'zgodovina', 'zanimivosti']), z.array(z.enum(['zacetniki', 'stroski', 'zima', 'varnost', 'primerjava', 'zgodovina', 'zanimivosti']))]).optional()
+      .transform((v) => (v === undefined ? [] : Array.isArray(v) ? v : [v])),
   }),
 });
 

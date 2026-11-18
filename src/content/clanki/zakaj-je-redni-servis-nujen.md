@@ -2,7 +2,7 @@
 title: "Zakaj toplotna črpalka potrebuje redni servis, tako kot avto"
 description: "Toplotna črpalka dela tisoče ur na leto. Brez rednega servisa pade izkoristek, rastejo računi in okvare. Zakaj je letni servis nujen."
 section: vzdrzevanje
-kategorija: primerjava
+kategorija: [primerjava, stroski]
 pubDate: 2026-11-17
 updated: 2026-11-17
 terms: [kompresor, uparjalnik, hladivo]

@@ -2,7 +2,7 @@
 title: "Zakaj toplotna črpalka pozimi odtaljuje"
 description: "Para iz zunanje enote, voda in tišina ventilatorja pozimi so normalni: črpalka odtaljuje led z uparjalnika. Zakaj se to zgodi in kdaj je težava."
 section: kako-deluje
-kategorija: zanimivosti
+kategorija: [zima, zanimivosti]
 pubDate: 2026-11-17
 updated: 2026-11-17
 terms: [odtaljevanje, uparjalnik, hladivo]

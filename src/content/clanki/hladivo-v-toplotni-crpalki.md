@@ -2,6 +2,7 @@
 title: "Hladivo v toplotni črpalki"
 description: "Kaj je hladivo, katera se uporabljajo (R32, R290, R410A) in zakaj ga lastnik nikoli ne doliva ali prazni sam."
 section: kako-deluje
+kategorija: varnost
 pubDate: 2026-11-17
 updated: 2026-11-17
 terms: [hladivo]

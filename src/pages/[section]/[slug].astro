@@ -19,7 +19,7 @@ const { entry, all } = Astro.props;
 const { Content } = await render(entry);
 const d = entry.data;
 const s = SECTIONS[d.section];
-const cat = d.kategorija ? CATEGORIES[d.kategorija] : null;
+const cats = d.kategorija;
 const siblings = all.filter((a) => a.data.section === d.section).sort((a, b) => a.data.pubDate.valueOf() - b.data.pubDate.valueOf() || a.id.localeCompare(b.id));
 const idx = siblings.findIndex((a) => a.id === entry.id);
 const prev = idx > 0 ? siblings[idx - 1] : null;
@@ -50,7 +50,7 @@ const jsonLd = [
       <div class="container ah-grid">
       <div>
         <Crumbs items={[[s.title, `/${d.section}/`], [d.title]]} />
-        <div class="tags" style="margin-top:1.25rem"><span class={`tag tag-${s.color}`}>{s.title}</span>{cat && <a class="tag tag-cat" href={u(`/${d.section}/#${d.kategorija}`)}><Icon name={cat.icon} />{cat.label}</a>}</div>
+        <div class="tags" style="margin-top:1.25rem"><span class={`tag tag-${s.color}`}>{s.title}</span>{cats.map((c) => <a class="tag tag-cat" href={u(`/${d.section}/#${c}`)}><Icon name={CATEGORIES[c].icon} />{CATEGORIES[c].label}</a>)}</div>
         <h1>{d.title}</h1>
         <p class="desc">{d.description}</p>
         <div class="byline">

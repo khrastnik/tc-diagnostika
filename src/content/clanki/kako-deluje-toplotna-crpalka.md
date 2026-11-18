@@ -2,6 +2,7 @@
 title: "Kako deluje toplotna črpalka: razlaga brez žargona"
 description: "Toplotna črpalka toploto ne proizvaja, ampak jo prenaša od zunaj v hišo. Kako to deluje, razloženo s primerjavo s hladilnikom."
 section: kako-deluje
+kategorija: zacetniki
 pubDate: 2026-11-17
 updated: 2026-11-17
 terms: [kompresor, uparjalnik, hladivo]

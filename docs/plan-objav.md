@@ -8,7 +8,7 @@ Ko je članek objavljen, se vrstica odkljuka (`[x]`) in doda datum ter slug.
 
 Zima (november–februar, 2 članka na teden: ponedeljek + četrtek)
 
-- [ ] 1. čet 19. 11. 2026 — Zakaj se kvarijo — Zakaj se toplotna črpalka pogosto vklaplja in izklaplja (taktiranje) — pojmi: taktiranje, inverter
+- [x] 1. čet 19. 11. 2026 — Zakaj se kvarijo — Zakaj se toplotna črpalka pogosto vklaplja in izklaplja (taktiranje) — pojmi: taktiranje, inverter — objavljeno 19. 11. 2026, slug: zakaj-se-crpalka-pogosto-vklaplja-in-izklaplja
 - [ ] 2. pon 23. 11. 2026 — Zakaj se kvarijo — Hrup toplotne črpalke: kdaj je normalen in kdaj ne — pojmi: štiripotni ventil, ventilator zunanje enote
 - [ ] 3. čet 26. 11. 2026 — Vzdrževanje — Sneg, led in veter: na kaj paziti pri zunanji enoti pozimi — pojmi: kondenzat, grelni kabel
 - [ ] 4. pon 30. 11. 2026 — Kako deluje — Zgodovina toplotne črpalke: od lorda Kelvina do danes — pojmi: termodinamika, Carnotov krožni proces — kategorija: zanimivosti

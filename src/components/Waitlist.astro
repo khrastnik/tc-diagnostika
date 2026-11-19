@@ -11,20 +11,19 @@ const enabled = WAITLIST_ACTION.length > 0;
     <div class="wl-copy">
       <span class="tag tag-teal">Obvestila</span>
       <h2 id={`${id}-t`}>Pregledi toplotnih črpalk prihajajo</h2>
-      <p>Pripravljam neodvisne preglede toplotnih črpalk. Pustite e-pošto in obvestim vas, ko začnem v vaši regiji. Brez oglasov, brez prodaje naprav, odjava z enim klikom.</p>
+      <p>Pripravljam neodvisne preglede toplotnih črpalk. Pustite e-pošto in obvestim vas, ko začnem v vaši regiji. Brez oglasov, brez prodaje naprav, odjava kadarkoli.</p>
       <ul class="wl-points">
         <li><Icon name="check" />Eno obvestilo ob začetku, nato redko</li>
         <li><Icon name="check" />Podatki samo za ta namen</li>
       </ul>
     </div>
     <form class="wl-form" method="POST" action={WAITLIST_ACTION} data-wl novalidate>
-      <label class="field"><span>E-pošta *</span><input type="email" name="EMAIL" required autocomplete="email" inputmode="email" placeholder="ime@primer.si" /></label>
+      <label class="field"><span>E-pošta *</span><input type="email" name="email" required autocomplete="email" inputmode="email" placeholder="ime@primer.si" /></label>
       <label class="field"><span>Regija (neobvezno)</span>
-        <select name="REGIJA"><option value="">Izberite regijo</option>{REGIJE.map((r) => <option>{r}</option>)}</select>
+        <select name="regija"><option value="">Izberite regijo</option>{REGIJE.map((r) => <option>{r}</option>)}</select>
       </label>
-      <input type="text" name="email_address_check" value="" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
-      <input type="hidden" name="locale" value="sl" />
-      <label class="check wl-consent"><input type="checkbox" name="OPT_IN" value="1" required /><span>Strinjam se, da mi Toplolog pošilja obvestila o začetku pregledov. Več v <a href={u('/zasebnost/')}>politiki zasebnosti</a>.</span></label>
+      <input type="text" name="website" value="" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      <label class="check wl-consent"><input type="checkbox" name="soglasje" value="1" required /><span>Strinjam se, da mi Toplolog pošilja obvestila o začetku pregledov. Več v <a href={u('/zasebnost/')}>politiki zasebnosti</a>.</span></label>
       <button class="btn btn-primary" type="submit">Obvestite me <Icon name="arrow" /></button>
       <p class="wl-status" role="status" aria-live="polite"></p>
     </form>
@@ -40,12 +39,16 @@ const enabled = WAITLIST_ACTION.length > 0;
         form.classList.add('validated');
         if (!form.checkValidity()) { status.textContent = 'Vpišite e-pošto in potrdite soglasje.'; status.dataset.state = 'error'; return; }
         btn.disabled = true; status.dataset.state = ''; status.textContent = 'Pošiljam …';
-        const body = new FormData(form);
+        const fd = new FormData(form);
+        const body = JSON.stringify({ email: fd.get('email'), regija: fd.get('regija') || null, soglasje: fd.get('soglasje') === '1', website: fd.get('website') || '' });
         try {
-          await fetch(form.action, { method: 'POST', body, mode: 'no-cors' });
-          form.innerHTML = '<div class="wl-done"><b>Hvala!</b><span>Preverite e-pošto in potrdite prijavo s klikom na povezavo.</span></div>';
-        } catch {
-          btn.disabled = false; status.dataset.state = 'error'; status.textContent = 'Pošiljanje ni uspelo. Poskusite znova.';
+          const res = await fetch(form.getAttribute('action')!, { method: 'POST', headers: { 'content-type': 'application/json' }, body });
+          const json = await res.json().catch(() => ({}));
+          if (!res.ok || !json.ok) throw new Error(json.error || res.status);
+          form.innerHTML = '<div class="wl-done"><b>Hvala!</b><span>Prijava je zabeležena. Obvestim vas, ko začnem s pregledi.</span></div>';
+        } catch (err) {
+          btn.disabled = false; status.dataset.state = 'error';
+          status.textContent = String(err).includes('email') ? 'Preverite e-poštni naslov.' : 'Pošiljanje ni uspelo. Poskusite znova.';
         }
       });
     });

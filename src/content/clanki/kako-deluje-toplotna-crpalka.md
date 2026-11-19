@@ -1,5 +1,5 @@
 ---
-title: "Kako deluje toplotna črpalka: razlaga brez žargona"
+title: "Kako deluje toplotna črpalka"
 description: "Toplotna črpalka toploto ne proizvaja, ampak jo prenaša od zunaj v hišo. Kako to deluje, razloženo s primerjavo s hladilnikom."
 section: kako-deluje
 kategorija: zacetniki

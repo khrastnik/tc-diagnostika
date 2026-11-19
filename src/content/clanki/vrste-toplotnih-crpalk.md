@@ -1,5 +1,5 @@
 ---
-title: "Zrak-voda, zemlja-voda, voda-voda: razlike"
+title: "V čem se razlikujejo črpalke zrak-voda, zemlja-voda in voda-voda"
 description: "Tri glavne vrste toplotnih črpalk za ogrevanje hiše: od kod jemljejo toploto, koliko stane vgradnja in za koga je katera primerna."
 section: kako-deluje
 kategorija: primerjava

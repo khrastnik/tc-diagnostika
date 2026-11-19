@@ -8,5 +8,7 @@
     "directory": "./dist",
     "not_found_handling": "404-page",
     "html_handling": "auto-trailing-slash"
-  }
+  },
+  // Predogledi vej (Workers Builds: npx wrangler preview); prazen blok je dovolj.
+  "previews": {}
 }

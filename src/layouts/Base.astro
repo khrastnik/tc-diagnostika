@@ -4,7 +4,8 @@ import { u, SITE_NAME } from '../lib/url';
 import Icon from '../components/Icon.astro';
 import Logo from '../components/Logo.astro';
 import fontLatin from '@fontsource-variable/plus-jakarta-sans/files/plus-jakarta-sans-latin-wght-normal.woff2?url';
-import fontLatinExt from '@fontsource-variable/plus-jakarta-sans/files/plus-jakarta-sans-latin-ext-wght-normal.woff2?url';
+import serifLatin from '@fontsource-variable/literata/files/literata-latin-wght-normal.woff2?url';
+import serifLatinExt from '@fontsource-variable/literata/files/literata-latin-ext-wght-normal.woff2?url';
 
 interface Props { title: string; description: string; jsonLd?: object[]; noindex?: boolean; ogType?: 'website' | 'article'; image?: string; }
 const { title, description, jsonLd = [], noindex = false, ogType = 'website', image = '/og.png' } = Astro.props;
@@ -44,7 +45,8 @@ const nav: { href: string; label: string; icon: string; color: string; desc: str
   <meta property="og:image:alt" content="Toplolog: toplotne črpalke, razložene po domače" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preload" href={fontLatin} as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href={fontLatinExt} as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href={serifLatin} as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href={serifLatinExt} as="font" type="font/woff2" crossorigin />
   <link rel="icon" href={u('/favicon.svg')} type="image/svg+xml" />
   <link rel="apple-touch-icon" href={u('/apple-touch-icon.png')} />
   <link rel="sitemap" href={u('/sitemap-index.xml')} />

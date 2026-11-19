@@ -25,6 +25,10 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npm run build
+      # Po selitvi na lastno domeno: nastavi spremenljivko repozitorija REDIRECT_TO (npr. https://toplolog.si)
+      # in GitHub Pages bo namesto strani objavljal preusmeritve na isto pot na novi domeni.
+      - if: ${{ vars.REDIRECT_TO != '' }}
+        run: node scripts/build-redirects.mjs dist "${{ vars.REDIRECT_TO }}"
       - uses: actions/upload-pages-artifact@v3
         with:
           path: dist

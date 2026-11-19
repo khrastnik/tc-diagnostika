@@ -6,6 +6,10 @@ Reels in objave za Instagram profil. Ta mapa se ne objavi na spletni strani.
 - `reel-*.mp4` – izdelan video.
 - `reel-*-opis.txt` – opis, ključniki in namigi za objavo.
 - `render-reel.cjs` – upodabljalnik: animacijo zajame sličico za sličico.
+- `reel-lib.js` – časovnica v sekundah (prizori, stagger, pop, shake, count, loop).
+- `reel-predloga.html` – predloga za nov Reel.
+
+Pravila in postopek: `.claude/skills/toplolog-reels/SKILL.md`.
 
 Izdelava videa (iz korena repozitorija):
 

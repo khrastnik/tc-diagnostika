@@ -14,5 +14,5 @@ export default defineConfig({
   trailingSlash: 'always',
   build: { inlineStylesheets: 'always' },
   compressHTML: true,
-  integrations: [sitemap()],
+  integrations: [sitemap({ filter: (page) => !page.includes('/zakaj-se-kvarijo/') })],
 });

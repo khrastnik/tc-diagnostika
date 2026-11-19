@@ -14,9 +14,9 @@ const terms = (await getCollection('slovar')).sort((a, b) => a.data.title.locale
 const desc = 'Kako toplotne črpalke delujejo, zakaj se kvarijo in kaj je aktualno: subvencije, predpisi, cene. Razloženo preprosto, v slovenščini.';
 const jsonLd = [{ '@context': 'https://schema.org', '@type': 'WebSite', name: SITE_NAME, inLanguage: 'sl', url: new URL(u('/'), Astro.site).href }];
 const symptoms = [
-  { icon: 'thermo', label: 'Ne greje dovolj', href: '/zakaj-se-kvarijo/toplotna-crpalka-ne-greje-dovolj/' },
+  { icon: 'thermo', label: 'Ne greje dovolj', href: '/tezave/toplotna-crpalka-ne-greje-dovolj/' },
   { icon: 'snow', label: 'Zunanja enota je zaledenela', href: '/kako-deluje/zakaj-crpalka-pozimi-odtaljuje/' },
-  { icon: 'power', label: 'Pogosto se vklaplja in izklaplja', href: '/zakaj-se-kvarijo/zakaj-se-crpalka-pogosto-vklaplja-in-izklaplja/' },
+  { icon: 'power', label: 'Pogosto se vklaplja in izklaplja', href: '/tezave/zakaj-se-crpalka-pogosto-vklaplja-in-izklaplja/' },
   { icon: 'volume', label: 'Je glasnejša kot prej', href: '/vzdrzevanje/znaki-da-crpalka-potrebuje-servis/' },
 ];
 ---
@@ -27,7 +27,7 @@ const symptoms = [
         <h1>Vaša toplotna črpalka, <em>razložena po domače.</em></h1>
         <p class="lead">Kako deluje, zakaj se kvari in zakaj ji redni servis podaljša življenje. Jasni odgovori namesto nasprotujočih si forumskih nasvetov.</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href={u('/zakaj-se-kvarijo/')}>Imam težavo s črpalko <Icon name="arrow" /></a>
+          <a class="btn btn-primary" href={u('/tezave/')}>Imam težavo s črpalko <Icon name="arrow" /></a>
           <a class="btn btn-ghost" href={u('/kako-deluje/')}>Kako deluje</a>
         </div>
         <ul class="trust">

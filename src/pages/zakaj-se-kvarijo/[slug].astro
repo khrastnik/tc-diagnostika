@@ -1,0 +1,12 @@
+---
+// Stari naslovi člankov /zakaj-se-kvarijo/<slug>/ -> /tezave/<slug>/
+import { getCollection } from 'astro:content';
+import Redirect from '../../components/Redirect.astro';
+import { u } from '../../lib/url';
+export async function getStaticPaths() {
+  const items = await getCollection('clanki', (a) => a.data.section === 'tezave');
+  return items.map((a) => ({ params: { slug: a.id } }));
+}
+const { slug } = Astro.params;
+---
+<Redirect to={u(`/tezave/${slug}/`)} />

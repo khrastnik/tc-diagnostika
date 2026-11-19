@@ -1,7 +1,7 @@
 ---
 title: "Zakaj se toplotna črpalka pogosto vklaplja in izklaplja"
 description: "Kompresor, ki se vklopi in po nekaj minutah ugasne, se hitreje obrablja in porabi več elektrike. Kaj je taktiranje in kdaj poklicati serviserja."
-section: zakaj-se-kvarijo
+section: tezave
 pubDate: 2026-11-19
 updated: 2026-11-19
 terms: [kompresor, krivulja-ogrevanja, taktiranje, inverter]

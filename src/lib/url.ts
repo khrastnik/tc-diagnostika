@@ -23,8 +23,8 @@ export const SECTIONS = {
     color: 'violet',
     intro: 'Toplotna črpalka potrebuje redno nego, tako kot avto. Kaj vključuje servis, kako pogosto in kaj lahko naredite sami.',
   },
-  'zakaj-se-kvarijo': {
-    title: 'Zakaj se kvarijo',
+  tezave: {
+    title: 'Pogoste težave',
     short: 'Težave',
     icon: 'wrench',
     color: 'warm',

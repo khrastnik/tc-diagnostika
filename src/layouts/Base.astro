@@ -14,7 +14,7 @@ const path = Astro.url.pathname;
 const nav: { href: string; label: string; icon: string; color: string; desc: string }[] = [
   { href: '/kako-deluje/', label: 'Kako deluje', icon: 'cycle', color: 'teal', desc: 'Osnove, vrste, COP' },
   { href: '/vzdrzevanje/', label: 'Vzdrževanje', icon: 'shield', color: 'violet', desc: 'Servis in nega' },
-  { href: '/zakaj-se-kvarijo/', label: 'Zakaj se kvarijo', icon: 'wrench', color: 'warm', desc: 'Težave in znaki' },
+  { href: '/tezave/', label: 'Pogoste težave', icon: 'wrench', color: 'warm', desc: 'Težave in znaki' },
   { href: '/aktualno/', label: 'Aktualno', icon: 'news', color: 'sky', desc: 'Subvencije, predpisi' },
   { href: '/slovar/', label: 'Slovar', icon: 'book', color: 'teal', desc: 'Pojmi na kratko' },
   { href: '/o-meni/', label: 'O meni', icon: 'bulb', color: 'teal', desc: 'Kdo piše stran' },
@@ -83,7 +83,7 @@ const nav: { href: string; label: string; icon: string; color: string; desc: str
           <ul>
             <li><a href={u('/kako-deluje/')}>Kako deluje</a></li>
             <li><a href={u('/vzdrzevanje/')}>Vzdrževanje</a></li>
-            <li><a href={u('/zakaj-se-kvarijo/')}>Zakaj se kvarijo</a></li>
+            <li><a href={u('/tezave/')}>Pogoste težave</a></li>
             <li><a href={u('/aktualno/')}>Aktualno</a></li>
             <li><a href={u('/slovar/')}>Slovar pojmov</a></li>
           </ul>

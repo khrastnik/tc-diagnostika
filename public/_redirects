@@ -1,0 +1,3 @@
+# Cloudflare: trajne preusmeritve (301). Na GitHub Pages isto opravijo strani v src/pages/zakaj-se-kvarijo/.
+/zakaj-se-kvarijo/* /tezave/:splat 301
+/zakaj-se-kvarijo /tezave/ 301

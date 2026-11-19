@@ -16,7 +16,7 @@ remember:
 
 ## Zakaj je to težava
 
-Najbolj obremenjen trenutek za [kompresor](../../slovar/kompresor/) je zagon. Podobno je pri avtu: motor se najbolj obrablja ob hladnem zagonu in kratkih vožnjah, ne na dolgi poti po avtocesti.
+Najbolj obremenjen trenutek za [kompresor](../../slovar/kompresor/) je zagon.
 
 Ko črpalka pogosto taktira:
 

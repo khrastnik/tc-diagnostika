@@ -1,163 +1,83 @@
 ---
 import { getCollection } from 'astro:content';
 import Base from '../layouts/Base.astro';
-import Icon from '../components/Icon.astro';
-import HeroArt from '../components/HeroArt.astro';
-import CycleDiagram from '../components/CycleDiagram.astro';
-import PostCard from '../components/PostCard.astro';
 import Waitlist from '../components/Waitlist.astro';
 import { WAITLIST_ACTION } from '../lib/config';
-import { u, SITE_NAME, SECTIONS } from '../lib/url';
+import { u, SITE_NAME, SECTIONS, fmtDate, readingTime, type SectionKey } from '../lib/url';
 
-const all = (await getCollection('clanki')).sort((a, b) => b.data.updated.valueOf() - a.data.updated.valueOf());
+const all = (await getCollection('clanki')).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf() || b.data.updated.valueOf() - a.data.updated.valueOf() || a.id.localeCompare(b.id),
+);
+const [first, ...rest] = all;
 const terms = (await getCollection('slovar')).sort((a, b) => a.data.title.localeCompare(b.data.title, 'sl'));
-const desc = 'Kako toplotne črpalke delujejo, zakaj se kvarijo in kaj je aktualno: subvencije, predpisi, cene. Razloženo preprosto, v slovenščini.';
+const sec = (key: string) => SECTIONS[key as SectionKey];
+const href = (a: (typeof all)[number]) => u(`/${a.data.section}/${a.id}/`);
+const counts = Object.fromEntries(Object.keys(SECTIONS).map((k) => [k, all.filter((a) => a.data.section === k).length]));
+const desc = 'Članki in novice o toplotnih črpalkah v slovenščini: kako delujejo, zakaj se kvarijo, koliko stane servis in kaj je novega pri subvencijah.';
 const jsonLd = [{ '@context': 'https://schema.org', '@type': 'WebSite', name: SITE_NAME, inLanguage: 'sl', url: new URL(u('/'), Astro.site).href }];
 const symptoms = [
-  { icon: 'thermo', label: 'Ne greje dovolj', href: '/tezave/toplotna-crpalka-ne-greje-dovolj/' },
-  { icon: 'snow', label: 'Zunanja enota je zaledenela', href: '/kako-deluje/zakaj-crpalka-pozimi-odtaljuje/' },
-  { icon: 'power', label: 'Pogosto se vklaplja in izklaplja', href: '/tezave/zakaj-se-crpalka-pogosto-vklaplja-in-izklaplja/' },
-  { icon: 'volume', label: 'Je glasnejša kot prej', href: '/vzdrzevanje/znaki-da-crpalka-potrebuje-servis/' },
+  { label: 'Ne greje dovolj', href: '/tezave/toplotna-crpalka-ne-greje-dovolj/' },
+  { label: 'Zunanja enota je zaledenela', href: '/kako-deluje/zakaj-crpalka-pozimi-odtaljuje/' },
+  { label: 'Pogosto se vklaplja in izklaplja', href: '/tezave/zakaj-se-crpalka-pogosto-vklaplja-in-izklaplja/' },
+  { label: 'Je glasnejša kot prej', href: '/vzdrzevanje/znaki-da-crpalka-potrebuje-servis/' },
 ];
 ---
 <Base title={SITE_NAME} description={desc} jsonLd={jsonLd}>
-  <section class="hero">
-    <div class="container hero-grid">
-      <div class="hero-copy">
-        <h1>Vaša toplotna črpalka, <em>razložena po domače.</em></h1>
-        <p class="lead">Kako deluje, zakaj se kvari in zakaj ji redni servis podaljša življenje. Jasni odgovori namesto nasprotujočih si forumskih nasvetov.</p>
-        <div class="hero-actions">
-          <a class="btn btn-primary" href={u('/tezave/')}>Imam težavo s črpalko <Icon name="arrow" /></a>
-          <a class="btn btn-ghost" href={u('/kako-deluje/')}>Kako deluje</a>
-        </div>
-        <ul class="trust">
-          <li><Icon name="shield" />Varno: brez posegov v hladilni krog</li>
-          <li><Icon name="check" />Z navedenimi viri</li>
-        </ul>
-      </div>
-      <div class="hero-art"><HeroArt /></div>
-    </div>
-  </section>
-
-  <section class="section">
+  <header class="masthead">
     <div class="container">
-      <div class="section-head reveal">
-        <div><h2>Kje začeti</h2><p>Štiri poti, glede na to, kaj vas zanima.</p></div>
-      </div>
-      <div class="pillars">
-        {Object.entries(SECTIONS).map(([key, s], i) => (
-          <a class={`pillar c-${s.color} reveal`} style={`--d:${i * 0.08}s`} href={u(`/${key}/`)}>
-            <span class="icon-badge"><Icon name={s.icon} /></span>
-            <h3>{s.title}</h3>
-            <p>{s.intro}</p>
-            <span class="more">Odpri razdelek <Icon name="arrow" /></span>
-          </a>
+      <h1>Članki in novice o toplotnih črpalkah</h1>
+      <p>Kako delujejo, zakaj se kvarijo, koliko stane servis in kaj je novega pri subvencijah. Pišem v slovenščini in navajam vire.</p>
+    </div>
+  </header>
+
+  <div class="container mag">
+    <div>
+      {first && (
+        <article class="lead-story">
+          <p class="kick"><a href={u(`/${first.data.section}/`)}>{sec(first.data.section).title}</a> · <time datetime={first.data.pubDate.toISOString()}>{fmtDate(first.data.pubDate)}</time></p>
+          <h2><a href={href(first)}>{first.data.title}</a></h2>
+          <p>{first.data.description}</p>
+          <p class="meta">Piše Klemen · {readingTime(first.body)} min branja</p>
+        </article>
+      )}
+
+      <ol class="stories">
+        {rest.map((a) => (
+          <li class="story">
+            <p class="kick"><a href={u(`/${a.data.section}/`)}>{sec(a.data.section).title}</a><br /><time datetime={a.data.pubDate.toISOString()}>{fmtDate(a.data.pubDate)}</time></p>
+            <div>
+              <h3><a href={href(a)}>{a.data.title}</a></h3>
+              <p>{a.data.description}</p>
+            </div>
+          </li>
         ))}
-      </div>
+      </ol>
     </div>
-  </section>
 
-
-  <section class="section section-alt">
-    <div class="container care">
-      <div class="reveal">
-        <span class="tag tag-violet">Vzdrževanje</span>
-        <h2>Skrbite zanjo kot za svoj avto</h2>
-        <p class="lead">Toplotna črpalka dela vso zimo, tisoče ur na leto. Tako kot avto potrebuje redni servis, da deluje brezhibno, varčno in dolgo.</p>
-        <ul class="care-points">
-          <li><Icon name="check" />Nižji računi za elektriko, ker ohrani izkoristek</li>
-          <li><Icon name="check" />Manj okvar sredi zime, ko jo najbolj potrebujete</li>
-          <li><Icon name="check" />Daljša življenjska doba kompresorja in naprave</li>
-          <li><Icon name="check" />Ohranjena garancija pri mnogih proizvajalcih</li>
-        </ul>
-        <a class="btn btn-primary" href={u('/vzdrzevanje/zakaj-je-redni-servis-nujen/')}>Zakaj je servis nujen <Icon name="arrow" /></a>
-      </div>
-      <div class="reveal" style="--d:.1s">
-        <div class="compare">
-          <div class="cmp-col">
-            <div class="cmp-head"><span class="icon-badge" style="width:40px;height:40px;background:var(--surface-2);color:var(--ink-2)"><Icon name="car" /></span>Avto</div>
-            <ul><li>Menjava olja in filtrov</li><li>Tlak v pnevmatikah</li><li>Računalniška diagnostika</li><li>Servisna knjižica</li></ul>
-          </div>
-          <div class="cmp-col hp">
-            <div class="cmp-head"><span class="icon-badge" style="width:40px;height:40px;background:var(--violet-50);color:var(--violet)"><Icon name="fan" /></span>Toplotna črpalka</div>
-            <ul><li>Čiščenje filtra in uparjalnika</li><li>Tlak v ogrevalnem sistemu</li><li>Pregled napak in parametrov</li><li>Servisni zapisnik</li></ul>
-          </div>
-        </div>
-        <div class="year reveal" style="--d:.2s">
-          <p class="year-title">Servisni koledar</p>
-          <div class="year-track">
-            <div class="season"><i></i><b>Pomlad</b>pregled po zimi</div>
-            <div class="season on"><i></i><b>Poletje</b>letni servis</div>
-            <div class="season on"><i></i><b>Jesen</b>pred sezono</div>
-            <div class="season"><i></i><b>Zima</b>mesečni pogled</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="help-box reveal">
-        <div>
-          <span class="tag tag-warm">Hitra pomoč</span>
-          <h2>Kaj se dogaja z vašo črpalko?</h2>
-          <p>Izberite znak, ki ga opazite. Povemo, kaj je normalno, kaj lahko varno preverite sami in kdaj poklicati serviserja.</p>
-        </div>
-        <ul class="symptoms">
-          {symptoms.map((s) => (
-            <li>
-              {s.soon ? (
-                <span class="symptom soon"><Icon name={s.icon} /><span>{s.label}<small>Članek v pripravi</small></span></span>
-              ) : (
-                <a class="symptom" href={u(s.href!)}><Icon name={s.icon} /><span>{s.label}</span></a>
-              )}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-alt">
-    <div class="container">
-      <div class="section-head reveal">
-        <div><h2>Krog v štirih korakih</h2><p>Toplotna črpalka toplote ne proizvaja, ampak jo prenaša.</p></div>
-        <a class="link-arrow" href={u('/kako-deluje/kako-deluje-toplotna-crpalka/')}>Preberi razlago <Icon name="arrow" /></a>
-      </div>
-      <div class="reveal"><CycleDiagram /></div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="container">
-      <div class="section-head reveal">
-        <div><h2>Najnovejši članki</h2><p>Novi članki vsak teden.</p></div>
-      </div>
-      <div class="posts three">
-        {all.slice(0, 6).map((a, i) => <PostCard entry={a} delay={(i % 3) * 0.08} />)}
-      </div>
-    </div>
-  </section>
-
+    <aside class="side">
+      <section>
+        <h2>O strani</h2>
+        <p>Toplolog piše Klemen. Tu so razlage, novice in zanimivosti o toplotnih črpalkah, z navedenimi viri.</p>
+        <a href={u('/o-meni/')}>Več o meni</a>
+      </section>
+      <section>
+        <h2>Ko nekaj ne dela</h2>
+        <ul>{symptoms.map((s) => <li><a href={u(s.href)}>{s.label}</a></li>)}</ul>
+      </section>
+      <section>
+        <h2>Rubrike</h2>
+        <ul>{Object.entries(SECTIONS).map(([key, s]) => <li><a href={u(`/${key}/`)}>{s.title}</a> <span class="count">{counts[key]}</span></li>)}</ul>
+      </section>
+      <section>
+        <h2>Slovar</h2>
+        <span class="terms">{terms.map((t, i) => <>{i > 0 && ' · '}<a href={u(`/slovar/${t.id}/`)}>{t.data.title}</a></>)}</span>
+      </section>
+    </aside>
+  </div>
 
   {WAITLIST_ACTION && (
     <section class="section" style="padding-top:0">
       <div class="container"><Waitlist /></div>
     </section>
   )}
-
-  <section class="section section-alt">
-    <div class="container glossary-band">
-      <div class="reveal">
-        <span class="tag tag-teal">Slovar</span>
-        <h2 style="font-size:clamp(1.5rem,4vw,2rem);margin:.6rem 0 .5rem;font-weight:800">Pojmi, razloženi v enem stavku</h2>
-        <p style="color:var(--muted);margin:0 0 1rem">Kompresor, uparjalnik, hladivo … ko naletite na neznano besedo.</p>
-        <a class="link-arrow" href={u('/slovar/')}>Odpri slovar <Icon name="arrow" /></a>
-      </div>
-      <ul class="chips reveal" style="--d:.1s">
-        {terms.map((t) => <li><a class="chip" href={u(`/slovar/${t.id}/`)}><Icon name="book" class="" />{t.data.title}</a></li>)}
-      </ul>
-    </div>
-  </section>
 </Base>

@@ -25,7 +25,7 @@ const jsonLd = [
   ] },
 ];
 ---
-<Base title={`${entry.data.title}: kaj pomeni`} description={entry.data.description} jsonLd={jsonLd}>
+<Base title={`Kaj pomeni ${entry.data.title.toLowerCase()}`} description={entry.data.description} jsonLd={jsonLd}>
   <header class="article-head">
     <div class="container ah-grid"><div>
       <Crumbs items={[['Slovar', '/slovar/'], [entry.data.title]]} />

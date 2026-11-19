@@ -21,7 +21,7 @@ export const SECTIONS = {
     short: 'Servis',
     icon: 'shield',
     color: 'violet',
-    intro: 'Toplotna črpalka potrebuje redno nego, tako kot avto. Kaj vključuje servis, kako pogosto in kaj lahko naredite sami.',
+    intro: 'Kaj vključuje letni servis, kako pogosto ga potrebujete in kaj lahko naredite sami med servisi.',
   },
   tezave: {
     title: 'Pogoste težave',

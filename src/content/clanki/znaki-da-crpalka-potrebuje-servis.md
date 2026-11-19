@@ -12,7 +12,7 @@ remember:
   - Če je od zadnjega servisa minilo več kot leto dni, je to že samo po sebi znak za servis.
 ---
 
-**Toplotna črpalka redko odpove čez noč.** Podobno kot avto, ki začne čudno zveneti ali porabi več goriva, tudi črpalka pošilja opozorila, preden se pokvari. Če jih prepoznate pravočasno, je popravilo običajno manjše in cenejše.
+**Toplotna črpalka redko odpove čez noč.** Preden se pokvari, običajno nekaj tednov pošilja opozorila. Če jih prepoznate pravočasno, je popravilo običajno manjše in cenejše.
 
 Spodaj so znaki, razvrščeni po nujnosti.
 

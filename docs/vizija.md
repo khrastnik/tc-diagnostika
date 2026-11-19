@@ -8,6 +8,19 @@ Zapisano 19. 11. 2026. To je načrt za prihodnost, ne naloga za zdaj. Danes je T
 - Dejavnost še ni registrirana. Dokler ni, stran ne sprejema naročil.
 - Toplolog ima 13 člankov o tem, kako črpalke delujejo, zakaj se kvarijo in kako jih vzdrževati. To je osnova za vse spodaj.
 
+## Prednosti
+
+- **Vsebina kot vir strank.** Večina serviserjev v Sloveniji ima stran z »Kontakt« in tremi fotografijami. Toplolog bo imel 50 člankov, ki odgovorijo na vprašanje, preden stranka sploh pokliče. Konkurenca za slovenske iskalne poizvedbe o toplotnih črpalkah je majhna, zato je to dosegljivo.
+- **Usmeritev v diagnostiko.** Servis ne prodaja naprav, zato je lahko neodvisno drugo mnenje, ko monter reče »treba bo zamenjati«. To je niša, ki je velika podjetja ne pokrivajo.
+- **Digitalni servisni zapisnik.** Stranka ga dobi po e-pošti, serviser ima zgodovino naprave ob naslednjem obisku. To pri konkurenci skoraj ne obstaja.
+
+## Tveganja
+
+- **Orodja namesto servisa.** Največje tveganje je, da se mesece gradijo orodja, namesto da bi se servisiralo. Stranke izbirajo po odzivnosti, terminu in tem, ali je napaka najdena, ne po orodjih v ozadju.
+- **Toplolog bo prve stranke prinašal počasi.** Prvih 6–12 mesecev bodo stranke prišle predvsem z mojster.si, iz priporočil in lokalnih skupin na Facebooku.
+- **Proizvajalci.** Mnogi omejujejo servisno programsko opremo, rezervne dele in garancijska popravila na pooblaščene partnerje. Preveriti pri 3–4 najpogostejših znamkah, preden se servis veže nanje.
+- **Sezona in en človek.** Januarja je vse nujno hkrati. Obrazec, ki prinese več prijav, kot jih je mogoče obdelati, prinese slabe ocene.
+
 ## Ena zbirka simptomov, trije izdelki
 
 Jedro je zbirka simptomov (npr. »zunanja enota je zaledenela«, »ne greje dovolj«, »pogosto se vklaplja in izklaplja«). Vsak simptom se zapiše enkrat in se uporabi na treh mestih:
@@ -40,14 +53,42 @@ Javni del nikoli ne vsebuje navodil za posege v hladilni krog. Zasebni del vsebu
 - Ali portala pošiljata dovolj podatkov po e-pošti, je treba preveriti, ko bo račun odprt.
 - Iz admina: status povpraševanja, klic, termin, povezava na diagnostik in servisni zapisnik.
 
-## Vrstni red
+## Načrt
 
-1. Registracija dejavnosti. Na strani O meni dodati izkušnje in spričevalo za F-pline.
-2. Prvih 10–20 strank sprejeti ročno (telefon, e-pošta, portali), da se pokaže, kateri koraki zamujajo največ časa.
-3. Zbirka simptomov: zapisati postopke za najpogostejše težave.
-4. Obrazec »Prijavi težavo«.
-5. Diagnostik.
-6. Admin, oblikovan po tem, kar se je pokazalo pri ročnem delu.
+Vsaka faza se začne šele, ko je izpolnjen pogoj za prehod. Orodja se gradijo, ko ročno delo izmerljivo jemlje čas, ne prej.
+
+### Faza 0: vsebina (zdaj, do registracije)
+
+- Ritem objav po PRD: en vodnik in ena novica na teden.
+- V 3–4 najbolj branih člankih dodati lastne fotografije in podatke.
+- Začeti zbirko simptomov: ob vsakem novem članku iz rubrike Pogoste težave zapisati še zasebni del (kaj preveri serviser, meritve, na kaj paziti). Zadostuje dokument ali zapiski na telefonu.
+- Pri 3–4 najpogostejših znamkah preveriti pogoje za neodvisni servis: dostop do servisne programske opreme, rezervnih delov, garancijskih popravil.
+
+**Pogoj za prehod:** odločitev za registracijo dejavnosti in znano območje, ki ga bo servis pokrival.
+
+### Faza 1: zagon servisa (prvih 3–6 mesecev po registraciji)
+
+- Registracija dejavnosti, zavarovanje odgovornosti, cenik.
+- Na strani O meni dodati izkušnje, spričevalo za F-pline in območje. Na Toplologu dodati telefon in preprosto stran »Servis«, brez obrazca.
+- Profil na mojster.si in primerjaj.si, lokalne skupine na Facebooku, profil v Google Business.
+- Ročno: povpraševanja v preglednici, kontrolni seznam iz zbirke simptomov na telefonu, servisni zapisnik kot PDF po e-pošti.
+- Beležiti, koliko časa na teden gre za administracijo (odgovarjanje, termini, zapisniki).
+
+**Pogoj za prehod:** 10–20 opravljenih servisov in jasno, kateri ročni koraki vzamejo največ časa.
+
+### Faza 2: obrazec »Prijavi težavo«
+
+- Obrazec na Toplologu, kot je opisan zgoraj, s kategorijo in takojšnjo razlago.
+- Posodobljena stran Zasebnost in privolitev.
+- Omejitev območja: prijava izven območja dobi vljuden odgovor s povezavo do člankov.
+
+**Pogoj za prehod:** prijave prihajajo redno in njihova obdelava ročno vzame več kot ~3 ure na teden.
+
+### Faza 3: admin in diagnostik
+
+- Admin: vse prijave in povpraševanja na enem mestu, uvoz iz e-poštnih obvestil portalov, statusi, termini.
+- Diagnostik: zbirka simptomov kot aplikacija na telefonu, ki deluje brez signala, s servisnim zapisnikom.
+- Kaj se zgradi prej, določijo meritve iz faze 1 in 2.
 
 ## Odprta vprašanja
 

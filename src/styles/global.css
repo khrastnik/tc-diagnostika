@@ -14,9 +14,9 @@
   --brand-ink: #075a49;
   --brand-50: #e7f6f1;
   --brand-100: #c9ebe0;
-  --warm: #e8603c;
-  --warm-ink: #b2421f;
-  --warm-50: #fff1eb;
+  --warm: var(--brand);
+  --warm-ink: var(--brand-ink);
+  --warm-50: var(--brand-50);
   /* Ena poudarjena barva: rubrike, ki so imele svojo barvo, uporabljajo zeleno. */
   --sky: var(--brand);
   --sky-ink: var(--brand-ink);
@@ -542,7 +542,7 @@ h1, h2, h3,
 @media (min-width: 900px) { .masthead { padding: 2.75rem 0 1.5rem; } }
 .masthead h1 { font-size: clamp(1.7rem, 4.6vw, 2.6rem); line-height: 1.15; margin: 0; max-width: 40rem; }
 .masthead p { margin: .6rem 0 0; color: var(--muted); max-width: 40rem; }
-.mag { display: grid; gap: 2.5rem; padding: 2rem 0 3.5rem; }
+.mag { display: grid; gap: 2.5rem; padding-top: 2rem; padding-bottom: 3.5rem; }
 @media (min-width: 960px) { .mag { grid-template-columns: minmax(0, 1fr) 18rem; gap: 3.5rem; } }
 .kick { font-size: .78rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--brand-ink); }
 .kick a { color: inherit; text-decoration: none; }
@@ -555,7 +555,8 @@ h1, h2, h3,
 .meta { font-size: .88rem; color: var(--muted); }
 .stories { list-style: none; margin: 0; padding: 0; }
 .story { display: grid; gap: .25rem; padding: 1.15rem 0; border-bottom: 1px solid var(--line); }
-@media (min-width: 640px) { .story { grid-template-columns: 8.5rem minmax(0, 1fr); gap: 1.25rem; } }
+@media (min-width: 640px) { .story { grid-template-columns: 9.5rem minmax(0, 1fr); gap: 1.25rem; } }
+.kick time { text-transform: none; letter-spacing: 0; font-size: .85rem; }
 .story h3 { font-size: 1.2rem; line-height: 1.3; margin: 0 0 .3rem; }
 .story p { margin: 0; color: var(--muted); font-size: .98rem; line-height: 1.55; }
 .more-link { display: inline-block; margin-top: 1.25rem; font-weight: 700; }

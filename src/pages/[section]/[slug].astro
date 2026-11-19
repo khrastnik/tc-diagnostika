@@ -31,7 +31,9 @@ const jsonLd = [
   {
     '@context': 'https://schema.org', '@type': 'Article', headline: d.title, description: d.description,
     datePublished: d.pubDate.toISOString(), dateModified: d.updated.toISOString(), inLanguage: 'sl',
-    mainEntityOfPage: abs(`/${d.section}/${entry.id}/`), publisher: { '@type': 'Organization', name: SITE_NAME },
+    mainEntityOfPage: abs(`/${d.section}/${entry.id}/`), image: abs('/og.png'),
+    author: { '@type': 'Person', name: 'Klemen', url: abs('/o-meni/') },
+    publisher: { '@type': 'Organization', name: SITE_NAME, url: abs('/') },
   },
   {
     '@context': 'https://schema.org', '@type': 'BreadcrumbList',
@@ -43,7 +45,7 @@ const jsonLd = [
   },
 ];
 ---
-<Base title={d.title} description={d.description} jsonLd={jsonLd}>
+<Base title={d.title} description={d.description} jsonLd={jsonLd} ogType="article">
   <article>
     <div class="read-progress" aria-hidden="true"><i></i></div>
     <header class="article-head">
@@ -54,6 +56,7 @@ const jsonLd = [
         <h1>{d.title}</h1>
         <p class="desc">{d.description}</p>
         <div class="byline">
+          <span><Icon name="bulb" />Piše <a href={u('/o-meni/')}>Klemen</a></span>
           <span><Icon name="clock" />{readingTime(entry.body)} min branja</span>
           <span><Icon name="calendar" />Objavljeno {fmtDate(d.pubDate)}</span>
           <span><Icon name="refresh" />Posodobljeno <time datetime={d.updated.toISOString()}>{fmtDate(d.updated)}</time></span>

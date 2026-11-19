@@ -9,7 +9,7 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0e1f1
 .stage { position: relative; width: 1080px; height: 1920px; overflow: hidden;
   background: radial-gradient(900px 700px at 85% 5%, rgba(232,96,60,.35), transparent 60%), radial-gradient(900px 800px at 0% 100%, rgba(19,160,127,.45), transparent 60%), #0e1f1a; }
 .brand { position: absolute; top: 90px; left: 80px; display: flex; align-items: center; gap: 18px; font-weight: 800; font-size: 40px; letter-spacing: -.02em; }
-.brand i { width: 58px; height: 58px; border-radius: 18px; background: linear-gradient(135deg,#0a7d65,#13a07f); display: grid; place-items: center; font-style: normal; font-size: 30px; }
+.brand img { width: 62px; height: 62px; display: block; border-radius: 16px; box-shadow: 0 0 0 2px rgba(255,255,255,.14); }
 .brand b { color: #6ed8b8; }
 .scene { position: absolute; left: 80px; right: 80px; top: 230px; opacity: 0; animation: var(--T) linear both; }
 .scene h1 { font-size: 104px; line-height: 1.02; font-weight: 800; letter-spacing: -.04em; }
@@ -26,7 +26,7 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0e1f1
 
 .unit svg { width: 100%; height: auto; overflow: visible; }
 .cta { position: absolute; left: 80px; right: 80px; top: 380px; text-align: center; opacity: 0; animation: var(--T) linear both; }
-.cta .logo { width: 180px; height: 180px; margin: 0 auto 40px; border-radius: 52px; background: linear-gradient(135deg,#0a7d65,#13a07f); display: grid; place-items: center; font-size: 96px; font-weight: 800; box-shadow: 0 30px 80px -20px rgba(19,160,127,.7); }
+.cta .logo { display: block; width: 220px; height: 220px; margin: 0 auto 40px; border-radius: 58px; box-shadow: 0 0 0 3px rgba(255,255,255,.14), 0 30px 80px -20px rgba(19,160,127,.7); }
 .cta h2 { font-size: 120px; font-weight: 800; letter-spacing: -.04em; }
 .cta p { font-size: 52px; color: #c9d6d1; margin-top: 30px; line-height: 1.3; font-weight: 600; }
 .cta .pill { display: inline-block; margin-top: 60px; background: #fff; color: #0e1f1a; font-size: 46px; font-weight: 800; padding: 28px 50px; border-radius: 999px; }
@@ -66,7 +66,7 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0e1f1
 </style></head>
 <body><div class="stage">
   <div class="progress"><i></i></div>
-  <div class="brand"><i>T</i><span>Topl<b>olog</b></span></div>
+  <div class="brand"><img src="../brand/toplolog-znak.svg" alt=""><span>Topl<b>olog</b></span></div>
 
   <div class="scene s1"><h1>Iz vaše toplotne črpalke se pozimi <em>kadi?!</em></h1></div>
   <div class="scene s2"><h1>Brez panike.<br>To ni dim.<br><span class="ok">To je para.</span></h1></div>
@@ -106,7 +106,7 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0e1f1
 
   <div class="subs"></div>
   <div class="cta">
-    <div class="logo">T</div>
+    <img class="logo" src="../brand/toplolog-znak.svg" alt="">
     <h2>Toplolog</h2>
     <p>Toplotne črpalke, razložene po domače.<br>Več o odtaljevanju na spletni strani.</p>
     <div class="pill">Povezava v opisu ↗</div>

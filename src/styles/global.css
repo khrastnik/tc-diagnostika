@@ -64,7 +64,7 @@ h1, h2, h3 { color: var(--ink); letter-spacing: -0.02em; line-height: 1.2; }
 .site-header .bar { display: flex; align-items: center; justify-content: space-between; height: 4rem; gap: 1rem; }
 .logo { display: inline-flex; align-items: center; gap: .6rem; text-decoration: none; color: var(--ink); font-weight: 800; font-size: 1.08rem; letter-spacing: -0.02em; }
 .logo:hover { color: var(--ink); }
-.logo-mark { width: 34px; height: 34px; flex: none; }
+.logo-mark { width: 36px; height: 36px; flex: none; }
 .logo b { color: var(--brand); font-weight: 800; }
 
 .nav-toggle {
@@ -493,3 +493,4 @@ body.nav-open { overflow: hidden; }
 .cat-filter button { font: inherit; font-size: .9rem; font-weight: 650; padding: .5rem .95rem; min-height: 44px; border-radius: 999px; border: 1px solid var(--line); background: #fff; color: var(--ink-2); cursor: pointer; transition: background .15s, border-color .15s, color .15s; }
 .cat-filter button:hover { border-color: #c8d3cf; color: var(--ink); }
 .cat-filter button[aria-pressed="true"] { background: var(--ink); border-color: var(--ink); color: #fff; }
+.site-footer .logo-mark { border-radius: 9px; box-shadow: 0 0 0 1px rgba(255,255,255,.18); }

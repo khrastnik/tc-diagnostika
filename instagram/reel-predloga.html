@@ -13,7 +13,7 @@ html, body { width: 1080px; height: 1920px; overflow: hidden; background: #0e1f1
   background: radial-gradient(900px 700px at 85% 5%, rgba(232,96,60,.32), transparent 60%), radial-gradient(900px 800px at 0% 100%, rgba(19,160,127,.42), transparent 60%), #0e1f1a; }
 /* varna cona: zgoraj 220 px, spodaj 420 px, desno 160 px ne nosijo ključnega besedila */
 .brand { position: absolute; top: 96px; left: 80px; display: flex; align-items: center; gap: 18px; font-weight: 800; font-size: 40px; letter-spacing: -.02em; }
-.brand i { width: 58px; height: 58px; border-radius: 18px; background: linear-gradient(135deg,#0a7d65,#13a07f); display: grid; place-items: center; font-style: normal; font-size: 30px; }
+.brand img { width: 62px; height: 62px; display: block; border-radius: 16px; box-shadow: 0 0 0 2px rgba(255,255,255,.14); }
 .brand b { color: #6ed8b8; }
 .progress { position: absolute; left: 80px; right: 80px; top: 60px; height: 8px; border-radius: 8px; background: rgba(255,255,255,.15); overflow: hidden; }
 .progress i { display: block; height: 100%; width: 100%; background: #6ed8b8; transform-origin: left; }
@@ -31,14 +31,14 @@ h1 em { font-style: normal; color: #ff8a65; } h1 .ok { color: #6ed8b8; }
 
 .visual svg { width: 100%; height: auto; overflow: visible; }
 .cta { position: absolute; left: 80px; right: 80px; top: 380px; text-align: center; opacity: 0; }
-.cta .logo { width: 180px; height: 180px; margin: 0 auto 40px; border-radius: 52px; background: linear-gradient(135deg,#0a7d65,#13a07f); display: grid; place-items: center; font-size: 96px; font-weight: 800; }
+.cta .logo { display: block; width: 220px; height: 220px; margin: 0 auto 40px; border-radius: 58px; box-shadow: 0 0 0 3px rgba(255,255,255,.14), 0 30px 80px -20px rgba(19,160,127,.7); }
 .cta h2 { font-size: 112px; font-weight: 800; letter-spacing: -.04em; }
 .cta p { font-size: 50px; color: #c9d6d1; margin-top: 30px; line-height: 1.3; font-weight: 600; }
 .cta .pill { display: inline-block; margin-top: 60px; background: #fff; color: #0e1f1a; font-size: 46px; font-weight: 800; padding: 28px 50px; border-radius: 999px; }
 </style></head>
 <body><div class="stage">
   <div class="progress"><i></i></div>
-  <div class="brand"><i>T</i><span>Topl<b>olog</b></span></div>
+  <div class="brand"><img src="../brand/toplolog-znak.svg" alt=""><span>Topl<b>olog</b></span></div>
 
   <div class="scene s1"><h1>Avto peljete na servis vsako leto.</h1><p class="sub">Kaj pa toplotno črpalko?</p></div>
   <div class="scene s2"><h1>Toplotna črpalka dela vso zimo.</h1><p class="sub">Ure delovanja se hitro naberejo.</p></div>
@@ -56,7 +56,7 @@ h1 em { font-style: normal; color: #ff8a65; } h1 .ok { color: #6ed8b8; }
   </svg></div>
 
   <div class="subs"></div>
-  <div class="cta"><div class="logo">T</div><h2>Toplolog</h2><p>Toplotne črpalke, razložene po domače.</p><div class="pill">Povezava v opisu ↗</div></div>
+  <div class="cta"><img class="logo" src="../brand/toplolog-znak.svg" alt=""><h2>Toplolog</h2><p>Toplotne črpalke, razložene po domače.</p><div class="pill">Povezava v opisu ↗</div></div>
 </div>
 <script src="reel-lib.js"></script>
 <script>

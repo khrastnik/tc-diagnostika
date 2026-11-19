@@ -5,7 +5,7 @@ export function u(path = '/'): string {
   return `${base}${p}`;
 }
 
-export const SITE_NAME = 'TC diagnostika';
+export const SITE_NAME = 'Toplolog';
 export const SITE_TAGLINE = 'Toplotne črpalke, razložene po domače';
 
 export const SECTIONS = {

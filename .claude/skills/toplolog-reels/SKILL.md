@@ -66,7 +66,7 @@ Vsak Reel ima **podnapise**: pas na dnu slike (`<div class="subs"></div>`, vrh p
 - Ozadje: temno zelena `#0e1f1a` z oranžnim sijem zgoraj desno in zelenim spodaj levo (iz predloge).
 - Barve: zelena `#13a07f` / svetla `#6ed8b8` (rešitev, »normalno«), oranžna `#e8603c` / `#ff8a65` (težava), modra `#2b6be0` / `#7aa7ef` (mraz, voda, led), bela kartica `#f7faf9` za naprave.
 - Pisava: Plus Jakarta Sans (lokalno iz `node_modules`), brez drugih pisav.
-- Blagovna znamka: zgoraj levo »Toplolog« z logotipom T; CTA na koncu.
+- Blagovna znamka: zgoraj levo znak `brand/toplolog-znak.svg` (hiša z utripom) in napis »Toplolog«; isti znak večji v CTA na koncu. Ne izmišljuj drugih logotipov.
 - **Varne cone:** zgoraj 220 px (vrstica napredka, znamka), **spodaj 420 px** in **desno 160 px** sta pod Instagramovimi gumbi/opisom – tja ne postavljaj ključnega besedila.
 
 ## 6. Tehnični postopek

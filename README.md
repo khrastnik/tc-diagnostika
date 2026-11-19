@@ -1,6 +1,6 @@
-# TC diagnostika
+# Toplolog
 
-Informativna slovenska stran o toplotnih črpalkah: kako delujejo, zakaj se kvarijo in kaj je aktualno.
+Toplolog – informativna slovenska stran o toplotnih črpalkah: kako delujejo, zakaj se kvarijo in kaj je aktualno.
 
 - Ogrodje: [Astro](https://astro.build) (statična stran), vsebina v Markdownu
 - Gostovanje: GitHub Pages, objava ob vsakem `git push` na `main`

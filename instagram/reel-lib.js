@@ -84,6 +84,23 @@
       loop(sel, keyframes, period, a = 0, b = T) {
         all(sel).forEach((el) => el.animate(keyframes, { duration: period * 1000, iterations: Math.max(1, Math.round((b - a) / period)), delay: a * 1000, fill: 'none' }));
       },
+      /**
+       * Podnapisi (obvezni v vsakem Reelu): [[od, do, 'besedilo'], …] v sekundah.
+       * Prikažejo se v pasu .subs (spodaj, nad Instagramovo cono za opis); upodabljalnik iz njih izdela podnapisi.srt.
+       */
+      subs(list, sel = '.subs') {
+        const box = document.querySelector(sel);
+        if (!box) throw new Error('Manjka element ' + sel + ' za podnapise');
+        if (!box.dataset.built) {
+          box.dataset.built = '1';
+          box.innerHTML = list.map(([, , t]) => `<span style="grid-area:1/1">${t}</span>`).join('');
+        }
+        [...box.children].forEach((sp, i) => {
+          const [a, b] = list[i];
+          tl(sp, [[0, { opacity: 0, transform: 'translateY(12px)' }], [a, { opacity: 0, transform: 'translateY(12px)' }], [a + 0.18, { opacity: 1, transform: 'none' }], [b - 0.12, { opacity: 1, transform: 'none' }], [b, { opacity: 0, transform: 'none' }]], EASE);
+        });
+        window.REEL_SUBS = list;
+      },
       /** Vrstica napredka na vrhu. */
       progress(sel = '.progress i') { tl(sel, [[0, { transform: 'scaleX(0)' }], [T, { transform: 'scaleX(1)' }]]); },
     };

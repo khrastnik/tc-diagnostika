@@ -16,6 +16,7 @@ NAMIGI ZA OBJAVO
 - Naslovnica (cover): sličica pri ~1,5 s (naslov »Iz vaše toplotne črpalke se pozimi kadi?!«).
 - Zvok: v Instagramu dodaj trenutno priljubljeno instrumentalno glasbo iz knjižnice (video je brez glasbe).
 - Prva vrstica opisa je zanka – ne spreminjaj je preveč.
+- Podnapisi so že vžgani v video. Za TikTok / YouTube Shorts / Facebook lahko naložiš še reel-odtaljevanje.srt.
 - V Zgodbo deli z anketo: »Ste že videli, da se vaša črpalka kadi? Da / Ne«.
 
 Povezava za opis profila: https://khrastnik.github.io/tc-diagnostika/kako-deluje/zakaj-crpalka-pozimi-odtaljuje/

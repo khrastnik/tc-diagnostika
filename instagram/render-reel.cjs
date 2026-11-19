@@ -7,6 +7,13 @@ const { chromium } = require('playwright');
   const p = await b.newPage({ viewport: { width: 1080, height: 1920 }, deviceScaleFactor: 1 });
   await p.goto('file://' + html); await p.evaluate(() => document.fonts.ready);
   if (!T) T = await p.evaluate(() => window.REEL_T || 21);
+  // podnapisi -> SRT (za TikTok, YouTube Shorts, Facebook)
+  const subs = await p.evaluate(() => window.REEL_SUBS || null);
+  if (!subs || !subs.length) console.warn('OPOZORILO: Reel nima podnapisov (r.subs). Po pravilih jih mora imeti.');
+  else if (!only) {
+    const ts = (s) => { const ms = Math.round(s * 1000); const h = String(Math.floor(ms / 3600000)).padStart(2, '0'); const m = String(Math.floor(ms / 60000) % 60).padStart(2, '0'); const sec = String(Math.floor(ms / 1000) % 60).padStart(2, '0'); return `${h}:${m}:${sec},${String(ms % 1000).padStart(3, '0')}`; };
+    require('fs').writeFileSync(`${outDir}/podnapisi.srt`, subs.map(([a, b, t], i) => `${i + 1}\n${ts(a)} --> ${ts(b)}\n${t}\n`).join('\n'));
+  }
   await p.addStyleTag({ content: 'html.frozen *, html.frozen *::before, html.frozen *::after { animation: none !important; }' });
   const n = only ? 1 : Math.round(T * fps);
   for (let i = 0; i < n; i++) {

@@ -25,9 +25,12 @@ h1 em { font-style: normal; color: #ff8a65; } h1 .ok { color: #6ed8b8; }
 .list div { display: flex; gap: 22px; align-items: center; font-size: 50px; font-weight: 700; background: rgba(255,255,255,.08); border: 2px solid rgba(255,255,255,.14); border-radius: 26px; padding: 22px 28px; }
 .list span { width: 64px; height: 64px; flex: none; border-radius: 18px; display: grid; place-items: center; font-size: 40px; font-weight: 800; background: #13a07f; }
 .big { font-size: 260px; font-weight: 800; letter-spacing: -.05em; line-height: 1; color: #6ed8b8; }
-.visual { position: absolute; left: 140px; right: 140px; top: 1000px; opacity: 0; }
+.visual { position: absolute; left: 200px; right: 200px; top: 860px; opacity: 0; }
+.subs { position: absolute; left: 80px; right: 160px; top: 1330px; height: 160px; display: grid; place-items: center; }
+.subs span { max-width: 100%; text-align: center; font-size: 44px; line-height: 1.3; font-weight: 700; color: #fff; background: rgba(0,0,0,.62); padding: 14px 26px; border-radius: 18px; box-decoration-break: clone; -webkit-box-decoration-break: clone; opacity: 0; }
+
 .visual svg { width: 100%; height: auto; overflow: visible; }
-.cta { position: absolute; left: 80px; right: 80px; top: 600px; text-align: center; opacity: 0; }
+.cta { position: absolute; left: 80px; right: 80px; top: 380px; text-align: center; opacity: 0; }
 .cta .logo { width: 180px; height: 180px; margin: 0 auto 40px; border-radius: 52px; background: linear-gradient(135deg,#0a7d65,#13a07f); display: grid; place-items: center; font-size: 96px; font-weight: 800; }
 .cta h2 { font-size: 112px; font-weight: 800; letter-spacing: -.04em; }
 .cta p { font-size: 50px; color: #c9d6d1; margin-top: 30px; line-height: 1.3; font-weight: 600; }
@@ -52,6 +55,7 @@ h1 em { font-style: normal; color: #ff8a65; } h1 .ok { color: #6ed8b8; }
     <g class="badge" style="transform-origin:640px 70px" data-keep><circle cx="640" cy="70" r="66" fill="#13a07f"/><path d="M610 70l22 22 40-44" stroke="#fff" stroke-width="16" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g>
   </svg></div>
 
+  <div class="subs"></div>
   <div class="cta"><div class="logo">T</div><h2>Toplolog</h2><p>Toplotne črpalke, razložene po domače.</p><div class="pill">Povezava v opisu ↗</div></div>
 </div>
 <script src="reel-lib.js"></script>
@@ -68,6 +72,13 @@ reel(16, (r) => {
   r.loop('.fan', [{ transform: 'rotate(0)' }, { transform: 'rotate(360deg)' }], 0.9, 0, 16);
   r.pop('.badge', 8.8);
   r.scene('.cta', 13.6, 16.01, { enter: 'scale', exit: false });
+  r.subs([
+    [0.2, 3.3, 'Servis avta je samoumeven. Na toplotno črpalko pogosto pozabimo.'],
+    [3.4, 6.5, 'Pozimi dela skoraj brez premora, ure delovanja se hitro naberejo.'],
+    [6.6, 10.5, 'Pri letnem servisu serviser napravo očisti, preveri in nastavi.'],
+    [10.6, 13.5, 'Redni pregledi pomenijo manj okvar in daljšo življenjsko dobo.'],
+    [13.7, 15.9, 'Več o servisu v članku – povezava v opisu.'],
+  ]);
 });
 </script>
 </body></html>

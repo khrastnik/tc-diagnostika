@@ -5,7 +5,7 @@ description: Pravila in postopek za izdelavo Instagram Reels za »Toplolog« (TC
 
 # Toplolog Reels
 
-Reel je 15–30 s dolg, pokončen (1080 × 1920) animiran video v slovenščini. Izdelamo ga kot HTML-animacijo v `instagram/`, ki jo upodabljalnik zajame sličico za sličico in ffmpeg sestavi v MP4.
+Reel je 15–30 s dolg, pokončen (1080 × 1920) animiran video v slovenščini, **vedno s podnapisi**. Izdelamo ga kot HTML-animacijo v `instagram/`, ki jo upodabljalnik zajame sličico za sličico in ffmpeg sestavi v MP4.
 
 **Namen vsakega Reela:** gledalec se nauči nekaj koristnega o svoji toplotni črpalki in odide z občutkom, da je **redni servis normalen, zaželen in pameten** – kot servis avta. Ne strašimo in ne prodajamo; razlagamo.
 
@@ -39,6 +39,17 @@ Skupna dolžina **15–25 s** (največ 30 s). Krajši Reel, ki ga ljudje pogleda
 - **Poudari ključno besedo** z barvo: `<span class="ok">` (zelena, pozitivno/rešitev), `<em>` (oranžna, težava/opozorilo).
 - Slovenski narekovaji »…«, slovenska decimalna vejica, ločila brez presledka pred vprašajem.
 - Vse besedilo mora biti berljivo **brez zvoka** (večina gleda brez zvoka).
+
+### Podnapisi (obvezni v vsakem Reelu)
+
+Vsak Reel ima **podnapise**: pas na dnu slike (`<div class="subs"></div>`, vrh pri 1330 px, nad Instagramovo cono za opis), ki teče skozi ves video.
+
+- Podnapisi so **pripoved** (kot glas pripovedovalca): cel, naraven stavek, ki naslov na zaslonu **dopolni**, ne ponovi. Naslov: »To je para.« → podnapis: »Brez skrbi – to ni dim, ampak vodna para.«
+- En podnapis na prizor (ali dva pri daljšem prizoru), **največ ~80 znakov** (2 vrstici), prikazan vsaj 1,5 s.
+- Pokrivajo **ves video od 0,2 s do konca**, brez daljših vrzeli; **zadnji podnapis nosi sporočilo o servisu** ali povabilo na članek.
+- V časovnici: `r.subs([[od, do, 'besedilo'], …])`. Upodabljalnik iz njih samodejno izdela `podnapisi.srt` (za TikTok, YouTube Shorts, Facebook); shrani ga kot `instagram/reel-<tema>.srt`.
+- Upodabljalnik izpiše opozorilo, če podnapisov ni – tak Reel ni dokončan.
+- Ilustracije in CTA ne smejo segati v pas podnapisov (1330–1490 px).
 
 ## 4. Animacija, ki pritegne
 
@@ -78,8 +89,9 @@ Skupna dolžina **15–25 s** (največ 30 s). Krajši Reel, ki ga ljudje pogleda
      -c:v libx264 -profile:v high -pix_fmt yuv420p -crf 20 -preset slow -c:a aac -b:a 128k -shortest -movflags +faststart reel-<tema>.mp4
    ```
    (Pri scratchpad mapi uporabi ta namesto `/tmp`.) Preveri s `ffprobe`: h264, 1080×1920, 30 fps, trajanje = T.
-6. **Opis za objavo:** `instagram/reel-<tema>-opis.txt` s prvo vrstico kot zanko, 2–4 kratkimi odstavki, sporočilom o servisu, »povezava v opisu profila«, 8–12 ključniki (#toplotnačrpalka #ogrevanje …), namigi (čas naslovnice, glasba iz knjižnice, anketa v Zgodbi) in URL članka.
-7. **Shrani in pošlji:** commit HTML, MP4 in opis v `instagram/` (ta mapa se ne objavi na spletni strani); MP4 in opis pošlji uporabniku.
+6. **Podnapisi kot datoteka:** kopiraj `podnapisi.srt` iz mape sličic v `instagram/reel-<tema>.srt`.
+7. **Opis za objavo:** `instagram/reel-<tema>-opis.txt` s prvo vrstico kot zanko, 2–4 kratkimi odstavki, sporočilom o servisu, »povezava v opisu profila«, 8–12 ključniki (#toplotnačrpalka #ogrevanje …), namigi (čas naslovnice, glasba iz knjižnice, anketa v Zgodbi) in URL članka.
+8. **Shrani in pošlji:** commit HTML, MP4, SRT in opis v `instagram/` (ta mapa se ne objavi na spletni strani); MP4 in opis pošlji uporabniku.
 
 ## 7. Kontrolni seznam pred oddajo
 
@@ -88,6 +100,7 @@ Skupna dolžina **15–25 s** (največ 30 s). Krajši Reel, ki ga ljudje pogleda
 - [ ] Nobenih navodil »naredi sam«, nobenih nepreverjenih številk, nobene ponudbe storitev.
 - [ ] Gibanje vsaj vsakih 2 s; ilustracija kaže dogajanje.
 - [ ] Besedilo kratko, berljivo brez zvoka, izven varnih con.
+- [ ] Podnapisi skozi ves video (pripoved, ≤ 80 znakov, zadnji o servisu); `reel-<tema>.srt` shranjen.
 - [ ] Predogled brez ostankov prejšnjih prizorov; MP4 1080×1920, 30 fps, 15–30 s.
 - [ ] Opis z zanko, ključniki in povezavo do članka.
 

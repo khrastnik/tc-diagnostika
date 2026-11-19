@@ -4,6 +4,7 @@ Reels in objave za Instagram profil. Ta mapa se ne objavi na spletni strani.
 
 - `reel-*.html` – animacija za Reel (1080 × 1920), CSS animacije s skupnim trajanjem v `--T`.
 - `reel-*.mp4` – izdelan video.
+- `reel-*.srt` – podnapisi (za TikTok, YouTube Shorts, Facebook; v videu so že vžgani).
 - `reel-*-opis.txt` – opis, ključniki in namigi za objavo.
 - `render-reel.cjs` – upodabljalnik: animacijo zajame sličico za sličico.
 - `reel-lib.js` – časovnica v sekundah (prizori, stagger, pop, shake, count, loop).

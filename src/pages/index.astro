@@ -5,6 +5,8 @@ import Icon from '../components/Icon.astro';
 import HeroArt from '../components/HeroArt.astro';
 import CycleDiagram from '../components/CycleDiagram.astro';
 import PostCard from '../components/PostCard.astro';
+import Waitlist from '../components/Waitlist.astro';
+import { WAITLIST_ACTION } from '../lib/config';
 import { u, SITE_NAME, SECTIONS } from '../lib/url';
 
 const all = (await getCollection('clanki')).sort((a, b) => b.data.updated.valueOf() - a.data.updated.valueOf());
@@ -138,6 +140,12 @@ const symptoms = [
     </div>
   </section>
 
+
+  {WAITLIST_ACTION && (
+    <section class="section" style="padding-top:0">
+      <div class="container"><Waitlist /></div>
+    </section>
+  )}
 
   <section class="section section-alt">
     <div class="container glossary-band">
